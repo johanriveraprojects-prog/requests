@@ -4,7 +4,13 @@ Release History
 dev
 ---
 
-- \[Short description of non-trivial change.\]
+**Improvements**
+- Added `Response.retry_after`, which returns the number of seconds to wait
+  from the `Retry-After` header (in seconds or as an HTTP date).
+
+**Bugfixes**
+- `Response.iter_lines()` no longer yields a spurious empty line when a chunk
+  ends exactly on the delimiter, or when a `\r\n` is split across chunks.
 
 
 2.34.2 (2026-05-14)

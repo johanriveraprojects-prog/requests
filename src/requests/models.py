@@ -14,6 +14,7 @@ import datetime
 # such as in Embedded Python. See https://github.com/psf/requests/issues/3578.
 import encodings.idna  # noqa: F401
 from collections.abc import Callable, Generator, Iterable, Iterator, Mapping
+from email.utils import parsedate_to_datetime
 from io import UnsupportedOperation
 from typing import (
     TYPE_CHECKING,
@@ -887,6 +888,30 @@ class Response:
             codes.moved_permanently,
             codes.permanent_redirect,
         )
+
+    @property
+    def retry_after(self) -> float | None:
+        """The number of seconds to wait before retrying, taken from the
+        ``Retry-After`` header (common on 429 and 503 responses).
+
+        The header may hold a number of seconds or an HTTP date. A date in
+        the past gives ``0.0``. Returns ``None`` if the header is missing or
+        cannot be parsed.
+        """
+        value = self.headers.get("retry-after")
+        if value is None:
+            return None
+        value = value.strip()
+        if value.isascii() and value.isdigit():
+            return float(value)
+        try:
+            when = parsedate_to_datetime(value)
+        except (TypeError, ValueError, IndexError):
+            return None
+        if when.tzinfo is None:
+            when = when.replace(tzinfo=datetime.timezone.utc)
+        now = datetime.datetime.now(datetime.timezone.utc)
+        return max(0.0, (when - now).total_seconds())
 
     @property
     def next(self) -> PreparedRequest | None:

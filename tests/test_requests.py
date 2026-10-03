@@ -2,6 +2,8 @@
 
 import collections
 import contextlib
+import datetime
+import email.utils
 import io
 import json
 import os
@@ -2181,6 +2183,34 @@ class TestRequests:
         it = r.iter_lines()
         next(it)
         assert len(list(it)) == 3
+
+    @pytest.mark.parametrize(
+        "value, expected",
+        (
+            (None, None),
+            ("120", 120.0),
+            (" 0 ", 0.0),
+            ("Wed, 21 Oct 2015 07:28:00 GMT", 0.0),
+            ("-5", None),
+            ("1.5", None),
+            ("²", None),
+            ("soon", None),
+            ("", None),
+        ),
+    )
+    def test_response_retry_after(self, value, expected):
+        r = requests.Response()
+        if value is not None:
+            r.headers["Retry-After"] = value
+        assert r.retry_after == expected
+
+    def test_response_retry_after_future_date(self):
+        when = datetime.datetime.now(datetime.timezone.utc) + datetime.timedelta(
+            seconds=60
+        )
+        r = requests.Response()
+        r.headers["Retry-After"] = email.utils.format_datetime(when, usegmt=True)
+        assert 50 < r.retry_after <= 60
 
     @pytest.mark.parametrize(
         "data, kwargs, expected",
