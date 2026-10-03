@@ -421,6 +421,9 @@ class Session(SessionRedirectMixin):
     cert: _t.CertType
     max_redirects: int
     trust_env: bool
+    # Class-level default so sessions unpickled from older versions,
+    # which have no ``timeout`` state, still work.
+    timeout: _t.TimeoutType = None
     cookies: RequestsCookieJar
     adapters: MutableMapping[str, BaseAdapter]
 
@@ -437,6 +440,7 @@ class Session(SessionRedirectMixin):
         "stream",
         "trust_env",
         "max_redirects",
+        "timeout",
     ]
 
     def __init__(self) -> None:
@@ -486,6 +490,12 @@ class Session(SessionRedirectMixin):
         #: This defaults to requests.models.DEFAULT_REDIRECT_LIMIT, which is
         #: 30.
         self.max_redirects = DEFAULT_REDIRECT_LIMIT
+
+        #: Default timeout for requests sent from this session, as a float or
+        #: a :ref:`(connect timeout, read timeout) <timeouts>` tuple. It is
+        #: used when a request does not pass its own ``timeout``. Defaults to
+        #: ``None``, which waits forever.
+        self.timeout = None
 
         #: Trust environment settings for proxy configuration, default
         #: authentication and similar.
@@ -759,6 +769,8 @@ class Session(SessionRedirectMixin):
         kwargs.setdefault("stream", self.stream)
         kwargs.setdefault("verify", self.verify)
         kwargs.setdefault("cert", self.cert)
+        if kwargs.get("timeout") is None:
+            kwargs["timeout"] = self.timeout
         if "proxies" not in kwargs:
             kwargs["proxies"] = resolve_proxies(request, self.proxies, self.trust_env)
 

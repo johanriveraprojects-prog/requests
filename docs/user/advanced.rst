@@ -1120,6 +1120,18 @@ coffee.
 
     r = requests.get('https://github.com', timeout=None)
 
+To avoid passing ``timeout`` on every call, set a default on a
+:class:`Session <requests.Session>`. It is used by every request from that
+session, including redirects, unless the request passes its own ``timeout``::
+
+    s = requests.Session()
+    s.timeout = (3.05, 27)
+    s.get('https://github.com')             # uses (3.05, 27)
+    s.get('https://github.com', timeout=5)  # uses 5
+
+Because ``timeout=None`` on a request means "use the session default", set
+``s.timeout = None`` to make a session wait forever.
+
 .. note:: The connect timeout applies to each connection attempt to an IP address.
           If multiple addresses exist for a domain name, the underlying ``urllib3`` will
           try each address sequentially until one successfully connects.
