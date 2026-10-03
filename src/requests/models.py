@@ -14,6 +14,7 @@ import datetime
 # such as in Embedded Python. See https://github.com/psf/requests/issues/3578.
 import encodings.idna  # noqa: F401
 from collections.abc import Callable, Generator, Iterable, Iterator, Mapping
+from email.utils import parsedate_to_datetime
 from io import UnsupportedOperation
 from typing import (
     TYPE_CHECKING,
@@ -889,6 +890,30 @@ class Response:
         )
 
     @property
+    def retry_after(self) -> float | None:
+        """The number of seconds to wait before retrying, taken from the
+        ``Retry-After`` header (common on 429 and 503 responses).
+
+        The header may hold a number of seconds or an HTTP date. A date in
+        the past gives ``0.0``. Returns ``None`` if the header is missing or
+        cannot be parsed.
+        """
+        value = self.headers.get("retry-after")
+        if value is None:
+            return None
+        value = value.strip()
+        if value.isascii() and value.isdigit():
+            return float(value)
+        try:
+            when = parsedate_to_datetime(value)
+        except (TypeError, ValueError, IndexError):
+            return None
+        if when.tzinfo is None:
+            when = when.replace(tzinfo=datetime.timezone.utc)
+        now = datetime.datetime.now(datetime.timezone.utc)
+        return max(0.0, (when - now).total_seconds())
+
+    @property
     def next(self) -> PreparedRequest | None:
         """Returns a PreparedRequest for the next request in a redirect chain, if there is one."""
         return self._next
@@ -1018,18 +1043,31 @@ class Response:
 
             if delimiter:
                 lines = chunk.split(delimiter)  # type: ignore[arg-type]
-            else:
-                lines = chunk.splitlines()
-
-            if lines and lines[-1] and chunk and lines[-1][-1] == chunk[-1]:
+                # The last piece may continue in the next chunk (it is
+                # empty when the chunk ends exactly on a delimiter).
                 pending = lines.pop()
             else:
-                pending = None
+                lines = chunk.splitlines(keepends=True)
+                # The last line is incomplete if it has no line break yet,
+                # or ends in "\r", which may be the first half of "\r\n".
+                last = lines[-1] if lines else None
+                if isinstance(last, bytes):
+                    incomplete = last.endswith(b"\r")
+                else:
+                    incomplete = last is not None and last.endswith("\r")
+                if last is not None and (incomplete or last.splitlines()[0] == last):
+                    pending = lines.pop()
+                else:
+                    pending = None
+                lines = [line.splitlines()[0] for line in lines]
 
             yield from lines
 
         if pending is not None:
-            yield pending
+            if delimiter:
+                yield pending
+            else:
+                yield pending.splitlines()[0]
 
     @property
     def content(self) -> bytes:
