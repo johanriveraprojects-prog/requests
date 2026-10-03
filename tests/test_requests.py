@@ -2182,6 +2182,27 @@ class TestRequests:
         next(it)
         assert len(list(it)) == 3
 
+    @pytest.mark.parametrize(
+        "data, kwargs, expected",
+        (
+            (b"a,b,c", {"delimiter": b","}, [b"a", b"b", b"c"]),
+            (b"a,b,", {"delimiter": b","}, [b"a", b"b", b""]),
+            (b"x||y", {"delimiter": b"||"}, [b"x", b"y"]),
+            (b"a\r\nb\r\n\r\nc", {}, [b"a", b"b", b"", b"c"]),
+            (b"a\rb\n\nc\r", {}, [b"a", b"b", b"", b"c"]),
+            (b"a\r\nb", {"decode_unicode": True}, ["a", "b"]),
+        ),
+    )
+    @pytest.mark.parametrize("chunk_size", range(1, 8))
+    def test_response_iter_lines_chunk_boundaries(
+        self, data, kwargs, expected, chunk_size
+    ):
+        """Lines must not depend on where the chunks are split."""
+        r = requests.Response()
+        r.raw = io.BytesIO(data)
+        r.encoding = "utf-8"
+        assert list(r.iter_lines(chunk_size=chunk_size, **kwargs)) == expected
+
     def test_response_context_manager(self, httpbin):
         with requests.get(httpbin("stream/4"), stream=True) as response:
             assert isinstance(response, requests.Response)

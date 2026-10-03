@@ -1018,18 +1018,31 @@ class Response:
 
             if delimiter:
                 lines = chunk.split(delimiter)  # type: ignore[arg-type]
-            else:
-                lines = chunk.splitlines()
-
-            if lines and lines[-1] and chunk and lines[-1][-1] == chunk[-1]:
+                # The last piece may continue in the next chunk (it is
+                # empty when the chunk ends exactly on a delimiter).
                 pending = lines.pop()
             else:
-                pending = None
+                lines = chunk.splitlines(keepends=True)
+                # The last line is incomplete if it has no line break yet,
+                # or ends in "\r", which may be the first half of "\r\n".
+                last = lines[-1] if lines else None
+                if isinstance(last, bytes):
+                    incomplete = last.endswith(b"\r")
+                else:
+                    incomplete = last is not None and last.endswith("\r")
+                if last is not None and (incomplete or last.splitlines()[0] == last):
+                    pending = lines.pop()
+                else:
+                    pending = None
+                lines = [line.splitlines()[0] for line in lines]
 
             yield from lines
 
         if pending is not None:
-            yield pending
+            if delimiter:
+                yield pending
+            else:
+                yield pending.splitlines()[0]
 
     @property
     def content(self) -> bytes:
