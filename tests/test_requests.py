@@ -2647,6 +2647,59 @@ class TestTimeout:
         except ConnectTimeout:
             pass
 
+    def test_session_timeout(self, httpbin):
+        s = requests.Session()
+        s.timeout = (None, 0.1)
+        with pytest.raises(ReadTimeout):
+            s.get(httpbin("delay/1"))
+
+    @staticmethod
+    def _record_timeouts(session, url):
+        """Patch the adapter to record the timeout of each send.
+
+        The request itself is sent without a timeout, so these tests don't
+        depend on how busy the test server is.
+        """
+        timeouts = []
+        adapter = session.get_adapter(url)
+        real_send = adapter.send
+
+        def record(request, **kwargs):
+            timeouts.append(kwargs["timeout"])
+            return real_send(request, **{**kwargs, "timeout": None})
+
+        return timeouts, mock.patch.object(adapter, "send", side_effect=record)
+
+    def test_request_timeout_overrides_session_timeout(self, httpbin):
+        s = requests.Session()
+        s.timeout = 5
+        timeouts, patch = self._record_timeouts(s, httpbin())
+        with patch:
+            s.get(httpbin("get"))
+            s.get(httpbin("get"), timeout=(1, 2))
+        assert timeouts == [5, (1, 2)]
+
+    def test_session_timeout_applies_to_redirects(self, httpbin):
+        s = requests.Session()
+        s.timeout = 5
+        timeouts, patch = self._record_timeouts(s, httpbin())
+        with patch:
+            r = s.get(httpbin("redirect/2"))
+        assert r.status_code == 200
+        assert timeouts == [5, 5, 5]
+
+    def test_session_timeout_pickling(self):
+        s = requests.Session()
+        s.timeout = 3
+        assert pickle.loads(pickle.dumps(s)).timeout == 3
+
+        # Sessions pickled before ``timeout`` existed have no such state.
+        state = s.__getstate__()
+        del state["timeout"]
+        old = requests.Session.__new__(requests.Session)
+        old.__setstate__(state)
+        assert old.timeout is None
+
     def test_encoded_methods(self, httpbin):
         """See: https://github.com/psf/requests/issues/2316"""
         r = requests.request(b"GET", httpbin("get"))

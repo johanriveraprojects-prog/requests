@@ -7,6 +7,8 @@ dev
 **Improvements**
 - Added `Response.retry_after`, which returns the number of seconds to wait
   from the `Retry-After` header (in seconds or as an HTTP date).
+- Added `Session.timeout`, a default timeout for every request sent from the
+  session (including redirects) that doesn't pass its own `timeout`.
 
 **Bugfixes**
 - `Response.iter_lines()` no longer yields a spurious empty line when a chunk
