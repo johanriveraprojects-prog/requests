@@ -16,6 +16,8 @@ from collections.abc import Generator, Mapping, MutableMapping
 from datetime import timedelta
 from typing import TYPE_CHECKING, Any, cast
 
+from urllib3.util.retry import Retry
+
 from ._internal_utils import to_native_string
 from ._types import is_prepared as _is_prepared
 from .adapters import HTTPAdapter
@@ -122,6 +124,37 @@ def merge_hooks(
         return session_hooks
 
     return merge_setting(request_hooks, session_hooks, dict_class)
+
+
+class _SessionRetry(Retry):
+    """Retry policy used when :attr:`Session.retries` is an int."""
+
+    #: Longest ``Retry-After`` wait honoured, in seconds. urllib3 1.x has no
+    #: ``retry_after_max`` option, so the cap is applied here.
+    RETRY_AFTER_MAX = 60
+
+    def parse_retry_after(self, retry_after: str) -> float:
+        return min(super().parse_retry_after(retry_after), self.RETRY_AFTER_MAX)
+
+
+def _retry_from_int(retries: int) -> Retry:
+    return _SessionRetry(
+        total=retries,
+        read=False,
+        status_forcelist=(429, 500, 502, 503, 504),
+        backoff_factor=0.5,
+        raise_on_status=False,
+    )
+
+
+def _body_is_rewindable(request: PreparedRequest) -> bool:
+    """Whether the body can be sent again, e.g. on a retry."""
+    body = request.body
+    if body is None or isinstance(body, (bytes, str)):
+        return True
+    return getattr(body, "seek", None) is not None and isinstance(
+        request._body_position, int
+    )
 
 
 class SessionRedirectMixin:
@@ -421,9 +454,10 @@ class Session(SessionRedirectMixin):
     cert: _t.CertType
     max_redirects: int
     trust_env: bool
-    # Class-level default so sessions unpickled from older versions,
-    # which have no ``timeout`` state, still work.
+    # Class-level defaults so sessions unpickled from older versions,
+    # which have no such state, still work.
     timeout: _t.TimeoutType = None
+    retries: int | Retry | None = None
     cookies: RequestsCookieJar
     adapters: MutableMapping[str, BaseAdapter]
 
@@ -441,6 +475,7 @@ class Session(SessionRedirectMixin):
         "trust_env",
         "max_redirects",
         "timeout",
+        "retries",
     ]
 
     def __init__(self) -> None:
@@ -496,6 +531,16 @@ class Session(SessionRedirectMixin):
         #: used when a request does not pass its own ``timeout``. Defaults to
         #: ``None``, which waits forever.
         self.timeout = None
+
+        #: Retry policy for requests sent from this session through an
+        #: :class:`HTTPAdapter <requests.adapters.HTTPAdapter>`. An int
+        #: retries connection errors and 429/500/502/503/504 responses up to
+        #: that many times, for idempotent methods only, with exponential
+        #: backoff and ``Retry-After`` honoured up to 60 seconds. A urllib3
+        #: ``Retry`` is used as is. ``None`` (the default) leaves each
+        #: adapter's own ``max_retries`` in effect, as do adapters that
+        #: override ``send()``.
+        self.retries = None
 
         #: Trust environment settings for proxy configuration, default
         #: authentication and similar.
@@ -793,7 +838,19 @@ class Session(SessionRedirectMixin):
         start = preferred_clock()
 
         # Send the request
-        r = adapter.send(request, **kwargs)
+        retries = self.retries
+        if (
+            retries is not None
+            and isinstance(adapter, HTTPAdapter)
+            # Subclasses that override send() may not accept ``retries``.
+            and type(adapter).send is HTTPAdapter.send
+            and _body_is_rewindable(request)
+        ):
+            if not isinstance(retries, Retry):
+                retries = _retry_from_int(retries)
+            r = adapter.send(request, retries=retries, **kwargs)
+        else:
+            r = adapter.send(request, **kwargs)
 
         # Total elapsed time of the request (approximately)
         elapsed = preferred_clock() - start

@@ -1032,10 +1032,29 @@ library to use SSLv3::
 Example: Automatic Retries
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-By default, Requests does not retry failed connections. However, it is possible
-to implement automatic retries with a powerful array of features, including
-backoff, within a Requests :class:`Session <requests.Session>` using the
-`urllib3.util.Retry`_ class::
+By default, Requests does not retry failed connections. The simplest way to
+turn retries on is :attr:`Session.retries <requests.Session.retries>`::
+
+    s = requests.Session()
+    s.retries = 3
+    s.get('https://example.com')
+
+With an int, the session retries connection errors and ``429``, ``500``,
+``502``, ``503`` and ``504`` responses up to that many times. Only idempotent
+methods (``GET``, ``HEAD``, ``PUT``, ``DELETE``, ``OPTIONS`` and ``TRACE``) are
+retried, so a ``POST`` is never sent twice. Retries wait with exponential
+backoff, or for as long as the server's ``Retry-After`` header asks, up to 60
+seconds. When the retries run out, the last response is returned, as usual
+without raising. Requests whose body can't be rewound, such as a generator,
+are not retried.
+
+Retries add to the total time of a request: with ``timeout=10`` and
+``retries=3``, a request can take well over 40 seconds.
+
+For full control, set :attr:`Session.retries <requests.Session.retries>` to a
+`urllib3.util.Retry`_ object, or mount an adapter with its own ``max_retries``.
+:attr:`Session.retries <requests.Session.retries>` takes precedence over an
+adapter's ``max_retries`` unless it is ``None``::
 
     from urllib3.util import Retry
     from requests import Session
