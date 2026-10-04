@@ -9,6 +9,9 @@ dev
   from the `Retry-After` header (in seconds or as an HTTP date).
 - Added `Session.timeout`, a default timeout for every request sent from the
   session (including redirects) that doesn't pass its own `timeout`.
+- Added `Session.retries` to retry connection errors and 429/5xx responses for
+  idempotent methods, with exponential backoff and `Retry-After` support.
+  Accepts an int or a urllib3 `Retry`.
 
 **Bugfixes**
 - `Response.iter_lines()` no longer yields a spurious empty line when a chunk

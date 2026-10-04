@@ -639,6 +639,7 @@ class HTTPAdapter(BaseAdapter):
         verify: _t.VerifyType = True,
         cert: _t.CertType = None,
         proxies: dict[str, str] | None = None,
+        retries: Retry | None = None,
     ) -> Response:
         """Sends PreparedRequest object. Returns Response object.
 
@@ -653,6 +654,8 @@ class HTTPAdapter(BaseAdapter):
             must be a path to a CA bundle to use
         :param cert: (optional) Any user-provided SSL certificate to be trusted.
         :param proxies: (optional) The proxies dictionary to apply to the request.
+        :param retries: (optional) urllib3 ``Retry`` to use for this request
+            instead of :attr:`max_retries`.
         :rtype: requests.Response
         """
 
@@ -702,7 +705,7 @@ class HTTPAdapter(BaseAdapter):
                 assert_same_host=False,
                 preload_content=False,
                 decode_content=False,
-                retries=self.max_retries,
+                retries=retries if retries is not None else self.max_retries,
                 timeout=resolved_timeout,
                 chunked=chunked,
             )
