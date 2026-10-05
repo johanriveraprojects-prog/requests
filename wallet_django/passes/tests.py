@@ -10,7 +10,7 @@ from .models import WalletPass
 
 class WalletPassTests(TestCase):
     def setUp(self):
-        self.p = WalletPass.objects.create(member_name="Johan Rivera", member_id="JR-0001")
+        self.p = WalletPass.objects.create(member_name="Xavier", member_id="JR-0001")
 
     def test_pkpass_contents(self):
         resp = self.client.get(reverse("passes:download", args=[self.p.pk]))
@@ -20,7 +20,7 @@ class WalletPassTests(TestCase):
         for n in ("pass.json", "manifest.json", "icon.png", "icon@2x.png", "logo@3x.png", "strip@3x.png"):
             self.assertIn(n, names)
         data = json.loads(zf.read("pass.json"))
-        self.assertEqual(data["storeCard"]["primaryFields"][0]["value"], "Johan Rivera")
+        self.assertEqual(data["storeCard"]["primaryFields"][0]["value"], "Xavier")
         self.assertEqual(data["barcodes"][0]["message"], "JR-0001")
         manifest = json.loads(zf.read("manifest.json"))
         self.assertEqual(set(manifest), names - {"manifest.json"})

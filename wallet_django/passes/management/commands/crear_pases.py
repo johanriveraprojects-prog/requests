@@ -6,7 +6,7 @@ DEMO_PASSES = [
     {
         "organization_name": "Grupo X",
         "logo_text": "GRUPO X",
-        "member_name": "Johan Rivera",
+        "member_name": "Xavier",
         "level": "Black",
         "member_since": "2026",
         "member_id": "GX-0001",
@@ -15,7 +15,7 @@ DEMO_PASSES = [
     {
         "organization_name": "Grupo X",
         "logo_text": "GRUPO X",
-        "member_name": "Johan Rivera",
+        "member_name": "Xavier",
         "level": "Platinum",
         "member_since": "2026",
         "member_id": "GX-0002",
