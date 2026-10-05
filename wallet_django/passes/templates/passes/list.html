@@ -1,0 +1,9 @@
+{% extends "passes/base.html" %}
+{% block content %}
+<h1>Mis pases</h1>
+{% for p in passes %}
+  <p><a class="cardlink" href="{{ p.get_absolute_url }}">{% include "passes/_card.html" %}</a></p>
+{% empty %}
+  <div class="panel">Aún no hay pases. <a href="{% url 'passes:create' %}">Crea el primero</a>.</div>
+{% endfor %}
+{% endblock %}

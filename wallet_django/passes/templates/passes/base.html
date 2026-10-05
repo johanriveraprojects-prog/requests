@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Pases Wallet{% endblock %}</title>
+  <style>
+    :root { --bg:#f4f4f6; --fg:#16161a; --muted:#6b6b76; --card:#fff; --line:#e2e2e8; --accent:#a8841f; }
+    @media (prefers-color-scheme: dark) { :root { --bg:#0e0e12; --fg:#ececf1; --muted:#9a9aa6; --card:#18181e; --line:#2a2a33; --accent:#d4af37; } }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--bg); color:var(--fg); font:16px/1.5 -apple-system, system-ui, sans-serif; }
+    main { max-width:720px; margin:0 auto; padding:24px 16px 64px; }
+    a { color:var(--accent); }
+    h1 { font-size:1.6rem; margin:0 0 16px; }
+    .btn { display:inline-block; padding:10px 16px; border-radius:10px; background:var(--accent); color:#111; text-decoration:none; font-weight:600; border:0; cursor:pointer; font-size:1rem; }
+    .btn.secondary { background:transparent; color:var(--fg); border:1px solid var(--line); }
+    .panel { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:16px; }
+    .muted { color:var(--muted); font-size:.9rem; }
+    .cardlink, .cardlink * { text-decoration:none; }
+    .cardlink { display:block; color:inherit; }
+    nav { display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; }
+  </style>
+</head>
+<body><main>
+  <nav><a href="{% url 'passes:list' %}"><strong>Pases Wallet</strong></a><a class="btn" href="{% url 'passes:create' %}">+ Nuevo pase</a></nav>
+  {% block content %}{% endblock %}
+</main></body>
+</html>

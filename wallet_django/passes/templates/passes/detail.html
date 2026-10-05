@@ -1,0 +1,19 @@
+{% extends "passes/base.html" %}
+{% block title %}{{ p.member_name }}{% endblock %}
+{% block content %}
+<h1>{{ p.logo_text }}</h1>
+{% include "passes/_card.html" %}
+<p style="margin-top:20px; display:flex; gap:10px; flex-wrap:wrap">
+  <a class="btn" href="{% url 'passes:download' p.pk %}">Descargar .pkpass</a>
+  <a class="btn secondary" href="{% url 'passes:images' p.pk %}">Descargar imágenes</a>
+</p>
+{% if signing_configured %}
+  <p class="muted">Firmado con tu certificado: ábrelo en Safari del iPhone y toca «Añadir».</p>
+{% else %}
+  <div class="panel muted">
+    <strong>Sin certificado de Apple configurado:</strong> el .pkpass sale sin firmar y el iPhone no lo aceptará.
+    Descarga las imágenes y crea el pase en <a href="https://www.addpass.io/">AddPass</a> o
+    <a href="https://walletwallet.alen.ro/">WalletWallet</a> con los colores y datos de <code>datos.txt</code>.
+  </div>
+{% endif %}
+{% endblock %}
