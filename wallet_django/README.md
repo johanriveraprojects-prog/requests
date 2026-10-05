@@ -37,3 +37,7 @@ El iPhone solo acepta pases firmados con un certificado de Apple (Pass Type ID, 
 ```
 python manage.py test passes
 ```
+
+## Licencia
+
+MIT — ver [LICENSE](LICENSE). Este directorio tiene su propia licencia, distinta de la Apache 2.0 del resto del repositorio.
