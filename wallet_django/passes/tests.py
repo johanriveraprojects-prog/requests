@@ -35,7 +35,7 @@ class WalletPassTests(TestCase):
         resp = self.client.post(
             reverse("passes:create"),
             {
-                "logo_text": "MI CLUB", "organization_name": "Yo", "description": "x",
+                "logo_text": "MI CLUB", "organization_name": "Grupo X", "description": "x",
                 "member_name": "Ana", "member_id": "A-1", "background_color": "#000000",
                 "foreground_color": "#FFFFFF", "label_color": "#FF0000",
             },

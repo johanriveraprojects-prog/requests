@@ -8,7 +8,7 @@ Web para crear pases de Apple Wallet (`.pkpass`, tipo *store card*): colores, lo
 cd wallet_django
 pip install -r requirements.txt
 python manage.py migrate
-python manage.py crear_pases      # crea los pases de ejemplo JR-0001 (Black) y JR-0002 (Platinum)
+python manage.py crear_pases      # crea los pases de ejemplo GX-0001 (Black) y GX-0002 (Platinum)
 python manage.py runserver
 ```
 

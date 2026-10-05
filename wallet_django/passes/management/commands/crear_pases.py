@@ -4,19 +4,21 @@ from passes.models import WalletPass
 
 DEMO_PASSES = [
     {
-        "logo_text": "JOHAN RIVERA",
+        "organization_name": "Grupo X",
+        "logo_text": "GRUPO X",
         "member_name": "Johan Rivera",
         "level": "Black",
         "member_since": "2026",
-        "member_id": "JR-0001",
+        "member_id": "GX-0001",
         "back_info": "Pase personalizado.",
     },
     {
-        "logo_text": "JOHAN RIVERA",
+        "organization_name": "Grupo X",
+        "logo_text": "GRUPO X",
         "member_name": "Johan Rivera",
         "level": "Platinum",
         "member_since": "2026",
-        "member_id": "JR-0002",
+        "member_id": "GX-0002",
         "background_color": "#1C2A3A",
         "label_color": "#C0C7D1",
     },

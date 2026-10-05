@@ -9,9 +9,9 @@ hex_color = RegexValidator(r"^#[0-9A-Fa-f]{6}$", "Usa un color hex como #121218.
 
 class WalletPass(models.Model):
     serial_number = models.UUIDField(default=uuid.uuid4, unique=True, editable=False)
-    organization_name = models.CharField("organización", max_length=60, default="Johan Rivera")
+    organization_name = models.CharField("organización", max_length=60, default="Grupo X")
     description = models.CharField("descripción", max_length=120, default="Tarjeta personal")
-    logo_text = models.CharField("texto del logo", max_length=30, default="JOHAN RIVERA")
+    logo_text = models.CharField("texto del logo", max_length=30, default="GRUPO X")
 
     member_name = models.CharField("miembro", max_length=40)
     level = models.CharField("nivel", max_length=20, blank=True, default="Black")
