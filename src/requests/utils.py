@@ -962,6 +962,38 @@ def default_headers() -> CaseInsensitiveDict[str]:
     )
 
 
+def _split_header_value(value: str, sep: str) -> list[str]:
+    """Split ``value`` on ``sep``, ignoring separators inside ``<...>`` or
+    inside a quoted string.
+    """
+    parts: list[str] = []
+    current: list[str] = []
+    in_angle = in_quote = escaped = False
+
+    for char in value:
+        if escaped:
+            escaped = False
+        elif in_angle:
+            in_angle = char != ">"
+        elif in_quote:
+            if char == "\\":
+                escaped = True
+            elif char == '"':
+                in_quote = False
+        elif char == "<":
+            in_angle = True
+        elif char == '"':
+            in_quote = True
+        elif char == sep:
+            parts.append("".join(current))
+            current = []
+            continue
+        current.append(char)
+
+    parts.append("".join(current))
+    return parts
+
+
 def parse_header_links(value: str) -> list[dict[str, str]]:
     """Return a list of parsed link headers proxies.
 
@@ -978,21 +1010,19 @@ def parse_header_links(value: str) -> list[dict[str, str]]:
     if not value:
         return links
 
-    for val in re.split(", *<", value):
-        try:
-            url, params = val.split(";", 1)
-        except ValueError:
-            url, params = val, ""
+    for val in _split_header_value(value, ","):
+        if not val.strip():
+            continue
 
+        url, *params = _split_header_value(val, ";")
         link: dict[str, str] = {"url": url.strip("<> '\"")}
 
-        for param in params.split(";"):
-            try:
-                key, value = param.split("=")
-            except ValueError:
-                break
+        for param in params:
+            key, sep, param_value = param.partition("=")
+            if not sep:
+                continue
 
-            link[key.strip(replace_chars)] = value.strip(replace_chars)
+            link[key.strip(replace_chars)] = param_value.strip(replace_chars)
 
         links.append(link)
 

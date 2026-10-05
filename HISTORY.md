@@ -16,6 +16,9 @@ dev
 **Bugfixes**
 - `Response.iter_lines()` no longer yields a spurious empty line when a chunk
   ends exactly on the delimiter, or when a `\r\n` is split across chunks.
+- `Response.links` (`parse_header_links`) no longer splits a link on a `;` or
+  `,` inside the `<...>` URL or inside a quoted parameter, and no longer drops
+  parameters after one whose value contains `=` or that has no value.
 
 
 2.34.2 (2026-05-14)

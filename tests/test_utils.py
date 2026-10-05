@@ -691,6 +691,28 @@ def test_iter_slices(value, length):
             ],
         ),
         ("", []),
+        # ";" and "," inside the URL belong to the URL.
+        (
+            '<http://a/;p=1,2>; rel="next"',
+            [{"url": "http://a/;p=1,2", "rel": "next"}],
+        ),
+        # "=", ";" and "," inside quoted values belong to the value.
+        (
+            '<http://a/>; title="x=y; z, w"; rel="next", <http://b/>; rel="last"',
+            [
+                {"url": "http://a/", "title": "x=y; z, w", "rel": "next"},
+                {"url": "http://b/", "rel": "last"},
+            ],
+        ),
+        (
+            '<http://a/>; anchor="http://c/?q=1"; rel="next"',
+            [{"url": "http://a/", "anchor": "http://c/?q=1", "rel": "next"}],
+        ),
+        # A parameter without a value doesn't drop the ones after it.
+        (
+            '<http://a/>; crossorigin; rel="next"',
+            [{"url": "http://a/", "rel": "next"}],
+        ),
     ),
 )
 def test_parse_header_links(value, expected):
