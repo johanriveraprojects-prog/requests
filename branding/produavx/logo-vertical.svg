@@ -1,73 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" role="img" aria-label="ProduAVX"><defs>
-<filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3" result="b"/><feFlood flood-color="#4C82CF" flood-opacity=".35" result="f"/><feComposite in="f" in2="b" operator="in" result="cg"/><feMerge><feMergeNode in="cg"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-<filter id="tglow" x="-20%" y="-50%" width="140%" height="200%"><feGaussianBlur stdDeviation="6" result="b"/><feFlood flood-color="#4C82CF" flood-opacity=".55" result="f"/><feComposite in="f" in2="b" operator="in" result="cg"/><feMerge><feMergeNode in="cg"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-<radialGradient id="neb" cx=".5" cy=".3" r=".6"><stop offset="0" stop-color="#4C82CF" stop-opacity=".13"/><stop offset="1" stop-color="#4C82CF" stop-opacity="0"/></radialGradient>
-<linearGradient id="xg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4C82CF"/><stop offset="1" stop-color="#4E9A6B"/></linearGradient><clipPath id="lh"><rect x="-20" y="50" width="140" height="70"/></clipPath>
-<linearGradient id="streak" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".35" stop-color="#4C82CF" stop-opacity="1"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
-</defs><rect width="600" height="600" rx="24" fill="#05060a"/><rect width="600" height="600" rx="24" fill="url(#neb)"/><circle cx="135" cy="560" r="1.4" fill="#fff" opacity="0.26"/>
-<circle cx="508" cy="429" r="2" fill="#fff" opacity="0.26"/>
-<circle cx="497" cy="227" r="2" fill="#fff" opacity="0.44"/>
-<circle cx="94" cy="350" r="1" fill="#fff" opacity="0.88"/>
-<circle cx="536" cy="544" r="0.8" fill="#fff" opacity="0.49"/>
-<circle cx="24" cy="190" r="0.8" fill="#fff" opacity="0.28"/>
-<circle cx="449" cy="338" r="0.8" fill="#fff" opacity="0.41"/>
-<circle cx="53" cy="347" r="2" fill="#fff" opacity="0.32"/>
-<circle cx="203" cy="77" r="1.4" fill="#fff" opacity="0.26"/>
-<circle cx="56" cy="170" r="2" fill="#fff" opacity="0.40"/>
-<circle cx="310" cy="594" r="1.4" fill="#fff" opacity="0.73"/>
-<circle cx="357" cy="78" r="0.8" fill="#fff" opacity="0.85"/>
-<circle cx="580" cy="232" r="1.4" fill="#fff" opacity="0.58"/>
-<circle cx="408" cy="510" r="1" fill="#fff" opacity="0.48"/>
-<circle cx="323" cy="289" r="1" fill="#fff" opacity="0.41"/>
-<circle cx="283" cy="316" r="1.4" fill="#fff" opacity="0.40"/>
-<circle cx="394" cy="202" r="0.8" fill="#fff" opacity="0.49"/>
-<circle cx="16" cy="545" r="1" fill="#fff" opacity="0.63"/>
-<circle cx="411" cy="8" r="1.4" fill="#fff" opacity="0.78"/>
-<circle cx="45" cy="339" r="0.8" fill="#fff" opacity="0.78"/>
-<circle cx="287" cy="177" r="1" fill="#fff" opacity="0.85"/>
-<circle cx="319" cy="215" r="0.8" fill="#fff" opacity="0.78"/>
-<circle cx="40" cy="290" r="0.8" fill="#fff" opacity="0.84"/>
-<circle cx="98" cy="530" r="1" fill="#fff" opacity="0.55"/>
-<circle cx="71" cy="64" r="1" fill="#fff" opacity="0.52"/>
-<circle cx="555" cy="5" r="0.8" fill="#fff" opacity="0.87"/>
-<circle cx="28" cy="587" r="0.8" fill="#fff" opacity="0.47"/>
-<circle cx="414" cy="251" r="1.4" fill="#fff" opacity="0.25"/>
-<circle cx="344" cy="452" r="1" fill="#fff" opacity="0.26"/>
-<circle cx="6" cy="173" r="1" fill="#fff" opacity="0.65"/>
-<circle cx="112" cy="89" r="0.8" fill="#fff" opacity="0.75"/>
-<circle cx="388" cy="370" r="2" fill="#fff" opacity="0.64"/>
-<circle cx="333" cy="184" r="1" fill="#fff" opacity="0.36"/>
-<circle cx="287" cy="435" r="0.8" fill="#fff" opacity="0.63"/>
-<circle cx="91" cy="412" r="1.4" fill="#fff" opacity="0.73"/>
-<circle cx="281" cy="90" r="0.8" fill="#fff" opacity="0.38"/>
-<circle cx="262" cy="545" r="1" fill="#fff" opacity="0.48"/>
-<circle cx="303" cy="316" r="1" fill="#fff" opacity="0.88"/>
-<circle cx="509" cy="449" r="2" fill="#fff" opacity="0.89"/>
-<circle cx="323" cy="137" r="0.8" fill="#fff" opacity="0.70"/>
-<circle cx="565" cy="513" r="1.4" fill="#fff" opacity="0.43"/>
-<circle cx="505" cy="345" r="1" fill="#fff" opacity="0.50"/>
-<circle cx="98" cy="529" r="0.8" fill="#fff" opacity="0.86"/>
-<circle cx="329" cy="239" r="1.4" fill="#fff" opacity="0.75"/>
-<circle cx="283" cy="96" r="1" fill="#fff" opacity="0.42"/>
-<circle cx="404" cy="455" r="0.8" fill="#fff" opacity="0.64"/>
-<circle cx="265" cy="553" r="0.8" fill="#fff" opacity="0.71"/>
-<circle cx="416" cy="464" r="1" fill="#fff" opacity="0.40"/>
-<circle cx="333" cy="398" r="2" fill="#fff" opacity="0.35"/>
-<circle cx="523" cy="32" r="1" fill="#fff" opacity="0.75"/>
-<circle cx="539" cy="506" r="1.4" fill="#fff" opacity="0.62"/>
-<circle cx="564" cy="19" r="1" fill="#fff" opacity="0.58"/>
-<circle cx="306" cy="290" r="1.4" fill="#fff" opacity="0.51"/>
-<circle cx="45" cy="246" r="1.4" fill="#fff" opacity="0.47"/>
-<circle cx="20" cy="515" r="1.4" fill="#fff" opacity="0.59"/>
-<circle cx="250" cy="147" r="1.4" fill="#fff" opacity="0.37"/>
-<circle cx="151" cy="49" r="0.8" fill="#fff" opacity="0.26"/>
-<circle cx="576" cy="516" r="2" fill="#fff" opacity="0.66"/>
-<circle cx="1" cy="253" r="1.4" fill="#fff" opacity="0.63"/>
-<circle cx="581" cy="78" r="0.8" fill="#fff" opacity="0.83"/><g transform="translate(205.0 70.0) scale(1.900)">
-<line x1="-8" y1="-12" x2="108" y2="114" stroke="#fff" stroke-opacity=".22" stroke-width="1.6" stroke-linecap="round"/>
-<g transform="translate(7 0) skewX(-8)" fill="none" stroke="url(#xg)" stroke-width="6" stroke-linejoin="round">
-<polygon points="12,10 36,10 88,90 64,90"/>
-<polygon points="64,10 88,10 36,90 12,90" fill="#000"/>
-<g clip-path="url(#lh)"><polygon points="12,10 36,10 88,90 64,90" fill="#000"/></g>
-</g>
-<circle cx="97" cy="8" r="4.2" fill="#4E9A6B"/></g><g transform="translate(300 0)"><text x="0" y="425" text-anchor="middle" font-family="'Archivo Black','Inter Tight','Helvetica Neue',Arial,sans-serif" font-weight="900" font-size="82" letter-spacing="-4" textLength="500" lengthAdjust="spacingAndGlyphs"><tspan fill="#8b8b90">Produ</tspan><tspan fill="#f2f2f2">AV</tspan><tspan fill="url(#xg)">X</tspan></text></g><text x="300" y="480" text-anchor="middle" font-family="'Archivo Black','Inter Tight','Helvetica Neue',Arial,sans-serif" font-size="28" fill="#e6e6e6">Te ayudamos a producir</text><text x="300" y="518" text-anchor="middle" font-family="'Archivo Black','Inter Tight','Helvetica Neue',Arial,sans-serif" font-size="20" fill="#8b8b90">We help you produce</text><text x="300" y="562" text-anchor="middle" font-family="'JetBrains Mono','DejaVu Sans Mono',monospace" font-size="13" fill="#8b8b90" letter-spacing="7">GRUPO <tspan fill="#4C82CF">X</tspan> · TEAM <tspan fill="#4C82CF">X</tspan></text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600"><rect width="600" height="600" rx="24" fill="#000"/><circle cx="211" cy="258" r="1" fill="#fff" opacity="0.49"/><circle cx="154" cy="232" r="1.3" fill="#fff" opacity="0.22"/><circle cx="251" cy="14" r="0.8" fill="#fff" opacity="0.20"/><circle cx="566" cy="475" r="1.3" fill="#fff" opacity="0.47"/><circle cx="550" cy="539" r="1.3" fill="#fff" opacity="0.41"/><circle cx="143" cy="308" r="1" fill="#fff" opacity="0.68"/><circle cx="20" cy="225" r="1.3" fill="#fff" opacity="0.38"/><circle cx="205" cy="345" r="0.8" fill="#fff" opacity="0.32"/><circle cx="504" cy="549" r="0.8" fill="#fff" opacity="0.26"/><circle cx="59" cy="347" r="1.3" fill="#fff" opacity="0.47"/><circle cx="152" cy="389" r="0.8" fill="#fff" opacity="0.66"/><circle cx="507" cy="131" r="1.3" fill="#fff" opacity="0.26"/><circle cx="250" cy="212" r="1" fill="#fff" opacity="0.64"/><circle cx="486" cy="485" r="1" fill="#fff" opacity="0.38"/><circle cx="339" cy="290" r="1.3" fill="#fff" opacity="0.59"/><circle cx="156" cy="438" r="0.8" fill="#fff" opacity="0.50"/><circle cx="376" cy="124" r="1" fill="#fff" opacity="0.33"/><circle cx="362" cy="555" r="0.8" fill="#fff" opacity="0.42"/><circle cx="589" cy="328" r="0.8" fill="#fff" opacity="0.24"/><circle cx="307" cy="374" r="1" fill="#fff" opacity="0.59"/><circle cx="261" cy="551" r="0.8" fill="#fff" opacity="0.50"/><circle cx="540" cy="365" r="1.3" fill="#fff" opacity="0.65"/><circle cx="549" cy="383" r="1" fill="#fff" opacity="0.61"/><circle cx="346" cy="127" r="1" fill="#fff" opacity="0.70"/><circle cx="575" cy="415" r="0.8" fill="#fff" opacity="0.43"/><circle cx="119" cy="59" r="1.3" fill="#fff" opacity="0.59"/><circle cx="206" cy="235" r="1" fill="#fff" opacity="0.42"/><circle cx="392" cy="248" r="1" fill="#fff" opacity="0.21"/><circle cx="25" cy="109" r="1.3" fill="#fff" opacity="0.62"/><circle cx="121" cy="464" r="1" fill="#fff" opacity="0.46"/><circle cx="338" cy="6" r="0.8" fill="#fff" opacity="0.29"/><circle cx="90" cy="326" r="1.3" fill="#fff" opacity="0.63"/><circle cx="527" cy="141" r="0.8" fill="#fff" opacity="0.39"/><circle cx="13" cy="182" r="1.3" fill="#fff" opacity="0.35"/><circle cx="368" cy="440" r="0.8" fill="#fff" opacity="0.47"/><circle cx="457" cy="371" r="1.3" fill="#fff" opacity="0.24"/><circle cx="295" cy="334" r="0.8" fill="#fff" opacity="0.41"/><circle cx="212" cy="182" r="1" fill="#fff" opacity="0.50"/><circle cx="38" cy="305" r="1" fill="#fff" opacity="0.53"/><circle cx="272" cy="11" r="1.3" fill="#fff" opacity="0.46"/><circle cx="580" cy="469" r="1" fill="#fff" opacity="0.59"/><circle cx="294" cy="68" r="0.8" fill="#fff" opacity="0.38"/><circle cx="199" cy="278" r="1.3" fill="#fff" opacity="0.25"/><circle cx="276" cy="276" r="1" fill="#fff" opacity="0.52"/><circle cx="412" cy="414" r="0.8" fill="#fff" opacity="0.68"/><circle cx="114" cy="408" r="0.8" fill="#fff" opacity="0.59"/><circle cx="325" cy="230" r="1.3" fill="#fff" opacity="0.59"/><circle cx="528" cy="425" r="1.3" fill="#fff" opacity="0.44"/><circle cx="447" cy="217" r="1" fill="#fff" opacity="0.41"/><circle cx="410" cy="539" r="1.3" fill="#fff" opacity="0.52"/><g transform="translate(190.0 100.0) scale(2.200)">
+<defs><linearGradient id="g1" gradientUnits="userSpaceOnUse" x1="8" y1="15" x2="92" y2="85"><stop offset="0" stop-color="#4E9A6B"/><stop offset="1" stop-color="#4C82CF"/></linearGradient>
+<linearGradient id="g2" gradientUnits="userSpaceOnUse" x1="92" y1="15" x2="8" y2="85"><stop offset="0" stop-color="#4C82CF"/><stop offset="1" stop-color="#4E9A6B"/></linearGradient></defs>
+<g fill="none" stroke-width="4.6" stroke-linejoin="round" stroke-linecap="round">
+<polygon points="66,15 92,15 34,85 8,85" stroke="url(#g2)"/>
+<polygon points="8,15 34,15 92,85 66,85" stroke="url(#g1)"/>
+<line x1="62.4" y1="20.2" x2="46" y2="40" stroke="#000" stroke-width="7.4" stroke-linecap="butt"/>
+<line x1="46.5" y1="30.1" x2="53.5" y2="38.5" stroke="#000" stroke-width="8.6" stroke-linecap="butt"/><line x1="46.5" y1="30.1" x2="53.5" y2="38.5" stroke="url(#g1)" stroke-width="4.6" stroke-linecap="butt"/>
+</g><circle cx="55" cy="28" r="3" fill="#4C82CF"/></g><defs><linearGradient id="wg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4E9A6B"/><stop offset="1" stop-color="#4C82CF"/></linearGradient></defs><text x="300" y="420" text-anchor="middle" font-family="'Montserrat','Inter','Helvetica Neue',Arial,sans-serif" font-weight="700" font-size="56" letter-spacing="5.0" fill="#fff" >PRODUAV<tspan fill="url(#wg)">X</tspan></text><text x="300" y="470" text-anchor="middle" font-family="'Inter Tight','Inter','Helvetica Neue',Arial,sans-serif" font-weight="300" font-size="26" fill="#f2f2f2" letter-spacing="0">Te ayudamos a producir</text><text x="300" y="505" text-anchor="middle" font-family="'Inter Tight','Inter','Helvetica Neue',Arial,sans-serif" font-weight="300" font-size="20" fill="#8b8b90" letter-spacing="0">We help you produce</text><text x="300" y="560" text-anchor="middle" font-family="'JetBrains Mono','DejaVu Sans Mono',monospace" font-weight="400" font-size="13" fill="#8b8b90" letter-spacing="7">GRUPO X · TEAM X</text></svg>

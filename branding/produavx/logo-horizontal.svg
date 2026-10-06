@@ -1,41 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 140" role="img" aria-label="ProduAVX"><defs>
-<filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3" result="b"/><feFlood flood-color="#4C82CF" flood-opacity=".35" result="f"/><feComposite in="f" in2="b" operator="in" result="cg"/><feMerge><feMergeNode in="cg"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-<filter id="tglow" x="-20%" y="-50%" width="140%" height="200%"><feGaussianBlur stdDeviation="6" result="b"/><feFlood flood-color="#4C82CF" flood-opacity=".55" result="f"/><feComposite in="f" in2="b" operator="in" result="cg"/><feMerge><feMergeNode in="cg"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-<radialGradient id="neb" cx=".5" cy=".3" r=".6"><stop offset="0" stop-color="#4C82CF" stop-opacity=".13"/><stop offset="1" stop-color="#4C82CF" stop-opacity="0"/></radialGradient>
-<linearGradient id="xg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4C82CF"/><stop offset="1" stop-color="#4E9A6B"/></linearGradient><clipPath id="lh"><rect x="-20" y="50" width="140" height="70"/></clipPath>
-<linearGradient id="streak" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".35" stop-color="#4C82CF" stop-opacity="1"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
-</defs><rect width="560" height="140" rx="14" fill="#05060a"/><rect width="560" height="140" rx="14" fill="url(#neb)"/><circle cx="172" cy="81" r="1" fill="#fff" opacity="0.40"/>
-<circle cx="271" cy="124" r="0.8" fill="#fff" opacity="0.77"/>
-<circle cx="481" cy="93" r="1" fill="#fff" opacity="0.35"/>
-<circle cx="26" cy="89" r="0.8" fill="#fff" opacity="0.52"/>
-<circle cx="407" cy="18" r="2" fill="#fff" opacity="0.66"/>
-<circle cx="378" cy="72" r="2" fill="#fff" opacity="0.78"/>
-<circle cx="27" cy="79" r="1" fill="#fff" opacity="0.35"/>
-<circle cx="534" cy="31" r="1" fill="#fff" opacity="0.61"/>
-<circle cx="37" cy="31" r="1" fill="#fff" opacity="0.84"/>
-<circle cx="114" cy="116" r="1" fill="#fff" opacity="0.63"/>
-<circle cx="542" cy="70" r="1.4" fill="#fff" opacity="0.49"/>
-<circle cx="49" cy="74" r="0.8" fill="#fff" opacity="0.27"/>
-<circle cx="313" cy="13" r="1" fill="#fff" opacity="0.80"/>
-<circle cx="387" cy="79" r="1.4" fill="#fff" opacity="0.89"/>
-<circle cx="436" cy="76" r="1" fill="#fff" opacity="0.47"/>
-<circle cx="187" cy="64" r="0.8" fill="#fff" opacity="0.58"/>
-<circle cx="332" cy="54" r="1.4" fill="#fff" opacity="0.42"/>
-<circle cx="296" cy="16" r="1" fill="#fff" opacity="0.52"/>
-<circle cx="50" cy="60" r="2" fill="#fff" opacity="0.56"/>
-<circle cx="9" cy="132" r="0.8" fill="#fff" opacity="0.63"/>
-<circle cx="431" cy="102" r="1" fill="#fff" opacity="0.83"/>
-<circle cx="104" cy="94" r="1.4" fill="#fff" opacity="0.34"/>
-<circle cx="396" cy="32" r="0.8" fill="#fff" opacity="0.57"/>
-<circle cx="483" cy="118" r="1" fill="#fff" opacity="0.26"/>
-<circle cx="405" cy="67" r="1" fill="#fff" opacity="0.31"/>
-<circle cx="135" cy="48" r="2" fill="#fff" opacity="0.60"/>
-<circle cx="361" cy="130" r="1" fill="#fff" opacity="0.42"/>
-<circle cx="431" cy="8" r="1.4" fill="#fff" opacity="0.57"/><g transform="translate(38.0 32.0) scale(0.640)">
-<line x1="-8" y1="-12" x2="108" y2="114" stroke="#fff" stroke-opacity=".22" stroke-width="1.6" stroke-linecap="round"/>
-<g transform="translate(7 0) skewX(-8)" fill="none" stroke="url(#xg)" stroke-width="6" stroke-linejoin="round">
-<polygon points="12,10 36,10 88,90 64,90"/>
-<polygon points="64,10 88,10 36,90 12,90" fill="#000"/>
-<g clip-path="url(#lh)"><polygon points="12,10 36,10 88,90 64,90" fill="#000"/></g>
-</g>
-<circle cx="97" cy="8" r="4.2" fill="#4E9A6B"/></g><text x="130" y="82" font-family="'Archivo Black','Inter Tight','Helvetica Neue',Arial,sans-serif" font-weight="900" font-size="60" letter-spacing="-3"><tspan fill="#8b8b90">Produ</tspan><tspan fill="#f2f2f2">AV</tspan><tspan fill="url(#xg)">X</tspan></text><text x="132" y="112" text-anchor="start" font-family="'JetBrains Mono','DejaVu Sans Mono',monospace" font-size="12" fill="#8b8b90" letter-spacing="5">GRUPO <tspan fill="#4C82CF">X</tspan> · TEAM <tspan fill="#4C82CF">X</tspan></text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 150"><rect width="600" height="150" rx="14" fill="#000"/><g transform="translate(40.0 29.0) scale(0.920)">
+<defs><linearGradient id="g1" gradientUnits="userSpaceOnUse" x1="8" y1="15" x2="92" y2="85"><stop offset="0" stop-color="#4E9A6B"/><stop offset="1" stop-color="#4C82CF"/></linearGradient>
+<linearGradient id="g2" gradientUnits="userSpaceOnUse" x1="92" y1="15" x2="8" y2="85"><stop offset="0" stop-color="#4C82CF"/><stop offset="1" stop-color="#4E9A6B"/></linearGradient></defs>
+<g fill="none" stroke-width="4.6" stroke-linejoin="round" stroke-linecap="round">
+<polygon points="66,15 92,15 34,85 8,85" stroke="url(#g2)"/>
+<polygon points="8,15 34,15 92,85 66,85" stroke="url(#g1)"/>
+<line x1="62.4" y1="20.2" x2="46" y2="40" stroke="#000" stroke-width="7.4" stroke-linecap="butt"/>
+<line x1="46.5" y1="30.1" x2="53.5" y2="38.5" stroke="#000" stroke-width="8.6" stroke-linecap="butt"/><line x1="46.5" y1="30.1" x2="53.5" y2="38.5" stroke="url(#g1)" stroke-width="4.6" stroke-linecap="butt"/>
+</g><circle cx="55" cy="28" r="3" fill="#4C82CF"/></g><defs><linearGradient id="wg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4E9A6B"/><stop offset="1" stop-color="#4C82CF"/></linearGradient></defs><text x="150" y="88" text-anchor="start" font-family="'Montserrat','Inter','Helvetica Neue',Arial,sans-serif" font-weight="700" font-size="50" letter-spacing="4.5" fill="#fff" >PRODUAV<tspan fill="url(#wg)">X</tspan></text><text x="152" y="120" text-anchor="start" font-family="'JetBrains Mono','DejaVu Sans Mono',monospace" font-weight="400" font-size="13" fill="#8b8b90" letter-spacing="6">GRUPO X · TEAM X</text></svg>
