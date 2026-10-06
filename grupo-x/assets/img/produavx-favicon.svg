@@ -1,15 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="ProduAVX"><title>ProduAVX</title><defs><linearGradient id="gf" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#46e0ff"/><stop offset="1" stop-color="#9a6bff"/></linearGradient></defs><rect width="200" height="200" rx="40" fill="#07070d"/><g transform="translate(24 24) scale(.88)"><mask id="mf" maskUnits="userSpaceOnUse" x="0" y="0" width="200" height="200">
-      <g fill="none" stroke-linecap="round" stroke-linejoin="round" transform="translate(100 100) scale(.85) translate(-103 -102)">
-        <path d="M24 158L60 50L96 158" stroke="#fff" stroke-width="25"/>
-        <path d="M44 124H76" stroke="#fff" stroke-width="15.0"/>
-        
-        <g transform="translate(6 0)">
-        <path d="M106 64L174 154" stroke="#fff" stroke-width="25"/>
-        
-        <path d="M178 64L102 156" stroke="#000" stroke-width="32"/>
-        <path d="M178 64L102 156" stroke="#fff" stroke-width="25"/>
-        
-        </g>
-      </g></mask>
-    <circle cx="100" cy="100" r="93" fill="none" stroke="url(#gf)" stroke-width="5" stroke-linecap="round" stroke-dasharray="500 80" transform="rotate(-62 100 100)"/>
-    <rect width="200" height="200" fill="url(#gf)" mask="url(#mf)"/></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="ProduAVX"><title>ProduAVX</title><defs><linearGradient id="gf" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#46e0ff"/><stop offset="1" stop-color="#9a6bff"/></linearGradient></defs><circle cx="100" cy="100" r="92" fill="#0b0b22"/><circle cx="100" cy="100" r="88" fill="none" stroke="url(#gf)" stroke-width="7"/><g transform="translate(100 100) scale(1.1) translate(-100 -102)"><path d="M53 122H83" stroke="#6fb4ff" stroke-width="9.1" stroke-linecap="round"/><path d="M34.0 152.0L50.6 133.0L68.5 77.0L66.0 52.0L49.4 71.0L31.5 127.0Z" fill="#0b0b22" stroke="url(#gf)" stroke-width="7" stroke-linejoin="round"/><path d="M98.0 152.0L100.5 127.0L82.6 71.0L66.0 52.0L63.5 77.0L81.4 133.0Z" fill="#0b0b22" stroke="url(#gf)" stroke-width="7" stroke-linejoin="round"/><path d="M118.0 52.0L120.6 78.6L149.7 134.6L170.0 152.0L167.4 125.4L138.3 69.4Z" fill="#0b0b22" stroke="url(#gf)" stroke-width="7" stroke-linejoin="round"/><path d="M170.0 52.0L149.7 69.4L120.6 125.4L118.0 152.0L138.3 134.6L167.4 78.6Z" fill="#0b0b22" stroke="url(#gf)" stroke-width="7" stroke-linejoin="round"/></g></svg>

@@ -9,25 +9,39 @@ FONTS = "/usr/share/fonts/opentype/inter/"
 CYAN, VIOLET = "#46e0ff", "#9a6bff"
 
 
-def mark(uid, fill, ring, detail=True, sw=19, hole=5.2):
-    """Monograma AX (Audio Visual X): A de cinta + X entrelazada, dentro de un anillo abierto.
-    fill/ring: color sólido o url(#grad). detail=False -> versión simple (favicon)."""
-    cut = lambda d: f'<path d="{d}" stroke="#000" stroke-width="{hole}"/>' if detail else ""
-    return f'''<mask id="m{uid}" maskUnits="userSpaceOnUse" x="0" y="0" width="200" height="200">
-      <g fill="none" stroke-linecap="round" stroke-linejoin="round" transform="translate(100 100) scale(.85) translate(-103 -102)">
-        <path d="M24 158L60 50L96 158" stroke="#fff" stroke-width="{sw}"/>
-        <path d="M44 124H76" stroke="#fff" stroke-width="{sw * .6:.1f}"/>
-        {cut("M26.8 149.5L57.2 58.5M62.8 58.5L93.2 149.5")}
-        <g transform="translate(6 0)">
-        <path d="M106 64L174 154" stroke="#fff" stroke-width="{sw}"/>
-        {cut("M111.5 71.3L168.5 146.7")}
-        <path d="M178 64L102 156" stroke="#000" stroke-width="{sw + 7}"/>
-        <path d="M178 64L102 156" stroke="#fff" stroke-width="{sw}"/>
-        {cut("M172.4 71.2L107.6 149.2")}
-        </g>
-      </g></mask>
-    <circle cx="100" cy="100" r="93" fill="none" stroke="{ring}" stroke-width="5" stroke-linecap="round" stroke-dasharray="500 80" transform="rotate(-62 100 100)"/>
-    <rect width="200" height="200" fill="{fill}" mask="url(#m{uid})"/>'''
+def leaf(p0, p1, w):
+    """Cinta de punta afilada (como las del chevron de la X de referencia), de p0 a p1 con ancho w."""
+    (x0, y0), (x1, y1) = p0, p1
+    L = ((x1 - x0) ** 2 + (y1 - y0) ** 2) ** .5
+    dx, dy = (x1 - x0) / L, (y1 - y0) / L
+    nx, ny = -dy, dx
+    pt = lambda t, o: (x0 + dx * L * t + nx * w * o, y0 + dy * L * t + ny * w * o)
+    f = lambda q: f"{q[0]:.1f} {q[1]:.1f}"
+    # cinta recta con puntas largas y afiladas (grosor máx. = w)
+    return ("M" + f(p0) + "L" + f(pt(.22, .5)) + "L" + f(pt(.78, .5)) + "L" + f(p1)
+            + "L" + f(pt(.78, -.5)) + "L" + f(pt(.22, -.5)) + "Z")
+
+
+def letters(fill, stroke, sw, w, bar):
+    """A + X en cintas huecas; el orden de dibujo da el entrelazado de la X."""
+    bar = "#6fb4ff" if bar.startswith("url") else bar  # un degradado de caja falla en una línea horizontal
+    L = lambda a, b: f'<path d="{leaf(a, b, w)}" fill="{fill}" stroke="{stroke}" stroke-width="{sw}" stroke-linejoin="round"/>'
+    return (f'<path d="M53 122H83" stroke="{bar}" stroke-width="{sw * 1.3:.1f}" stroke-linecap="round"/>'
+            + L((34, 152), (66, 52)) + L((98, 152), (66, 52))
+            + L((118, 52), (170, 152)) + L((170, 52), (118, 152)))
+
+
+def mark(uid, fill, ring, detail=True, sw=4.2, w=17, disc="#0b0b22", crescent="#05050f"):
+    """Monograma AX fusionado: disco oscuro con doble anillo y media luna de sombra (referencia P)
+    + A y X en cintas huecas de punta afilada (referencia X). fill/ring: color o url(#grad)."""
+    if not detail:  # favicon: sin media luna ni anillo fino, trazos más gruesos
+        return (f'<circle cx="100" cy="100" r="92" fill="{disc}"/><circle cx="100" cy="100" r="88" fill="none" stroke="{ring}" stroke-width="7"/>'
+                f'<g transform="translate(100 100) scale(1.1) translate(-100 -102)">{letters(disc, fill, 7, 20, fill)}</g>')
+    return (f'<circle cx="92" cy="110" r="90" fill="{crescent}"/>'
+            f'<circle cx="100" cy="100" r="86" fill="{disc}"/>'
+            f'<circle cx="100" cy="100" r="86" fill="none" stroke="#9a9ab8" stroke-width="3" opacity=".8"/>'
+            f'<circle cx="100" cy="100" r="93" fill="none" stroke="{ring}" stroke-width="6" stroke-linecap="round" stroke-dasharray="520 64" transform="rotate(-62 100 100)"/>'
+            f'<g transform="translate(100 100) scale(.92) translate(-100 -102)">{letters(disc, fill, sw, w, fill)}</g>')
 
 
 def grad(uid):
@@ -73,12 +87,16 @@ for name, c1, tag in (("produavx-logo.svg", "#eeeefa", "#9393b0"), ("produavx-lo
     wm, wend = wordmark(uid, c1, f"url(#g{uid})", tag)
     write(name, svg(int(wend) + 12, 200, mark(uid, f"url(#g{uid})", f"url(#g{uid})") + wm, grad(uid)))
 
-# 3) Monocromo (impresión / sellos)
+# 3) Monocromo (impresión / sellos): disco sólido con letras recortadas
 for name, col in (("produavx-mark-white.svg", "#ffffff"), ("produavx-mark-black.svg", "#000000")):
-    write(name, svg(200, 200, mark(name[14:15], col, col)))
+    u = name[14:15]
+    cut = letters("#fff", "#000", 4.2, 17, "#000")
+    body = (f'<mask id="k{u}" maskUnits="userSpaceOnUse" x="0" y="0" width="200" height="200"><rect width="200" height="200" fill="#fff"/>'
+            f'<g transform="translate(100 100) scale(.92) translate(-100 -102)">{cut}</g></mask>'
+            f'<circle cx="100" cy="100" r="86" fill="{col}" mask="url(#k{u})"/>'
+            f'<circle cx="100" cy="100" r="93" fill="none" stroke="{col}" stroke-width="6" stroke-linecap="round" stroke-dasharray="520 64" transform="rotate(-62 100 100)"/>')
+    write(name, svg(200, 200, body))
 
-# 4) Favicon simplificado (trazo grueso, sin hueco de cinta, sin anillo fino)
-write("produavx-favicon.svg", svg(200, 200,
-      '<rect width="200" height="200" rx="40" fill="#07070d"/><g transform="translate(24 24) scale(.88)">'
-      + mark("f", "url(#gf)", "url(#gf)", detail=False, sw=25) + "</g>", grad("f")))
+# 4) Favicon simplificado
+write("produavx-favicon.svg", svg(200, 200, mark("f", "url(#gf)", "url(#gf)", detail=False), grad("f")))
 print("ok")

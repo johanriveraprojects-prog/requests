@@ -1,15 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="ProduAVX"><title>ProduAVX</title><defs><linearGradient id="ga" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#46e0ff"/><stop offset="1" stop-color="#9a6bff"/></linearGradient></defs><mask id="ma" maskUnits="userSpaceOnUse" x="0" y="0" width="200" height="200">
-      <g fill="none" stroke-linecap="round" stroke-linejoin="round" transform="translate(100 100) scale(.85) translate(-103 -102)">
-        <path d="M24 158L60 50L96 158" stroke="#fff" stroke-width="19"/>
-        <path d="M44 124H76" stroke="#fff" stroke-width="11.4"/>
-        <path d="M26.8 149.5L57.2 58.5M62.8 58.5L93.2 149.5" stroke="#000" stroke-width="5.2"/>
-        <g transform="translate(6 0)">
-        <path d="M106 64L174 154" stroke="#fff" stroke-width="19"/>
-        <path d="M111.5 71.3L168.5 146.7" stroke="#000" stroke-width="5.2"/>
-        <path d="M178 64L102 156" stroke="#000" stroke-width="26"/>
-        <path d="M178 64L102 156" stroke="#fff" stroke-width="19"/>
-        <path d="M172.4 71.2L107.6 149.2" stroke="#000" stroke-width="5.2"/>
-        </g>
-      </g></mask>
-    <circle cx="100" cy="100" r="93" fill="none" stroke="url(#ga)" stroke-width="5" stroke-linecap="round" stroke-dasharray="500 80" transform="rotate(-62 100 100)"/>
-    <rect width="200" height="200" fill="url(#ga)" mask="url(#ma)"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="ProduAVX"><title>ProduAVX</title><defs><linearGradient id="ga" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#46e0ff"/><stop offset="1" stop-color="#9a6bff"/></linearGradient></defs><circle cx="92" cy="110" r="90" fill="#05050f"/><circle cx="100" cy="100" r="86" fill="#0b0b22"/><circle cx="100" cy="100" r="86" fill="none" stroke="#9a9ab8" stroke-width="3" opacity=".8"/><circle cx="100" cy="100" r="93" fill="none" stroke="url(#ga)" stroke-width="6" stroke-linecap="round" stroke-dasharray="520 64" transform="rotate(-62 100 100)"/><g transform="translate(100 100) scale(.92) translate(-100 -102)"><path d="M53 122H83" stroke="#6fb4ff" stroke-width="5.5" stroke-linecap="round"/><path d="M34.0 152.0L49.1 132.6L67.1 76.6L66.0 52.0L50.9 71.4L32.9 127.4Z" fill="#0b0b22" stroke="url(#ga)" stroke-width="4.2" stroke-linejoin="round"/><path d="M98.0 152.0L99.1 127.4L81.1 71.4L66.0 52.0L64.9 76.6L82.9 132.6Z" fill="#0b0b22" stroke="url(#ga)" stroke-width="4.2" stroke-linejoin="round"/><path d="M118.0 52.0L121.9 77.9L151.0 133.9L170.0 152.0L166.1 126.1L137.0 70.1Z" fill="#0b0b22" stroke="url(#ga)" stroke-width="4.2" stroke-linejoin="round"/><path d="M170.0 52.0L151.0 70.1L121.9 126.1L118.0 152.0L137.0 133.9L166.1 77.9Z" fill="#0b0b22" stroke="url(#ga)" stroke-width="4.2" stroke-linejoin="round"/></g></svg>
