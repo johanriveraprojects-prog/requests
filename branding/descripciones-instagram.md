@@ -106,3 +106,25 @@ Cotiza tu producción ↓
 - Las marcas se diferencian solo por su rubro, su palabra clave y su color, no por el tono.
 
 Los servicios concretos que se nombran (planos, materiales, video, foto, reels) los deduje de las publicaciones de Grupo X. Ajusta la línea 1 si ofrecen algo distinto.
+
+---
+
+## Adaptaciones de la bio de ConstruX a otras redes
+
+**TikTok** (límite 80 caracteres)
+
+| Opción | Texto | Caracteres |
+|---|---|---|
+| A (recomendada) | `Construcción y asesoría · Santa Tecla, SV · Parte de Grupo X` | 60 |
+| B | `Planifica mejor. Construye mejor. 🏗️ Santa Tecla, SV · Grupo X` | 62 |
+
+- Nombre de usuario: `@construavx` · Nombre: `ConstruAVX | Team X`.
+- Enlace en la bio de TikTok: `grupoxteamx.netlify.app` o el propio.
+
+**Facebook**
+
+- Nombre de página: `ConstruAVX | Team X`
+- Categoría: Empresa de construcción
+- Presentación / Intro (límite 101): `Construcción y asesoría en Santa Tecla, El Salvador. Parte de Grupo X | Team X.` (79)
+- Sobre nosotros: *"ConstruX es la rama de construcción y asesoría de Grupo X. Planifica mejor. Construye mejor: planos precisos, materiales correctos y obra con control. Cotiza tu obra por mensaje. / We help you build."*
+- Botón: Enviar mensaje.
