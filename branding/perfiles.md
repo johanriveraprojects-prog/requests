@@ -33,7 +33,7 @@
 
 ## ConstruAVX
 
-> **Símbolo propio: cubo CX.** Un cubo isométrico de tres caras: en la cara izquierda va la **C** (degradado amarillo→rojo) y en la cara derecha la **X** (blanca), ambas dibujadas en perspectiva; la tapa superior lleva el degradado de la marca. El nombre va en dos tonos: CONSTRU en blanco y AVX en degradado, con la frase en mayúsculas espaciadas. Sin estrellas de fondo. ProduAVX conserva la X de cintas con degradado azul→verde.
+> **Símbolo propio: cubo CX.** Cubo isométrico de tres caras: **C** sólida (degradado amarillo→rojo) en la cara inferior izquierda, **X** blanca hecha con dos cintas de doble línea (V y Λ, como la referencia) en la cara inferior derecha, y la tapa superior como fondo de líneas en V con degradado, paralelas a las cintas de la X. El nombre va en dos tonos: CONSTRU en blanco y AVX en degradado, con la frase en mayúsculas espaciadas. Sin estrellas de fondo. ProduAVX conserva la X de cintas con degradado azul→verde.
 
 - **Nombre:** ConstruAVX
 - **Usuario sugerido:** `@construavx`
