@@ -37,3 +37,7 @@ Letras de bloque **AX** en rojo `#e8322c`, extrusión amarilla `#ffd60a` hacia a
 AX de bloque con extrusión oscura, relleno degradado amarillo `#ffd166` → naranja `#ff8a1f` → rojo `#d62718`, contorno `#1a0404`, **cresta de 3 llamas** sobre la X, **chispa de 4 puntas**, **toque verde** `#3fae49` (tallo) sobre la A, disco con brillo rojo oscuro y aro naranja→amarillo. Wordmark "ProduAVX" Inter Display ExtraBold crema `#fff1d6` + lema naranja.
 Archivos: `grupo-x/assets/img/produavx-final-{mark,logo,mono-white,mono-black}.svg` y `grupo-x/assets/img/instagram/` (`avatar.png` 1080, `avatar-720.png`, `destacado-{reels,audio,set}.png` 1080×1920). Se generan con `python3 grupo-x/tools/build_final.py` + `NODE_PATH=$(npm root -g) node grupo-x/tools/export_instagram.js`.
 **Pendiente:** el sitio aún usa la paleta cian/violeta; decidir si se re-tematiza a la paleta cálida del logo final.
+
+## Fase actual: decidir el logo (sitio en pausa)
+El usuario pidió **crear variantes de logo hasta decidir; el resto del proyecto (sitio, panel, etc.) avanza solo después**. No tocar el sitio hasta que elija.
+Variantes numeradas 1–8 en `grupo-x/assets/img/variantes/` (`python3 grupo-x/tools/build_variants.py`): 1 final actual · 2 adhesivo · 3 monolínea de fuego · 4 escudo · 5 X de llamas (la más débil) · 6 lente · 7 híbrido cian/violeta del sitio · 8 ícono plano con punto rojo/verde. Elegir por número y consolidar en el kit final.
