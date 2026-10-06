@@ -1,0 +1,22 @@
+{
+ "1": [
+  "Vertical con corchetes",
+  "Tres círculos planos apilados; el rojo va entre corchetes [ ● ] = REC."
+ ],
+ "2": [
+  "Horizontal con corchetes",
+  "En fila: [ ● ]  ●  ●. Se lee como una línea de tiempo y como semáforo."
+ ],
+ "3": [
+  "Visor de cámara",
+  "El rojo (REC) dentro de un marco de enfoque de cuatro esquinas; ámbar y verde abajo."
+ ],
+ "4": [
+  "Avatar circular",
+  "Disco plano con el semáforo vertical: lectura inmediata como foto de perfil."
+ ],
+ "5": [
+  "Con nombre",
+  "Los tres círculos con [●] y el nombre en blanco: versión horizontal para portadas."
+ ]
+}
