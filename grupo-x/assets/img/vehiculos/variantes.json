@@ -1,0 +1,18 @@
+{
+ "1": [
+  "Sutil",
+  "Solo ruedas (A) y aros de hélice (X): se lee AX; el guiño aparece al mirar de cerca."
+ ],
+ "2": [
+  "Visible",
+  "A con chasis y ruedas (auto); X con cuerpo central, hélices y luz de navegación roja/verde."
+ ],
+ "3": [
+  "Oculto",
+  "Sin ruedas ni aros: un auto diminuto dentro de la A y un dron en la muesca de la X."
+ ],
+ "4": [
+  "Monolínea",
+  "Línea redondeada: A de auto con ruedas en los pies; X de dron con hélices en cada punta."
+ ]
+}
