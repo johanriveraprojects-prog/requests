@@ -1,7 +1,32 @@
 # XYZ Social Club · Bio y manifiesto (link en bio)
 Borrador 2026-10-06. Sin usuarios, teléfonos ni enlaces hasta que se entreguen (van marcados como [pendiente]).
 
-## Bio de Instagram (límite 150 caracteres)
+## Bio actual (captura 2026-10-06) y ajuste
+
+Nombre: `XYZ Social Club` · 4 posts · 675 seguidores · 1,561 siguiendo
+```
+Prod. Music. Social Club
+All In One Plug
+```
+Se mantiene "All In One Plug" (ya es tu identidad). Propuestas que lo conservan y añaden el lema y la llamada al link:
+
+**Ajuste 1 (mínimo)**
+```
+Prod. Music. Social Club
+All In One Plug
+Los últimos serán los primeros 👇
+```
+
+**Ajuste 2 (con roles, mejor para buscar)**
+```
+Trap · Beats · Visuales · Social Club
+All In One Plug. El club de los últimos.
+👇 Entra
+```
+
+Nombre sugerido: `XYZ Social Club | Trap` para que aparezca al buscar "trap".
+
+## Bio de Instagram: propuestas originales (límite 150 caracteres)
 
 **Opción A (recomendada)**
 ```
