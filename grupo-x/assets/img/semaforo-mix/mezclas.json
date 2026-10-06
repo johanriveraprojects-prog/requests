@@ -1,0 +1,27 @@
+{
+ "1": [
+  "Ícono + nombre",
+  "El ícono cuadrado de la 2 junto al nombre de la 5: versión principal horizontal.",
+  "dark"
+ ],
+ "2": [
+  "Cápsula",
+  "Los tres círculos en una pastilla plana (semáforo horizontal) + nombre.",
+  "dark"
+ ],
+ "3": [
+  "La 'o' es REC",
+  "El punto rojo con corchetes sustituye la 'o' de Produ; ámbar y verde cierran el nombre.",
+  "dark"
+ ],
+ "4": [
+  "Apilado",
+  "Ícono arriba, nombre y lema debajo, centrado: portadas, tarjetas y créditos.",
+  "dark"
+ ],
+ "5": [
+  "Fondo claro",
+  "La mezcla 1 con el nombre en tinta oscura, para fondos blancos o crema.",
+  "light"
+ ]
+}
