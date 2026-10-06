@@ -1,41 +1,42 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 140" role="img" aria-label="ProduAVX"><defs>
-<filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-<filter id="tglow" x="-20%" y="-50%" width="140%" height="200%"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-<linearGradient id="streak" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".35" stop-color="#fff" stop-opacity=".9"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+<filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3" result="b"/><feFlood flood-color="#2EE6D6" result="f"/><feComposite in="f" in2="b" operator="in" result="cg"/><feMerge><feMergeNode in="cg"/><feMergeNode in="cg"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+<filter id="tglow" x="-20%" y="-50%" width="140%" height="200%"><feGaussianBlur stdDeviation="6" result="b"/><feFlood flood-color="#2EE6D6" flood-opacity=".55" result="f"/><feComposite in="f" in2="b" operator="in" result="cg"/><feMerge><feMergeNode in="cg"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+<radialGradient id="neb" cx=".5" cy=".3" r=".6"><stop offset="0" stop-color="#2EE6D6" stop-opacity=".22"/><stop offset="1" stop-color="#2EE6D6" stop-opacity="0"/></radialGradient>
+<linearGradient id="streak" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".35" stop-color="#2EE6D6" stop-opacity="1"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
 </defs>
-<rect width="560" height="140" rx="14" fill="#05060a"/>
-<circle cx="249" cy="41" r="1" fill="#fff" opacity="0.56"/>
-<circle cx="49" cy="105" r="0.8" fill="#fff" opacity="0.68"/>
-<circle cx="163" cy="116" r="1" fill="#fff" opacity="0.80"/>
-<circle cx="342" cy="31" r="1" fill="#fff" opacity="0.46"/>
-<circle cx="153" cy="94" r="0.8" fill="#fff" opacity="0.84"/>
-<circle cx="491" cy="100" r="1" fill="#fff" opacity="0.75"/>
-<circle cx="311" cy="60" r="1" fill="#fff" opacity="0.57"/>
-<circle cx="115" cy="126" r="0.8" fill="#fff" opacity="0.90"/>
-<circle cx="349" cy="105" r="0.8" fill="#fff" opacity="0.26"/>
-<circle cx="515" cy="24" r="0.8" fill="#fff" opacity="0.85"/>
-<circle cx="221" cy="61" r="1" fill="#fff" opacity="0.29"/>
-<circle cx="29" cy="59" r="1" fill="#fff" opacity="0.89"/>
-<circle cx="411" cy="95" r="2" fill="#fff" opacity="0.30"/>
-<circle cx="281" cy="80" r="1.4" fill="#fff" opacity="0.79"/>
-<circle cx="255" cy="104" r="0.8" fill="#fff" opacity="0.77"/>
-<circle cx="120" cy="105" r="2" fill="#fff" opacity="0.35"/>
-<circle cx="267" cy="129" r="1.4" fill="#fff" opacity="0.34"/>
-<circle cx="202" cy="18" r="0.8" fill="#fff" opacity="0.57"/>
-<circle cx="21" cy="58" r="1" fill="#fff" opacity="0.77"/>
-<circle cx="504" cy="112" r="2" fill="#fff" opacity="0.58"/>
-<circle cx="141" cy="83" r="1.4" fill="#fff" opacity="0.27"/>
-<circle cx="194" cy="138" r="0.8" fill="#fff" opacity="0.74"/>
-<circle cx="359" cy="66" r="0.8" fill="#fff" opacity="0.88"/>
-<circle cx="347" cy="139" r="1.4" fill="#fff" opacity="0.49"/>
-<circle cx="552" cy="33" r="1.4" fill="#fff" opacity="0.42"/>
-<circle cx="197" cy="52" r="2" fill="#fff" opacity="0.31"/>
-<circle cx="549" cy="59" r="1" fill="#fff" opacity="0.52"/>
-<circle cx="29" cy="77" r="1.4" fill="#fff" opacity="0.29"/>
+<rect width="560" height="140" rx="14" fill="#05060a"/><rect width="560" height="140" rx="14" fill="url(#neb)"/>
+<circle cx="358" cy="60" r="0.8" fill="#fff" opacity="0.29"/>
+<circle cx="391" cy="52" r="2" fill="#fff" opacity="0.68"/>
+<circle cx="331" cy="46" r="1" fill="#fff" opacity="0.65"/>
+<circle cx="172" cy="139" r="2" fill="#fff" opacity="0.51"/>
+<circle cx="523" cy="12" r="1.4" fill="#fff" opacity="0.34"/>
+<circle cx="295" cy="2" r="1" fill="#fff" opacity="0.72"/>
+<circle cx="509" cy="121" r="2" fill="#fff" opacity="0.58"/>
+<circle cx="82" cy="14" r="0.8" fill="#fff" opacity="0.74"/>
+<circle cx="500" cy="12" r="1.4" fill="#fff" opacity="0.44"/>
+<circle cx="102" cy="63" r="1.4" fill="#fff" opacity="0.57"/>
+<circle cx="357" cy="25" r="1" fill="#fff" opacity="0.70"/>
+<circle cx="92" cy="52" r="1" fill="#fff" opacity="0.59"/>
+<circle cx="318" cy="43" r="0.8" fill="#fff" opacity="0.35"/>
+<circle cx="474" cy="126" r="1" fill="#fff" opacity="0.77"/>
+<circle cx="472" cy="4" r="2" fill="#fff" opacity="0.79"/>
+<circle cx="413" cy="127" r="2" fill="#fff" opacity="0.90"/>
+<circle cx="124" cy="20" r="1.4" fill="#fff" opacity="0.85"/>
+<circle cx="36" cy="84" r="0.8" fill="#fff" opacity="0.60"/>
+<circle cx="447" cy="20" r="1" fill="#fff" opacity="0.84"/>
+<circle cx="488" cy="119" r="1" fill="#fff" opacity="0.38"/>
+<circle cx="191" cy="35" r="0.8" fill="#fff" opacity="0.75"/>
+<circle cx="259" cy="77" r="1" fill="#fff" opacity="0.43"/>
+<circle cx="75" cy="26" r="2" fill="#fff" opacity="0.45"/>
+<circle cx="134" cy="6" r="2" fill="#fff" opacity="0.61"/>
+<circle cx="508" cy="75" r="1.4" fill="#fff" opacity="0.65"/>
+<circle cx="160" cy="90" r="1.4" fill="#fff" opacity="0.42"/>
+<circle cx="229" cy="88" r="1.4" fill="#fff" opacity="0.46"/>
+<circle cx="121" cy="79" r="0.8" fill="#fff" opacity="0.63"/>
 <g transform="translate(38.0 32.0) scale(0.640)" filter="url(#glow)">
-<line x1="-8" y1="-12" x2="106" y2="114" stroke="url(#streak)" stroke-width="2" stroke-linecap="round"/>
-<polygon transform="translate(10.6 0) skewX(-12)" points="14,14 36,14 50,34 64,14 86,14 62,50 86,86 64,86 50,66 36,86 14,86 38,50" fill="#05060a" stroke="#fff" stroke-width="4" stroke-linejoin="round"/>
-<circle cx="34" cy="108" r="3" fill="#fff"/><circle cx="50" cy="108" r="3" fill="#fff"/><circle cx="66" cy="108" r="3" fill="#fff"/></g>
-<text x="130" y="82" font-family="'Archivo Black','Inter Tight','Helvetica Neue',Arial,sans-serif" font-weight="900" font-size="60" letter-spacing="-3"><tspan fill="#8b8b90">Produ</tspan><tspan fill="#f2f2f2">AVX</tspan></text>
-<text x="132" y="112" font-family="'JetBrains Mono','DejaVu Sans Mono',monospace" font-size="12" fill="#8b8b90" letter-spacing="5">GRUPO X · TEAM X</text>
+<line x1="-8" y1="-12" x2="106" y2="114" stroke="url(#streak)" stroke-width="2.5" stroke-linecap="round"/>
+<polygon transform="translate(10.6 0) skewX(-12)" points="14,14 36,14 50,34 64,14 86,14 62,50 86,86 64,86 50,66 36,86 14,86 38,50" fill="#05060a" stroke="#2EE6D6" stroke-width="4" stroke-linejoin="round"/>
+<circle cx="34" cy="108" r="3" fill="#2EE6D6"/><circle cx="50" cy="108" r="3" fill="#2EE6D6"/><circle cx="66" cy="108" r="3" fill="#2EE6D6"/></g>
+<text x="130" y="82" font-family="'Archivo Black','Inter Tight','Helvetica Neue',Arial,sans-serif" font-weight="900" font-size="60" letter-spacing="-3"><tspan fill="#8b8b90">Produ</tspan><tspan fill="#f2f2f2">AV</tspan><tspan fill="#2EE6D6">X</tspan></text>
+<text x="132" y="112" font-family="'JetBrains Mono','DejaVu Sans Mono',monospace" font-size="12" fill="#8b8b90" letter-spacing="5">GRUPO <tspan fill="#2EE6D6">X</tspan> · TEAM <tspan fill="#2EE6D6">X</tspan></text>
 </svg>
