@@ -11,10 +11,9 @@
 | Rubro | Marca que organiza ambos rubros | Construcción | Producción |
 | Fondo | Negro `#05060A` con estrellas | igual | igual |
 | Colores base | Blanco `#F2F2F2`, gris `#8B8B90` | igual | igual |
-| **Color principal** | Blanco (monocromo) | **Amarillo mate `#E0B030`** — obra, señalización, energía | **Azul mate `#4C82CF`** — precisión, tecnología, confianza |
-| **Color secundario** (detalle bajo la X) | — | **Rojo mate `#C8473D`** (chevron `^`) | **Verde mate `#4E9A6B`** (3 puntos) |
+| **Degradado de la X** | Blanco (monocromo) | **Amarillo `#E0B030` → Rojo `#C8473D`** — obra, energía | **Azul `#4C82CF` → Verde `#4E9A6B`** — precisión, imagen, medios |
 | Atmósfera | Negro con estrellas | Nebulosa amarilla tenue | Nebulosa azul tenue |
-| Símbolo | "X" con trazo diagonal | La misma "X" en amarillo + chevron de techo `^` en rojo | La misma "X" en azul + tres puntos verdes (línea de producción) |
+| Símbolo | "X" con trazo diagonal | La misma X de dos cintas entrelazadas + punto superior, con degradado amarillo→rojo | La misma X de dos cintas entrelazadas + punto superior, con degradado azul→verde |
 | Nombre | — | Gris "Constru" + blanco "AV" + **X amarilla** | Gris "Produ" + blanco "AV" + **X azul** |
 | Frase ES / EN | Te ayudamos a llegar / We help you get there | Te ayudamos a construir / We help you build | Te ayudamos a producir / We help you produce |
 | Archivos | (los tuyos) | carpeta `construavx/` | carpeta `produavx/` |
@@ -22,9 +21,9 @@
 **Reglas de familia**
 - Se mantiene el fondo negro, el resplandor y la jerarquía gris/blanco: la palabra secundaria va en gris y la protagonista en blanco.
 - **La X es el hilo conductor:** en cada marca la X (símbolo, última letra del nombre y las X de `GRUPO X · TEAM X`) lleva el color de la marca; todo lo demás sigue en blanco y gris.
-- Cada marca se distingue por su color, por el detalle bajo la "X" y por su nombre.
+- **Misma X, distinto color:** la forma de la X (dos cintas entrelazadas, punto superior y trazo diagonal tenue de Grupo X) es idéntica en las dos marcas; solo cambia el degradado.
 - **Paleta mate de la casa:** rojo `#C8473D`, azul `#4C82CF`, verde `#4E9A6B`, amarillo `#E0B030`. Son colores planos y apagados: resplandor sutil, sin neón ni degradados brillantes.
-- Cada marca usa un color principal (para la X y el nombre) y uno secundario (solo para el detalle bajo la X). Los otros dos colores quedan de reserva para gráficos, etiquetas y contenido conjunto de Grupo X.
+- Cada marca usa un degradado de dos colores de la paleta (en la X y en la X final del nombre). Las líneas de acento y las X de la firma usan el primer color del degradado.
 - No mezclar los colores principales de las dos marcas en una misma pieza, salvo en contenido conjunto de Grupo X.
 - Todo mensaje va en español con su traducción al inglés en gris, debajo.
 - Cierre fijo: `GRUPO X · TEAM X` en mayúsculas con espaciado amplio.
