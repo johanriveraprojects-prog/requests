@@ -41,3 +41,4 @@ Archivos: `grupo-x/assets/img/produavx-final-{mark,logo,mono-white,mono-black}.s
 ## Fase actual: decidir el logo (sitio en pausa)
 El usuario pidió **crear variantes de logo hasta decidir; el resto del proyecto (sitio, panel, etc.) avanza solo después**. No tocar el sitio hasta que elija.
 Variantes numeradas 1–8 en `grupo-x/assets/img/variantes/` (`python3 grupo-x/tools/build_variants.py`): 1 final actual · 2 adhesivo · 3 monolínea de fuego · 4 escudo · 5 X de llamas (la más débil) · 6 lente · 7 híbrido cian/violeta del sitio · 8 ícono plano con punto rojo/verde. Elegir por número y consolidar en el kit final.
+Mezcla 7+8 pedida por el usuario: `grupo-x/assets/img/mezclas/v1..v4.svg` (`python3 grupo-x/tools/build_mix.py`): 1 plano degradado (cuadrado) · 2 disco Instagram · 3 contorno hueco · 4 dúo bicolor (A cian, X violeta). Todas con cresta naranja y punto tally rojo/verde. Pendiente: elegir.
