@@ -11,10 +11,11 @@
 | Rubro | Marca que organiza ambos rubros | Construcción | Producción |
 | Fondo | Negro `#05060A` con estrellas | igual | igual |
 | Colores base | Blanco `#F2F2F2`, gris `#8B8B90` | igual | igual |
-| **Color de marca** | Blanco (monocromo) | **Ámbar `#FF9F1C`** — energía, obra, casco/acero caliente | **Turquesa `#2EE6D6`** — precisión, tecnología, flujo de producción |
-| Atmósfera | Negro con estrellas | Nebulosa ámbar | Nebulosa turquesa |
-| Símbolo | "X" con trazo diagonal | La misma "X" en ámbar + chevron de techo `^` | La misma "X" en turquesa + tres puntos (línea de producción) |
-| Nombre | — | Gris "Constru" + blanco "AV" + **X ámbar** | Gris "Produ" + blanco "AV" + **X turquesa** |
+| **Color principal** | Blanco (monocromo) | **Amarillo mate `#E0B030`** — obra, señalización, energía | **Azul mate `#4C82CF`** — precisión, tecnología, confianza |
+| **Color secundario** (detalle bajo la X) | — | **Rojo mate `#C8473D`** (chevron `^`) | **Verde mate `#4E9A6B`** (3 puntos) |
+| Atmósfera | Negro con estrellas | Nebulosa amarilla tenue | Nebulosa azul tenue |
+| Símbolo | "X" con trazo diagonal | La misma "X" en amarillo + chevron de techo `^` en rojo | La misma "X" en azul + tres puntos verdes (línea de producción) |
+| Nombre | — | Gris "Constru" + blanco "AV" + **X amarilla** | Gris "Produ" + blanco "AV" + **X azul** |
 | Frase ES / EN | Te ayudamos a llegar / We help you get there | Te ayudamos a construir / We help you build | Te ayudamos a producir / We help you produce |
 | Archivos | (los tuyos) | carpeta `construavx/` | carpeta `produavx/` |
 
@@ -22,7 +23,9 @@
 - Se mantiene el fondo negro, el resplandor y la jerarquía gris/blanco: la palabra secundaria va en gris y la protagonista en blanco.
 - **La X es el hilo conductor:** en cada marca la X (símbolo, última letra del nombre y las X de `GRUPO X · TEAM X`) lleva el color de la marca; todo lo demás sigue en blanco y gris.
 - Cada marca se distingue por su color, por el detalle bajo la "X" y por su nombre.
-- Un solo color de marca por pieza; nunca mezclar ámbar y turquesa en la misma pieza, salvo en contenido conjunto de Grupo X.
+- **Paleta mate de la casa:** rojo `#C8473D`, azul `#4C82CF`, verde `#4E9A6B`, amarillo `#E0B030`. Son colores planos y apagados: resplandor sutil, sin neón ni degradados brillantes.
+- Cada marca usa un color principal (para la X y el nombre) y uno secundario (solo para el detalle bajo la X). Los otros dos colores quedan de reserva para gráficos, etiquetas y contenido conjunto de Grupo X.
+- No mezclar los colores principales de las dos marcas en una misma pieza, salvo en contenido conjunto de Grupo X.
 - Todo mensaje va en español con su traducción al inglés en gris, debajo.
 - Cierre fijo: `GRUPO X · TEAM X` en mayúsculas con espaciado amplio.
 - Tipografía: grotesca ultra gruesa con tracking apretado para titulares y monoespaciada para la firma. En los SVG se usan fuentes de respaldo; hay que cambiarlas por las originales de Grupo X.

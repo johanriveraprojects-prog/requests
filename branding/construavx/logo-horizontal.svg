@@ -1,36 +1,36 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 140" role="img" aria-label="ConstruAVX"><defs>
-<filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3" result="b"/><feFlood flood-color="#FF9F1C" result="f"/><feComposite in="f" in2="b" operator="in" result="cg"/><feMerge><feMergeNode in="cg"/><feMergeNode in="cg"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-<filter id="tglow" x="-20%" y="-50%" width="140%" height="200%"><feGaussianBlur stdDeviation="6" result="b"/><feFlood flood-color="#FF9F1C" flood-opacity=".55" result="f"/><feComposite in="f" in2="b" operator="in" result="cg"/><feMerge><feMergeNode in="cg"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-<radialGradient id="neb" cx=".5" cy=".3" r=".6"><stop offset="0" stop-color="#FF9F1C" stop-opacity=".22"/><stop offset="1" stop-color="#FF9F1C" stop-opacity="0"/></radialGradient>
-<linearGradient id="streak" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".35" stop-color="#FF9F1C" stop-opacity="1"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
-</defs><rect width="560" height="140" rx="14" fill="#05060a"/><rect width="560" height="140" rx="14" fill="url(#neb)"/><circle cx="283" cy="63" r="2" fill="#fff" opacity="0.60"/>
-<circle cx="268" cy="2" r="1" fill="#fff" opacity="0.54"/>
-<circle cx="427" cy="85" r="1" fill="#fff" opacity="0.44"/>
-<circle cx="200" cy="43" r="1" fill="#fff" opacity="0.64"/>
-<circle cx="119" cy="105" r="2" fill="#fff" opacity="0.61"/>
-<circle cx="101" cy="120" r="1" fill="#fff" opacity="0.37"/>
-<circle cx="498" cy="108" r="1.4" fill="#fff" opacity="0.41"/>
-<circle cx="251" cy="78" r="1.4" fill="#fff" opacity="0.48"/>
-<circle cx="196" cy="122" r="2" fill="#fff" opacity="0.48"/>
-<circle cx="436" cy="23" r="1.4" fill="#fff" opacity="0.68"/>
-<circle cx="490" cy="122" r="1" fill="#fff" opacity="0.85"/>
-<circle cx="126" cy="14" r="1" fill="#fff" opacity="0.32"/>
-<circle cx="349" cy="42" r="0.8" fill="#fff" opacity="0.26"/>
-<circle cx="300" cy="19" r="1.4" fill="#fff" opacity="0.50"/>
-<circle cx="20" cy="49" r="0.8" fill="#fff" opacity="0.70"/>
-<circle cx="208" cy="63" r="1" fill="#fff" opacity="0.31"/>
-<circle cx="521" cy="133" r="1.4" fill="#fff" opacity="0.78"/>
-<circle cx="54" cy="74" r="1.4" fill="#fff" opacity="0.70"/>
-<circle cx="198" cy="40" r="2" fill="#fff" opacity="0.62"/>
-<circle cx="10" cy="119" r="1.4" fill="#fff" opacity="0.58"/>
-<circle cx="187" cy="26" r="1.4" fill="#fff" opacity="0.86"/>
-<circle cx="241" cy="108" r="2" fill="#fff" opacity="0.34"/>
-<circle cx="491" cy="82" r="0.8" fill="#fff" opacity="0.59"/>
-<circle cx="93" cy="11" r="1" fill="#fff" opacity="0.29"/>
-<circle cx="430" cy="72" r="1" fill="#fff" opacity="0.69"/>
-<circle cx="96" cy="10" r="2" fill="#fff" opacity="0.51"/>
-<circle cx="202" cy="111" r="1" fill="#fff" opacity="0.90"/>
-<circle cx="128" cy="47" r="1" fill="#fff" opacity="0.74"/><g transform="translate(38.0 32.0) scale(0.640)" filter="url(#glow)">
+<filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3" result="b"/><feFlood flood-color="#E0B030" flood-opacity=".35" result="f"/><feComposite in="f" in2="b" operator="in" result="cg"/><feMerge><feMergeNode in="cg"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+<filter id="tglow" x="-20%" y="-50%" width="140%" height="200%"><feGaussianBlur stdDeviation="6" result="b"/><feFlood flood-color="#E0B030" flood-opacity=".55" result="f"/><feComposite in="f" in2="b" operator="in" result="cg"/><feMerge><feMergeNode in="cg"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+<radialGradient id="neb" cx=".5" cy=".3" r=".6"><stop offset="0" stop-color="#E0B030" stop-opacity=".13"/><stop offset="1" stop-color="#E0B030" stop-opacity="0"/></radialGradient>
+<linearGradient id="streak" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".35" stop-color="#E0B030" stop-opacity="1"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+</defs><rect width="560" height="140" rx="14" fill="#05060a"/><rect width="560" height="140" rx="14" fill="url(#neb)"/><circle cx="259" cy="52" r="1" fill="#fff" opacity="0.37"/>
+<circle cx="379" cy="47" r="1.4" fill="#fff" opacity="0.83"/>
+<circle cx="45" cy="78" r="2" fill="#fff" opacity="0.71"/>
+<circle cx="408" cy="24" r="1.4" fill="#fff" opacity="0.87"/>
+<circle cx="237" cy="24" r="0.8" fill="#fff" opacity="0.32"/>
+<circle cx="284" cy="129" r="2" fill="#fff" opacity="0.29"/>
+<circle cx="386" cy="111" r="0.8" fill="#fff" opacity="0.85"/>
+<circle cx="115" cy="31" r="1.4" fill="#fff" opacity="0.83"/>
+<circle cx="433" cy="128" r="1.4" fill="#fff" opacity="0.43"/>
+<circle cx="453" cy="28" r="0.8" fill="#fff" opacity="0.82"/>
+<circle cx="31" cy="53" r="1.4" fill="#fff" opacity="0.34"/>
+<circle cx="133" cy="103" r="0.8" fill="#fff" opacity="0.88"/>
+<circle cx="2" cy="107" r="1" fill="#fff" opacity="0.83"/>
+<circle cx="114" cy="1" r="0.8" fill="#fff" opacity="0.34"/>
+<circle cx="514" cy="70" r="2" fill="#fff" opacity="0.57"/>
+<circle cx="516" cy="59" r="1.4" fill="#fff" opacity="0.37"/>
+<circle cx="428" cy="98" r="1" fill="#fff" opacity="0.36"/>
+<circle cx="341" cy="134" r="0.8" fill="#fff" opacity="0.43"/>
+<circle cx="383" cy="119" r="1" fill="#fff" opacity="0.73"/>
+<circle cx="322" cy="5" r="1.4" fill="#fff" opacity="0.87"/>
+<circle cx="133" cy="86" r="0.8" fill="#fff" opacity="0.73"/>
+<circle cx="474" cy="73" r="2" fill="#fff" opacity="0.75"/>
+<circle cx="49" cy="49" r="2" fill="#fff" opacity="0.49"/>
+<circle cx="118" cy="28" r="2" fill="#fff" opacity="0.73"/>
+<circle cx="212" cy="85" r="0.8" fill="#fff" opacity="0.53"/>
+<circle cx="120" cy="62" r="1" fill="#fff" opacity="0.78"/>
+<circle cx="172" cy="40" r="2" fill="#fff" opacity="0.76"/>
+<circle cx="14" cy="109" r="1.4" fill="#fff" opacity="0.57"/><g transform="translate(38.0 32.0) scale(0.640)" filter="url(#glow)">
 <line x1="-8" y1="-12" x2="106" y2="114" stroke="url(#streak)" stroke-width="2.5" stroke-linecap="round"/>
-<polygon transform="translate(10.6 0) skewX(-12)" points="14,14 36,14 50,34 64,14 86,14 62,50 86,86 64,86 50,66 36,86 14,86 38,50" fill="#05060a" stroke="#FF9F1C" stroke-width="4" stroke-linejoin="round"/>
-<path d="M30 112 L50 98 L70 112" fill="none" stroke="#FF9F1C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></g><text x="130" y="82" font-family="'Archivo Black','Inter Tight','Helvetica Neue',Arial,sans-serif" font-weight="900" font-size="60" letter-spacing="-3"><tspan fill="#8b8b90">Constru</tspan><tspan fill="#f2f2f2">AV</tspan><tspan fill="#FF9F1C">X</tspan></text><text x="132" y="112" text-anchor="start" font-family="'JetBrains Mono','DejaVu Sans Mono',monospace" font-size="12" fill="#8b8b90" letter-spacing="5">GRUPO <tspan fill="#FF9F1C">X</tspan> · TEAM <tspan fill="#FF9F1C">X</tspan></text></svg>
+<polygon transform="translate(10.6 0) skewX(-12)" points="14,14 36,14 50,34 64,14 86,14 62,50 86,86 64,86 50,66 36,86 14,86 38,50" fill="#05060a" stroke="#E0B030" stroke-width="4" stroke-linejoin="round"/>
+<path d="M30 112 L50 98 L70 112" fill="none" stroke="#C8473D" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></g><text x="130" y="82" font-family="'Archivo Black','Inter Tight','Helvetica Neue',Arial,sans-serif" font-weight="900" font-size="60" letter-spacing="-3"><tspan fill="#8b8b90">Constru</tspan><tspan fill="#f2f2f2">AV</tspan><tspan fill="#E0B030">X</tspan></text><text x="132" y="112" text-anchor="start" font-family="'JetBrains Mono','DejaVu Sans Mono',monospace" font-size="12" fill="#8b8b90" letter-spacing="5">GRUPO <tspan fill="#E0B030">X</tspan> · TEAM <tspan fill="#E0B030">X</tspan></text></svg>
