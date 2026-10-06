@@ -33,7 +33,7 @@
 
 ## ConstruAVX
 
-> **Símbolo propio: monograma CX.** La C nace sólida, con el mismo trazo que la X, y hacia la X se rompe en rayas cada vez más cortas y luego en puntos que se funden con la X; la X se difumina por su lado izquierdo. El monograma va dentro de un hexágono con una abertura en el borde (referencia de obra). El nombre va en dos tonos: CONSTRU en blanco y AVX en degradado, con la frase en mayúsculas espaciadas. Las piezas ya no llevan estrellas de fondo. ProduAVX conserva la X sola, con su degradado azul→verde.
+> **Símbolo propio: cubo CX.** Un hexágono isométrico formado por tres piezas: la cara izquierda es la **C** (bloque con degradado amarillo→rojo y una muesca abierta hacia la derecha), la cara derecha es la **X** (blanca, con X en negativo) y una **V** blanca hace de base del cubo. El nombre va en dos tonos: CONSTRU en blanco y AVX en degradado, con la frase en mayúsculas espaciadas. Sin estrellas de fondo. ProduAVX conserva la X de cintas con degradado azul→verde.
 
 - **Nombre:** ConstruAVX
 - **Usuario sugerido:** `@construavx`
