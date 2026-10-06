@@ -100,4 +100,40 @@ write("produavx-basic-mark-mono.svg", svg(200, 200, basic("#000000", None, dot=F
 for name, ink, tag in (("produavx-basic-logo.svg", "#eeeefa", "#9393b0"), ("produavx-basic-logo-light.svg", "#12121f", "#5b5b78")):
     wm, wend = wordmark("b", ink, ink, tag)
     write(name, svg(int(wend) + 12, 200, basic(ink, None) + wm))
+
+# 5) Familia CÓMIC RETRO: letras de bloque rojas con extrusión amarilla y contorno negro
+# (técnica inspirada en logotipos de cómic con relieve; geometría propia de A y X, profundidad hacia abajo-derecha)
+COMIC_RED, COMIC_YEL, COMIC_INK = "#e8322c", "#ffd60a", "#111111"
+A_OUT = [(14, 150), (48, 42), (84, 42), (118, 150), (92, 150), (85, 126), (47, 126), (40, 150)]
+A_HOLE = [(55, 104), (77, 104), (66, 68)]
+X_OUT = [(112, 42), (138, 42), (150, 66), (162, 42), (188, 42), (164, 96), (188, 150), (162, 150), (150, 126), (138, 150), (112, 150), (136, 96)]
+
+
+def extrude(poly, dx, dy, yel, ink, sw):
+    """Caras laterales de la extrusión: solo aristas que miran hacia (dx, dy)."""
+    area = sum(poly[i][0] * poly[(i + 1) % len(poly)][1] - poly[(i + 1) % len(poly)][0] * poly[i][1] for i in range(len(poly)))
+    sign = 1 if area > 0 else -1
+    out = ""
+    for i in range(len(poly)):
+        (x0, y0), (x1, y1) = poly[i], poly[(i + 1) % len(poly)]
+        nx, ny = (y1 - y0) * sign, -(x1 - x0) * sign  # normal exterior
+        if nx * dx + ny * dy > 0:
+            out += (f'<path d="M{x0} {y0}L{x1} {y1}L{x1 + dx} {y1 + dy}L{x0 + dx} {y0 + dy}Z" fill="{yel}" stroke="{ink}" '
+                    f'stroke-width="{sw}" stroke-linejoin="round"/>')
+    return out
+
+
+def comic(red=COMIC_RED, yel=COMIC_YEL, ink=COMIC_INK, sw=3.6, d=15):
+    dx, dy = d, d * .9
+    ext = extrude(A_OUT, dx, dy, yel, ink, sw) + extrude(X_OUT, dx, dy, yel, ink, sw)
+    face = lambda pts: "M" + "L".join(f"{x} {y}" for x, y in pts) + "Z"
+    faces = (f'<path d="{face(A_OUT)} {face(A_HOLE)}" fill="{red}" fill-rule="evenodd" stroke="{ink}" stroke-width="{sw}" stroke-linejoin="round"/>'
+             f'<path d="{face(X_OUT)}" fill="{red}" stroke="{ink}" stroke-width="{sw}" stroke-linejoin="round"/>')
+    return f'<g transform="translate(-2 4)">{ext}{faces}</g>'
+
+
+write("produavx-comic-mark.svg", svg(210, 200, comic()))
+d1, wend = text_path("ProduAVX", "InterDisplay-ExtraBold.otf", 96, 232, 124, -1)
+write("produavx-comic-logo.svg", svg(int(wend) + 14, 200, comic() + f'<path d="{d1}" fill="#eeeefa" stroke="{COMIC_INK}" stroke-width="0"/>'))
+write("produavx-comic-logo-light.svg", svg(int(wend) + 14, 200, comic() + f'<path d="{d1}" fill="#12121f"/>'))
 print("ok")

@@ -29,3 +29,6 @@ Se exploraron tres direcciones (A sólido · B ligadura · C monolínea); el usu
 
 ## Logo BÁSICO (alternativa, pendiente de elegir)
 AX plano en un solo color (blanco roto `#eeeefa` / tinta `#12121f`), sin degradado, con un **punto "tally" mitad rojo `#ff3b3b` / mitad verde `#2ee66b`** (luz de REC/listo) arriba a la derecha de la X. Archivos `grupo-x/assets/img/produavx-basic-*.svg` (mark, mark-light, mark-mono sin punto, logo, logo-light), generados por `build_logo.py`. El sitio sigue usando el logo C + A hasta que el usuario decida.
+
+## Logo CÓMIC RETRO (alternativa, referencia: logotipos de cómic con relieve; solo la técnica, no se copia ninguna marca ajena)
+Letras de bloque **AX** en rojo `#e8322c`, extrusión amarilla `#ffd60a` hacia abajo-derecha y contorno negro `#111`. Archivos `grupo-x/assets/img/produavx-comic-{mark,logo,logo-light}.svg` (generados por `build_logo.py`). Pendiente de elegir; el sitio sigue con C + A.
