@@ -32,3 +32,8 @@ AX plano en un solo color (blanco roto `#eeeefa` / tinta `#12121f`), sin degrada
 
 ## Logo CÓMIC RETRO (alternativa, referencia: logotipos de cómic con relieve; solo la técnica, no se copia ninguna marca ajena)
 Letras de bloque **AX** en rojo `#e8322c`, extrusión amarilla `#ffd60a` hacia abajo-derecha y contorno negro `#111`. Archivos `grupo-x/assets/img/produavx-comic-{mark,logo,logo-light}.svg` (generados por `build_logo.py`). Pendiente de elegir; el sitio sigue con C + A.
+
+## Logo FINAL (versión de marca + Instagram; paleta cálida, inspirada en ilustración de referencia del hermano del usuario — solo ideas, no se copia el personaje)
+AX de bloque con extrusión oscura, relleno degradado amarillo `#ffd166` → naranja `#ff8a1f` → rojo `#d62718`, contorno `#1a0404`, **cresta de 3 llamas** sobre la X, **chispa de 4 puntas**, **toque verde** `#3fae49` (tallo) sobre la A, disco con brillo rojo oscuro y aro naranja→amarillo. Wordmark "ProduAVX" Inter Display ExtraBold crema `#fff1d6` + lema naranja.
+Archivos: `grupo-x/assets/img/produavx-final-{mark,logo,mono-white,mono-black}.svg` y `grupo-x/assets/img/instagram/` (`avatar.png` 1080, `avatar-720.png`, `destacado-{reels,audio,set}.png` 1080×1920). Se generan con `python3 grupo-x/tools/build_final.py` + `NODE_PATH=$(npm root -g) node grupo-x/tools/export_instagram.js`.
+**Pendiente:** el sitio aún usa la paleta cian/violeta; decidir si se re-tematiza a la paleta cálida del logo final.
