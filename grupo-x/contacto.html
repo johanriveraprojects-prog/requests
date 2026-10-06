@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contacto | Grupo X Team X</title>
+<meta name="description" content="Contacta a Grupo X Team X, ConstruX o ProduAVX.">
+<meta property="og:title" content="Contacto | Grupo X Team X">
+<meta property="og:description" content="Contacta a Grupo X Team X, ConstruX o ProduAVX.">
+<meta name="theme-color" content="#0b0b0d">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/base.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="logo" href="index.html" aria-label="Grupo X Team X">
+      <span class="logo-mark">X</span>
+      <span>Grupo X<small>Team X</small></span>
+    </a>
+    <ul class="menu" id="menu"><li><a href="index.html" data-i18n="nav.home">Inicio</a></li><li><a href="construx.html" data-i18n="nav.construx">ConstruX</a></li><li><a href="produavx.html" data-i18n="nav.produavx">ProduAVX</a></li><li><a href="network.html" data-i18n="nav.network">.Network</a></li><li><a href="contacto.html" aria-current="page" data-i18n="nav.contact">Contacto</a></li></ul>
+    <div class="tools">
+      <div class="lang" role="group" aria-label="Language"><button data-lang="es" aria-pressed="true">ES</button><button data-lang="en" aria-pressed="false">EN</button></div>
+      <button class="burger" aria-label="Menu" aria-expanded="false" aria-controls="menu">☰</button>
+    </div>
+  </div>
+</header>
+<main id="main">
+
+<section class="hero"><div class="wrap" style="position:relative">
+  <p class="eyebrow">Grupo X Team X</p>
+  <h1 data-i18n="contact.title"></h1>
+  <p class="lead" style="margin-top:22px" data-i18n="contact.lead"></p>
+</div></section>
+<section class="alt"><div class="wrap" style="max-width:680px">
+  <form id="contact-form" novalidate>
+    <label><span data-i18n="form.name"></span><input name="name" autocomplete="name" required></label>
+    <label><span data-i18n="form.email"></span><input name="email" type="email" autocomplete="email" required></label>
+    <label><span data-i18n="form.brand"></span><select name="brand">
+      <option value="ConstruX" data-i18n="form.opt.cx"></option><option value="ProduAVX" data-i18n="form.opt.av"></option>
+      <option value="Grupo X" data-i18n="form.opt.both"></option><option value="Partner" data-i18n="form.opt.partner"></option></select></label>
+    <label><span data-i18n="form.msg"></span><textarea name="msg" required></textarea></label>
+    <button class="btn btn-primary" type="submit" data-i18n="form.send"></button>
+    <p class="form-msg" role="status" aria-live="polite"></p>
+  </form>
+</div></section>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a class="logo" href="index.html"><span class="logo-mark">X</span><span>Grupo X<small>Team X</small></span></a>
+        <p style="color:var(--muted);margin-top:14px;max-width:34ch" data-i18n="foot.about">Un equipo trabajando con calidad y organización.</p>
+      </div>
+      <div><h4 data-i18n="foot.brands">Marcas</h4><ul><li><a href="construx.html">ConstruX</a></li><li><a href="produavx.html">ProduAVX</a></li></ul></div>
+      <div><h4 data-i18n="foot.explore">Explorar</h4><ul><li><a href="network.html" data-i18n="nav.network">.Network</a></li><li><a href="contacto.html" data-i18n="nav.contact">Contacto</a></li></ul></div>
+    </div>
+    <div class="copy"><span>© 2026 Grupo X Team X. <span data-i18n="foot.rights">Todos los derechos reservados.</span></span><span data-i18n="foot.note">Grupo X Team X · ConstruX · ProduAVX</span></div>
+  </div>
+</footer>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/i18n.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

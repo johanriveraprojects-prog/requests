@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Network — Ecosistema compartido | Grupo X Team X</title>
+<meta name="description" content="El .Network de Grupo X Team X: base de datos compartida, estadísticas y herramientas de CoWork.">
+<meta property="og:title" content="Network — Ecosistema compartido | Grupo X Team X">
+<meta property="og:description" content="El .Network de Grupo X Team X: base de datos compartida, estadísticas y herramientas de CoWork.">
+<meta name="theme-color" content="#0b0b0d">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/base.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="logo" href="index.html" aria-label="Grupo X Team X">
+      <span class="logo-mark">X</span>
+      <span>Grupo X<small>Team X</small></span>
+    </a>
+    <ul class="menu" id="menu"><li><a href="index.html" data-i18n="nav.home">Inicio</a></li><li><a href="construx.html" data-i18n="nav.construx">ConstruX</a></li><li><a href="produavx.html" data-i18n="nav.produavx">ProduAVX</a></li><li><a href="network.html" aria-current="page" data-i18n="nav.network">.Network</a></li><li><a href="contacto.html" data-i18n="nav.contact">Contacto</a></li></ul>
+    <div class="tools">
+      <div class="lang" role="group" aria-label="Language"><button data-lang="es" aria-pressed="true">ES</button><button data-lang="en" aria-pressed="false">EN</button></div>
+      <button class="burger" aria-label="Menu" aria-expanded="false" aria-controls="menu">☰</button>
+    </div>
+  </div>
+</header>
+<main id="main">
+
+<section class="hero"><div class="bigx" aria-hidden="true">.X</div><div class="wrap" style="position:relative">
+  <p class="eyebrow">Grupo X Team X</p>
+  <h1 data-i18n="net.title"></h1>
+  <p class="lead" style="margin-top:22px" data-i18n="net.lead"></p>
+</div></section>
+<section class="alt"><div class="wrap">
+  <h2 data-i18n="net.projects"></h2>
+  <div class="filters" id="filters" role="group">
+    <button data-f="all" aria-pressed="true" data-i18n="net.f.all"></button>
+    <button data-f="construx" aria-pressed="false" data-i18n="net.f.construx"></button>
+    <button data-f="produavx" aria-pressed="false" data-i18n="net.f.produavx"></button>
+  </div>
+  <div class="card" style="overflow-x:auto"><table>
+    <thead><tr><th data-i18n="net.col.id"></th><th data-i18n="net.col.name"></th><th data-i18n="net.col.brand"></th><th data-i18n="net.col.city"></th><th data-i18n="net.col.status"></th></tr></thead>
+    <tbody id="proj-body"></tbody></table></div>
+  <p style="color:var(--muted);font-size:.85rem;margin-top:10px">⇄ <span data-i18n="net.shared"></span></p>
+</div></section>
+<section><div class="wrap">
+  <h2 data-i18n="net.stats.title"></h2><p class="lead" data-i18n="net.stats.lead"></p>
+  <div class="dash" style="margin-top:28px">
+    <div class="card"><div class="bars" id="reach-bars"></div></div>
+    <div class="card"><h3 data-i18n="net.stats.mix"></h3><div class="bars" id="mix-bars" style="margin-top:14px"></div></div>
+  </div>
+</div></section>
+<section class="alt"><div class="wrap"><h2 data-i18n="net.docs.title"></h2><div class="card"><ul id="docs" style="list-style:none"></ul></div></div></section>
+<section><div class="wrap"><h2 data-i18n="net.cowork.title"></h2><div style="margin-top:26px"><div class="grid g4"><div class="card reveal"><div class="icon" aria-hidden="true">🗂️</div><h3 data-i18n="net.cw1.t"></h3><p data-i18n="net.cw1.p"></p></div><div class="card reveal"><div class="icon" aria-hidden="true">🖼️</div><h3 data-i18n="net.cw2.t"></h3><p data-i18n="net.cw2.p"></p></div><div class="card reveal"><div class="icon" aria-hidden="true">📅</div><h3 data-i18n="net.cw3.t"></h3><p data-i18n="net.cw3.p"></p></div><div class="card reveal"><div class="icon" aria-hidden="true">📣</div><h3 data-i18n="net.cw4.t"></h3><p data-i18n="net.cw4.p"></p></div></div></div></div></section>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a class="logo" href="index.html"><span class="logo-mark">X</span><span>Grupo X<small>Team X</small></span></a>
+        <p style="color:var(--muted);margin-top:14px;max-width:34ch" data-i18n="foot.about">Un equipo trabajando con calidad y organización.</p>
+      </div>
+      <div><h4 data-i18n="foot.brands">Marcas</h4><ul><li><a href="construx.html">ConstruX</a></li><li><a href="produavx.html">ProduAVX</a></li></ul></div>
+      <div><h4 data-i18n="foot.explore">Explorar</h4><ul><li><a href="network.html" data-i18n="nav.network">.Network</a></li><li><a href="contacto.html" data-i18n="nav.contact">Contacto</a></li></ul></div>
+    </div>
+    <div class="copy"><span>© 2026 Grupo X Team X. <span data-i18n="foot.rights">Todos los derechos reservados.</span></span><span data-i18n="foot.note">Grupo X Team X · ConstruX · ProduAVX</span></div>
+  </div>
+</footer>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/i18n.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
