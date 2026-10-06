@@ -1,9 +1,41 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 120" role="img" aria-label="ConstruAVX">
-  <rect x="8" y="8" width="104" height="104" rx="22" fill="#14213D"/>
-  <path d="M28 94 L60 24" fill="none" stroke="#FCA311" stroke-width="12" stroke-linecap="round"/>
-  <path d="M60 24 L92 94" fill="none" stroke="#FCA311" stroke-width="12" stroke-linecap="round"/>
-  <path d="M43 62 L60 86 L77 62" fill="none" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
-  <rect x="38" y="98" width="44" height="6" rx="3" fill="#FCA311"/>
-  <text x="130" y="76" font-family="Montserrat, 'Segoe UI', Arial, sans-serif" font-size="54" font-weight="800" fill="#14213D" letter-spacing="-1">Constru<tspan fill="#FCA311">AVX</tspan></text>
-  <text x="132" y="100" font-family="Montserrat, 'Segoe UI', Arial, sans-serif" font-size="14" font-weight="600" fill="#6B7280" letter-spacing="4">CONSTRUCCIÓN INTELIGENTE</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 140" role="img" aria-label="ConstruAVX"><defs>
+<filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+<filter id="tglow" x="-20%" y="-50%" width="140%" height="200%"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+<linearGradient id="streak" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".35" stop-color="#fff" stop-opacity=".9"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+</defs>
+<rect width="560" height="140" rx="14" fill="#05060a"/>
+<circle cx="42" cy="107" r="1.4" fill="#fff" opacity="0.52"/>
+<circle cx="529" cy="60" r="2" fill="#fff" opacity="0.43"/>
+<circle cx="498" cy="90" r="1" fill="#fff" opacity="0.44"/>
+<circle cx="88" cy="25" r="0.8" fill="#fff" opacity="0.57"/>
+<circle cx="137" cy="105" r="2" fill="#fff" opacity="0.26"/>
+<circle cx="364" cy="127" r="1" fill="#fff" opacity="0.88"/>
+<circle cx="545" cy="73" r="1.4" fill="#fff" opacity="0.75"/>
+<circle cx="453" cy="91" r="1.4" fill="#fff" opacity="0.78"/>
+<circle cx="493" cy="22" r="2" fill="#fff" opacity="0.78"/>
+<circle cx="2" cy="120" r="1" fill="#fff" opacity="0.40"/>
+<circle cx="77" cy="0" r="1" fill="#fff" opacity="0.65"/>
+<circle cx="412" cy="61" r="1.4" fill="#fff" opacity="0.85"/>
+<circle cx="145" cy="112" r="1.4" fill="#fff" opacity="0.34"/>
+<circle cx="107" cy="75" r="1.4" fill="#fff" opacity="0.44"/>
+<circle cx="67" cy="54" r="1" fill="#fff" opacity="0.87"/>
+<circle cx="214" cy="138" r="0.8" fill="#fff" opacity="0.79"/>
+<circle cx="79" cy="64" r="1.4" fill="#fff" opacity="0.41"/>
+<circle cx="54" cy="113" r="1" fill="#fff" opacity="0.63"/>
+<circle cx="401" cy="95" r="1" fill="#fff" opacity="0.27"/>
+<circle cx="56" cy="38" r="2" fill="#fff" opacity="0.69"/>
+<circle cx="258" cy="19" r="1" fill="#fff" opacity="0.82"/>
+<circle cx="160" cy="34" r="0.8" fill="#fff" opacity="0.84"/>
+<circle cx="336" cy="2" r="1" fill="#fff" opacity="0.58"/>
+<circle cx="440" cy="87" r="1" fill="#fff" opacity="0.29"/>
+<circle cx="386" cy="31" r="1" fill="#fff" opacity="0.54"/>
+<circle cx="6" cy="64" r="2" fill="#fff" opacity="0.48"/>
+<circle cx="533" cy="93" r="2" fill="#fff" opacity="0.78"/>
+<circle cx="469" cy="9" r="2" fill="#fff" opacity="0.48"/>
+<g transform="translate(38.0 32.0) scale(0.640)" filter="url(#glow)">
+<line x1="-8" y1="-12" x2="106" y2="114" stroke="url(#streak)" stroke-width="2" stroke-linecap="round"/>
+<polygon transform="translate(10.6 0) skewX(-12)" points="14,14 36,14 50,34 64,14 86,14 62,50 86,86 64,86 50,66 36,86 14,86 38,50" fill="#05060a" stroke="#fff" stroke-width="4" stroke-linejoin="round"/>
+<path d="M30 112 L50 98 L70 112" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity=".9"/></g>
+<text x="130" y="82" font-family="'Archivo Black','Inter Tight','Helvetica Neue',Arial,sans-serif" font-weight="900" font-size="60" letter-spacing="-3"><tspan fill="#8b8b90">Constru</tspan><tspan fill="#f2f2f2">AVX</tspan></text>
+<text x="132" y="112" font-family="'JetBrains Mono','DejaVu Sans Mono',monospace" font-size="12" fill="#8b8b90" letter-spacing="5">GRUPO X · TEAM X</text>
 </svg>
