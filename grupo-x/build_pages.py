@@ -15,7 +15,7 @@ def head(page):
     title, desc, brand, mark, name = META[page]
     items = "".join(
         f'<li><a href="{h}"{" aria-current=\"page\"" if h == page else ""} data-i18n="{k}">{d}</a></li>' for h, k, d in NAV)
-    markhtml = '<img class="logo-img" src="assets/img/produavx-mark.svg" alt="" width="38" height="38">'
+    markhtml = '<img class="logo-img" src="assets/img/produavx-mark-small.svg" alt="" width="38" height="38">'
     icon = "produavx-favicon.svg"
     dattr = "" if brand == "gx" else f' data-brand="{brand}"'
     return f'''<!doctype html>
@@ -57,7 +57,7 @@ FOOT = '''</main>
   <div class="wrap">
     <div class="foot">
       <div>
-        <a class="logo" href="index.html"><img class="logo-img" src="assets/img/produavx-mark.svg" alt="" width="38" height="38"><span>ProduAVX<small>Grupo X Team X</small></span></a>
+        <a class="logo" href="index.html"><img class="logo-img" src="assets/img/produavx-mark-small.svg" alt="" width="38" height="38"><span>ProduAVX<small>Grupo X Team X</small></span></a>
         <p style="color:var(--muted);margin-top:14px;max-width:38ch" data-i18n="foot.parent"></p>
       </div>
       <div><h4 data-i18n="foot.explore">Explorar</h4><ul><li><a href="index.html#servicios" data-i18n="nav.services"></a></li><li><a href="index.html#proyectos" data-i18n="nav.work"></a></li><li><a href="panel.html" data-i18n="nav.network"></a></li></ul></div>
