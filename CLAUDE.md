@@ -15,7 +15,7 @@
 `index.html` (hero, servicios, proceso, proyectos, marca madre) · `panel.html` (proyectos, estadísticas, documentos, herramientas) · `contacto.html` (formulario mailto, correo placeholder `hola@grupox.team`). Tema vía `data-brand="produavx"`; estilos en `assets/css/base.css`; textos ES/EN en `assets/js/i18n.js`; datos demo en `assets/js/data.js`.
 
 ## Logo
-Monograma **PX** ("Producción X" / "Producción AVX"): P con bowl + X de cinta de doble trazo entrelazada, dentro de un anillo abierto tipo lente/disco. Gradiente cian `#46e0ff` → violeta `#9a6bff`. Referencias del usuario: X de cinta en dos trazos y P en anillo/lente.
+Monograma **AX** (**A**udio **V**isual **X**; decisión del usuario, reemplaza al PX anterior): A de cinta de doble trazo + X entrelazada, dentro de un anillo abierto tipo lente/disco. Gradiente cian `#46e0ff` → violeta `#9a6bff`. Referencias del usuario: X de cinta en dos trazos y letra en anillo/lente.
 Wordmark: "Produ" (Inter Display Medium) + "AVX" (Bold, gradiente) con lema "AUDIO · VIDEO · POST".
 Kit en `grupo-x/assets/img/` (se regenera con `python3 grupo-x/tools/build_logo.py`, requiere `pip install fonttools`):
 `produavx-logo.svg` (lockup, fondo oscuro) · `produavx-logo-light.svg` (fondo claro) · `produavx-mark.svg` (monograma, header/hero) · `produavx-mark-white.svg` / `-black.svg` (monocromo) · `produavx-favicon.svg` (simplificado, trazo grueso).

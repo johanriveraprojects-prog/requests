@@ -9,18 +9,22 @@ FONTS = "/usr/share/fonts/opentype/inter/"
 CYAN, VIOLET = "#46e0ff", "#9a6bff"
 
 
-def mark(uid, fill, ring, detail=True, sw=20, hole=5.5):
-    """Monograma PX. fill/ring: color sólido o url(#grad). detail=False -> versión simple (favicon)."""
+def mark(uid, fill, ring, detail=True, sw=19, hole=5.2):
+    """Monograma AX (Audio Visual X): A de cinta + X entrelazada, dentro de un anillo abierto.
+    fill/ring: color sólido o url(#grad). detail=False -> versión simple (favicon)."""
     cut = lambda d: f'<path d="{d}" stroke="#000" stroke-width="{hole}"/>' if detail else ""
     return f'''<mask id="m{uid}" maskUnits="userSpaceOnUse" x="0" y="0" width="200" height="200">
-      <g fill="none" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M44 156V46H76C108 46 108 100 76 100H44" stroke="#fff" stroke-width="{sw}"/>
-        {cut("M44 148V54M52 46H76C100 46 100 100 76 100H52")}
-        <path d="M92 70L168 158" stroke="#fff" stroke-width="{sw}"/>
-        {cut("M95 73L165 154")}
-        <path d="M170 62L90 158" stroke="#000" stroke-width="{sw + 7}"/>
-        <path d="M170 62L90 158" stroke="#fff" stroke-width="{sw}"/>
-        {cut("M167 66L93 154")}
+      <g fill="none" stroke-linecap="round" stroke-linejoin="round" transform="translate(100 100) scale(.85) translate(-103 -102)">
+        <path d="M24 158L60 50L96 158" stroke="#fff" stroke-width="{sw}"/>
+        <path d="M44 124H76" stroke="#fff" stroke-width="{sw * .6:.1f}"/>
+        {cut("M26.8 149.5L57.2 58.5M62.8 58.5L93.2 149.5")}
+        <g transform="translate(6 0)">
+        <path d="M106 64L174 154" stroke="#fff" stroke-width="{sw}"/>
+        {cut("M111.5 71.3L168.5 146.7")}
+        <path d="M178 64L102 156" stroke="#000" stroke-width="{sw + 7}"/>
+        <path d="M178 64L102 156" stroke="#fff" stroke-width="{sw}"/>
+        {cut("M172.4 71.2L107.6 149.2")}
+        </g>
       </g></mask>
     <circle cx="100" cy="100" r="93" fill="none" stroke="{ring}" stroke-width="5" stroke-linecap="round" stroke-dasharray="500 80" transform="rotate(-62 100 100)"/>
     <rect width="200" height="200" fill="{fill}" mask="url(#m{uid})"/>'''
@@ -76,5 +80,5 @@ for name, col in (("produavx-mark-white.svg", "#ffffff"), ("produavx-mark-black.
 # 4) Favicon simplificado (trazo grueso, sin hueco de cinta, sin anillo fino)
 write("produavx-favicon.svg", svg(200, 200,
       '<rect width="200" height="200" rx="40" fill="#07070d"/><g transform="translate(24 24) scale(.88)">'
-      + mark("f", "url(#gf)", "url(#gf)", detail=False, sw=26) + "</g>", grad("f")))
+      + mark("f", "url(#gf)", "url(#gf)", detail=False, sw=25) + "</g>", grad("f")))
 print("ok")
