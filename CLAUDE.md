@@ -26,3 +26,6 @@
 Fuentes consultadas por búsqueda (varias páginas bloqueadas; no se vieron logos reales de productoras de Instagram): [Namecheap](https://www.namecheap.com/guru-guides/logo-design-trends/), [99designs video production](https://99designs.com/inspiration/logos/video-production), [LogoLounge 2026](https://www.logolounge.com/trend/2026-logo-trend-report), [Dribbble video-production-logo](https://dribbble.com/tags/video-production-logo).
 Reglas derivadas: monograma en círculo (avatar de Instagram, 1:1, subir ≥720 px, sin texto pequeño); letras superpuestas/ligaduras con personalidad; paleta casi negro + blanco roto + un acento, degradados suaves; sistema adaptable (marca, versión simple, animada, wordmark) y versión monocroma.
 Se exploraron tres direcciones (A sólido · B ligadura · C monolínea); el usuario eligió C + A pequeña.
+
+## Logo BÁSICO (alternativa, pendiente de elegir)
+AX plano en un solo color (blanco roto `#eeeefa` / tinta `#12121f`), sin degradado, con un **punto "tally" mitad rojo `#ff3b3b` / mitad verde `#2ee66b`** (luz de REC/listo) arriba a la derecha de la X. Archivos `grupo-x/assets/img/produavx-basic-*.svg` (mark, mark-light, mark-mono sin punto, logo, logo-light), generados por `build_logo.py`. El sitio sigue usando el logo C + A hasta que el usuario decida.

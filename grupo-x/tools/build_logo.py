@@ -81,4 +81,23 @@ for name, c1, tag in (("produavx-logo.svg", "#eeeefa", "#9393b0"), ("produavx-lo
 # 3) Monocromo sin disco (marca de agua, créditos, grabado)
 for name, col in (("produavx-mark-white.svg", "#ffffff"), ("produavx-mark-black.svg", "#000000")):
     write(name, svg(200, 200, mark("m", col, disc=None)))
+
+# 4) Familia BÁSICA: AX plano de un solo color + punto tally mitad rojo / mitad verde (luz de cámara)
+RED, GREEN = "#ff3b3b", "#2ee66b"
+
+
+def basic(ink, bg=None, dot=True):
+    disc = f'<rect width="200" height="200" rx="44" fill="{bg}"/>' if bg else ""
+    tally = (f'<defs><clipPath id="tl"><circle cx="178" cy="46" r="11"/></clipPath></defs>'
+             f'<g clip-path="url(#tl)"><rect x="160" y="30" width="18" height="32" fill="{RED}"/><rect x="178" y="30" width="18" height="32" fill="{GREEN}"/></g>') if dot else ""
+    return (disc + f'<g fill="none" stroke="{ink}" stroke-width="13" stroke-linejoin="miter">'
+            '<path d="M22 152L58 56L94 152"/><path d="M38 122H78"/><path d="M110 56L162 152M162 56L110 152"/></g>' + tally)
+
+
+write("produavx-basic-mark.svg", svg(200, 200, basic("#eeeefa", "#0b0b1c")))
+write("produavx-basic-mark-light.svg", svg(200, 200, basic("#12121f", "#ffffff")))
+write("produavx-basic-mark-mono.svg", svg(200, 200, basic("#000000", None, dot=False)))
+for name, ink, tag in (("produavx-basic-logo.svg", "#eeeefa", "#9393b0"), ("produavx-basic-logo-light.svg", "#12121f", "#5b5b78")):
+    wm, wend = wordmark("b", ink, ink, tag)
+    write(name, svg(int(wend) + 12, 200, basic(ink, None) + wm))
 print("ok")
