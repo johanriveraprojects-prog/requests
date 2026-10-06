@@ -4,7 +4,7 @@ Del 07-10-2026 al 05-11-2026. Borrador 2026-10-06.
 ## Reglas
 - **Solo contenido propio, con permiso o con crédito.** Nada de clips de terceros (riesgo de copyright, como el de Duki–Obie). Si hay música de un miembro, tener su visto bueno por escrito.
 - **Sin usuarios, teléfonos ni enlaces inventados.** Donde dice "link", se completa cuando entreguen los datos.
-- **Ritmo:** 5 piezas de feed a la semana (lun-sáb salvo un descanso) + Stories diarias. Los domingos solo Stories.
+- **Ritmo:** 6 piezas de feed a la semana + Stories diarias. Los martes (días 7, 14, 21 y 28) son de solo Stories.
 - **Hora:** 7 pm local del público como punto de partida. Ajustar con la analítica de la primera semana.
 - **Estética:** fondo negro, blanco, un acento neón verde. Ilustración B/N con ojos con lágrima.
 - **Cuenta:** dejar de seguir cuentas en masa y archivar los 4 posts actuales de terceros antes del día 1.
@@ -12,12 +12,12 @@ Del 07-10-2026 al 05-11-2026. Borrador 2026-10-06.
 ## Pilares y su peso
 | Pilar | Objetivo | Piezas |
 |---|---|---|
-| Productores / beats | Atraer a la cadena que menos se ve | 5 |
+| Productores / beats | Atraer a la cadena que menos se ve | 4 |
 | Artistas del club | Dar escenario a los miembros | 4 |
 | Behind the scenes | Mostrar el proceso (clave en el caso Fanta Rosario) | 3 |
 | Playlist semanal | Hábito de regreso y Spotify | 4 |
 | Cultura | Autoridad y búsquedas | 4 |
-| Comunidad / colabs | Conexión entre roles, el corazón del club | 8 |
+| Comunidad / colabs | Conexión entre roles, el corazón del club (incluye 4 días de solo Stories) | 9 |
 | Identidad | Manifiesto y resumen | 2 |
 
 ## Calendario
