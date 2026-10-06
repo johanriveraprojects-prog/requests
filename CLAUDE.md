@@ -19,3 +19,8 @@ Monograma **AX** (**A**udio **V**isual **X**; decisión del usuario, reemplaza a
 Wordmark: "Produ" (Inter Display Medium) + "AVX" (Bold, gradiente) con lema "AUDIO · VIDEO · POST".
 Kit en `grupo-x/assets/img/` (se regenera con `python3 grupo-x/tools/build_logo.py`, requiere `pip install fonttools`):
 `produavx-logo.svg` (lockup, fondo oscuro) · `produavx-logo-light.svg` (fondo claro) · `produavx-mark.svg` (monograma, header/hero) · `produavx-mark-white.svg` / `-black.svg` (monocromo) · `produavx-favicon.svg` (simplificado, trazo grueso).
+
+## Investigación de logos (oct 2026)
+Fuentes consultadas por búsqueda (varias páginas bloqueadas; no se vieron logos reales de productoras de Instagram): [Namecheap](https://www.namecheap.com/guru-guides/logo-design-trends/), [99designs video production](https://99designs.com/inspiration/logos/video-production), [LogoLounge 2026](https://www.logolounge.com/trend/2026-logo-trend-report), [Dribbble video-production-logo](https://dribbble.com/tags/video-production-logo).
+Reglas derivadas: monograma en círculo (avatar de Instagram, 1:1, subir ≥720 px, sin texto pequeño); letras superpuestas/ligaduras con personalidad; paleta casi negro + blanco roto + un acento, degradados suaves; sistema adaptable (marca, versión simple, animada, wordmark) y versión monocroma.
+Conceptos AX en `grupo-x/assets/img/concepts/` (A sólido · B ligadura · C monolínea; se regeneran con `python3 grupo-x/tools/build_concepts.py`). **Pendiente: el usuario elige dirección** antes de reemplazar el logo del sitio.

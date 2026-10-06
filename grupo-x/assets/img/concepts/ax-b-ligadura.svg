@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="ProduAVX AX"><defs><linearGradient id="g" gradientUnits="userSpaceOnUse" x1="30" y1="40" x2="175" y2="160"><stop offset="0" stop-color="#46e0ff"/><stop offset="1" stop-color="#9a6bff"/></linearGradient><mask id="ma"><g fill="none" stroke="#fff" stroke-width="20"><path d="M26 152L60 54L94 152"/><path d="M42 122H78" stroke-width="13"/></g></mask></defs><circle cx="100" cy="100" r="98" fill="#0b0b1c"/><g transform="translate(106 102) scale(.9) translate(-92 -102)" fill="none">
+  <g stroke="#46e0ff" stroke-width="20"><path d="M26 152L60 54L94 152"/><path d="M42 122H78" stroke-width="13"/></g>
+  <g stroke="#9a6bff" stroke-width="20" opacity=".95"><path d="M76 54L134 152M134 54L76 152" /></g>
+  <g stroke="#eaf9ff" stroke-width="20" mask="url(#ma)"><path d="M76 54L134 152M134 54L76 152"/></g></g></svg>
