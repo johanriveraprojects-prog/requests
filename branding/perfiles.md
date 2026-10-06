@@ -16,7 +16,7 @@
 | Símbolo | "X" con trazo diagonal | La misma "X" en ámbar + chevron de techo `^` | La misma "X" en turquesa + tres puntos (línea de producción) |
 | Nombre | — | Gris "Constru" + blanco "AV" + **X ámbar** | Gris "Produ" + blanco "AV" + **X turquesa** |
 | Frase ES / EN | Te ayudamos a llegar / We help you get there | Te ayudamos a construir / We help you build | Te ayudamos a producir / We help you produce |
-| Archivos | (los tuyos) | `construavx-logo.svg`, `-avatar.svg`, `-story.svg` | `produavx-logo.svg`, `-avatar.svg`, `-story.svg` |
+| Archivos | (los tuyos) | carpeta `construavx/` | carpeta `produavx/` |
 
 **Reglas de familia**
 - Se mantiene el fondo negro, el resplandor y la jerarquía gris/blanco: la palabra secundaria va en gris y la protagonista en blanco.
@@ -44,7 +44,7 @@
 - **Contacto:** `[correo]` · `[teléfono]` · `[dirección]` · horario `[…]`
 - **Hashtags:** #ConstruAVX #GrupoX #TeamX #Construcción #Obra
 - **Contenido sugerido:** avances de obra, antes/después, proceso de idea a proyecto, preguntas frecuentes de clientes
-- **Foto de perfil:** `construavx-avatar.svg`
+- **Foto de perfil:** `construavx/avatar.svg`
 
 ## ProduAVX
 
@@ -61,7 +61,7 @@
 - **Contacto:** `[correo]` · `[teléfono]` · `[planta / dirección]` · horario `[…]`
 - **Hashtags:** #ProduAVX #GrupoX #TeamX #Producción #Manufactura
 - **Contenido sugerido:** proceso de fabricación, nuevos productos, control de calidad, entregas
-- **Foto de perfil:** `produavx-avatar.svg`
+- **Foto de perfil:** `produavx/avatar.svg`
 
 ---
 
@@ -77,3 +77,16 @@ Ideas de titulares en el estilo de la marca madre:
 - Cada marca nombra a Grupo X y Grupo X enlaza a las dos.
 - Orden de bio: **frase → qué hacemos → EN → marca madre → ciudad**.
 - Avatar con fondo negro; las redes lo recortan en círculo sin cortar la "X".
+
+## Archivos de logo por marca
+
+Cada marca tiene su carpeta (`construavx/`, `produavx/`) con:
+
+| Archivo | Uso |
+|---|---|
+| `simbolo.svg/.png` | Solo la "X" con su detalle, fondo transparente |
+| `wordmark.svg/.png` | Solo el nombre, fondo transparente (pensado para fondos oscuros) |
+| `logo-horizontal.svg/.png` | Símbolo + nombre + firma, con fondo estrellado |
+| `logo-vertical.svg/.png` | Versión apilada con frase ES/EN, con fondo estrellado |
+| `avatar.svg` | Foto de perfil cuadrada |
+| `story.svg` | Plantilla de historia / reel 1080×1920 |
