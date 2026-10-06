@@ -17,6 +17,8 @@ def head(page):
     title, desc, brand, mark, name = META[page]
     items = "".join(
         f'<li><a href="{h}"{" aria-current=\"page\"" if h == page else ""} data-i18n="{k}">{d}</a></li>' for h, k, d in NAV)
+    markhtml = ('<img class="logo-img" src="assets/img/produavx-mark.svg" alt="" width="38" height="38">' if brand == "produavx" else f'<span class="logo-mark">{mark}</span>')
+    icon = "produavx-mark.svg" if brand == "produavx" else "favicon.svg"
     dattr = "" if brand == "gx" else f' data-brand="{brand}"'
     return f'''<!doctype html>
 <html lang="es"{dattr}>
@@ -28,7 +30,7 @@ def head(page):
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{desc}">
 <meta name="theme-color" content="#0b0b0d">
-<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/img/{icon}" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;700&amp;display=swap" rel="stylesheet">
@@ -39,7 +41,7 @@ def head(page):
 <header class="site-header">
   <div class="wrap nav">
     <a class="logo" href="index.html" aria-label="Grupo X Team X">
-      <span class="logo-mark">{mark}</span>
+      {markhtml}
       <span>{name}<small>{"Grupo X Team X" if brand != "gx" else "Team X"}</small></span>
     </a>
     <ul class="menu" id="menu">{items}</ul>
@@ -157,6 +159,7 @@ PAGES["construx.html"] = '''
 
 PAGES["produavx.html"] = '''
 <section class="hero"><div class="bigx" aria-hidden="true">X</div><div class="wrap" style="position:relative">
+  <img class="hero-mark" src="assets/img/produavx-mark.svg" alt="ProduAVX (PX)" width="240" height="240">
   <p class="eyebrow" data-i18n="av.rubro"></p>
   <h1 data-i18n="av.title"></h1>
   <p class="lead" style="margin-top:22px" data-i18n="av.lead"></p>

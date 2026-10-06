@@ -25,3 +25,7 @@ No. Al ser dos rubros, cada una tiene **diseño especializado**. La organizació
 - Stack: HTML/CSS/JS estático, multi-página, ES/EN con selector de idioma.
 - Marca madre neutra (negro/blanco + acento X); ConstruX cálido (concreto/ámbar); ProduAVX cinematográfico (oscuro/cian-violeta).
 - Un único sistema de componentes compartido (`grupo-x/assets/css/base.css`) con tema por marca vía `data-brand`.
+
+## Logo ProduAVX
+- Monograma **PX** ("Producción X" / "Producción AVX"): P con bowl + X de cinta de doble trazo entrelazada, dentro de un anillo tipo lente/disco abierto. Referencias del usuario: X de cinta negra (dos trazos) y P en anillo/lente.
+- Archivo: `grupo-x/assets/img/produavx-mark.svg` (gradiente cian `#46e0ff` → violeta `#9a6bff`). Se usa en header, hero y favicon de `produavx.html`.

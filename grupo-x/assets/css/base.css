@@ -181,3 +181,6 @@ textarea { min-height: 130px; resize: vertical; }
   .g2, .g3, .g4, .stats { grid-template-columns: 1fr; }
   .bar { grid-template-columns: 90px 1fr 46px; }
 }
+
+.logo-img { width: 38px; height: 38px; flex: none; }
+.hero-mark { width: clamp(140px, 22vw, 240px); margin-bottom: 22px; }
