@@ -51,20 +51,17 @@
 
 ## ProduAVX
 
+> Corrección: en el perfil de Grupo X la bio dice "Construcción | Producción AV", así que ProduAVX es **producción audiovisual**.
+
 - **Nombre:** ProduAVX
-- **Usuario sugerido:** `@produavx`
-- **Categoría:** Fabricación / Producción / Servicios industriales
+- **Categoría:** Producción audiovisual / Video y foto
 - **Frase:** Te ayudamos a producir. · We help you produce.
-- **Bio corta (≤150):**
-  Te ayudamos a producir. ⚙️ [Qué producimos]. We help you produce. Parte de @grupox [usuario real] · [Ciudad]
-- **Descripción larga:**
-  ProduAVX convierte tu idea en producto. [Fabricación a medida y por volumen de …] con control de calidad y entregas puntuales. Somos parte de Grupo X.
-- **Productos / servicios:** `[producto 1]` · `[producto 2]` · `[producto 3]`
-- **Llamado a la acción:** "¿Tu proyecto? Empieza aquí / Start here" → `[enlace / WhatsApp]`
-- **Contacto:** `[correo]` · `[teléfono]` · `[planta / dirección]` · horario `[…]`
-- **Hashtags:** #ProduAVX #GrupoX #TeamX #Producción #Manufactura
-- **Contenido sugerido:** proceso de fabricación, nuevos productos, control de calidad, entregas
-- **Foto de perfil:** `produavx/avatar.svg`
+- **Descripción:** ProduAVX es la rama audiovisual de Grupo X: video, foto y contenido para marcas, obras y proyectos. Convertimos tu idea en guion, imagen y sonido, listo para publicar.
+- **Servicios:** `[video corporativo · reels · foto de proyecto · cobertura de obra · edición]` (ajustar a lo que ofrezcan)
+- **Llamado a la acción:** "Cotiza tu producción. Escríbenos por mensaje directo."
+- **Hashtags:** #ProduAVX #GrupoX #TeamX #ProducciónAudiovisual #ElSalvador
+- **Contenido sugerido:** detrás de cámaras, antes/después de piezas, reels de obras de Grupo X, "idea a pantalla"
+- **Foto de perfil:** `produavx/redes/foto-perfil.png`
 
 ---
 
@@ -73,7 +70,7 @@
 Usan el mismo esquema que las piezas de Grupo X: "X" arriba, titular gigante, frase ES, traducción EN y firma.
 Ideas de titulares en el estilo de la marca madre:
 - ConstruAVX: **"¿Tu obra?"** → "Empieza aquí / Start here" · **"PLANO · OBRA · ENTREGA"** → "Te ayudamos a llegar"
-- ProduAVX: **"¿Tu producto?"** → "Empieza aquí / Start here" · **"IDEA · PROTOTIPO · PRODUCCIÓN"** → "Te ayudamos a llegar"
+- ProduAVX: **"¿Tu video?"** → "Empieza aquí / Start here" · **"IDEA · GUION · PANTALLA"** → "Te ayudamos a llegar"
 
 ## Coherencia entre perfiles
 
