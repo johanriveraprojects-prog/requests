@@ -1,0 +1,23 @@
+KIT DE MARCA PRODUAVX
+======================
+Concepto: semáforo 2D. Rojo = REC (con corchetes de visor y una mira de lente negra), ámbar = audio, verde = video.
+Fondo de marca: negro puro.
+
+CARPETAS
+  svg/        Vectoriales: escalan sin perder calidad (impresión, rotulación, edición).
+  png/        PNG de alta resolución con fondo transparente (2400-3200 px de ancho).
+  instagram/  Foto de perfil (2160/1080/720), 4 portadas de destacados 1080x1920, plantillas de post e historia.
+  favicon/    Favicon SVG y PNG 512/192/32/16.
+  index.html  Catálogo con botones para descargar cada archivo.
+
+COLORES
+  Negro #000000 · Blanco roto #EEEEFA · Rojo REC #FF3B30 · Ámbar #FFB300 · Verde #2EE66B · Tinta #12121F
+TIPOGRAFIA
+  Nombre: Inter Display ExtraBold. Lema (AUDIO · VIDEO · POST): Inter Display Bold, espaciado amplio.
+
+USO
+  - Fondo oscuro: logo-horizontal / logo-apilado / icono-transparente.
+  - Fondo claro: variantes "claro".
+  - Una sola tinta: monocromo-blanco o monocromo-negro (marca de agua, sellos).
+  - No usar el ícono por debajo de 24 px de alto; no cambiar el orden de los colores (rojo, ámbar, verde).
+  - Instagram: subir avatar-1080 (o el master 2160); el logo ya trae margen para el recorte circular.

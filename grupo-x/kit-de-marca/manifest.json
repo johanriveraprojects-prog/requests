@@ -1,0 +1,100 @@
+[
+ {
+  "name": "icono",
+  "svg": "svg/produavx-icono.svg",
+  "png": "png/produavx-icono.png",
+  "width": 2048,
+  "desc": "Ícono con fondo negro redondeado (app, avatar cuadrado, sello)."
+ },
+ {
+  "name": "icono-transparente",
+  "svg": "svg/produavx-icono-transparente.svg",
+  "png": "png/produavx-icono-transparente.png",
+  "width": 2400,
+  "desc": "Ícono sin fondo, para colocar sobre fotos y videos oscuros."
+ },
+ {
+  "name": "icono-transparente-claro",
+  "svg": "svg/produavx-icono-transparente-claro.svg",
+  "png": "png/produavx-icono-transparente-claro.png",
+  "width": 2400,
+  "desc": "Ícono sin fondo con corchetes oscuros, para fondos claros."
+ },
+ {
+  "name": "monocromo-blanco",
+  "svg": "svg/produavx-monocromo-blanco.svg",
+  "png": "png/produavx-monocromo-blanco.png",
+  "width": 2400,
+  "desc": "Una sola tinta, blanco: marca de agua y créditos sobre video."
+ },
+ {
+  "name": "monocromo-negro",
+  "svg": "svg/produavx-monocromo-negro.svg",
+  "png": "png/produavx-monocromo-negro.png",
+  "width": 2400,
+  "desc": "Una sola tinta, negro: sellos, grabado e impresión."
+ },
+ {
+  "name": "logo-horizontal",
+  "svg": "svg/produavx-logo-horizontal.svg",
+  "png": "png/produavx-logo-horizontal.png",
+  "width": 3200,
+  "desc": "Logo principal: ícono + nombre. Para fondos oscuros."
+ },
+ {
+  "name": "logo-horizontal-claro",
+  "svg": "svg/produavx-logo-horizontal-claro.svg",
+  "png": "png/produavx-logo-horizontal-claro.png",
+  "width": 3200,
+  "desc": "Logo principal con nombre oscuro, para fondos blancos o crema."
+ },
+ {
+  "name": "logo-apilado",
+  "svg": "svg/produavx-logo-apilado.svg",
+  "png": "png/produavx-logo-apilado.png",
+  "width": 2400,
+  "desc": "Ícono arriba, nombre y lema debajo: portadas, tarjetas y créditos."
+ },
+ {
+  "name": "logo-apilado-claro",
+  "svg": "svg/produavx-logo-apilado-claro.svg",
+  "png": "png/produavx-logo-apilado-claro.png",
+  "width": 2400,
+  "desc": "Versión apilada para fondos claros."
+ },
+ {
+  "name": "logo-o-rec",
+  "svg": "svg/produavx-logo-o-rec.svg",
+  "png": "png/produavx-logo-o-rec.png",
+  "width": 3200,
+  "desc": "Versión de marca: el punto REC con corchetes es la «o» de Produ."
+ },
+ {
+  "name": "logo-o-rec-claro",
+  "svg": "svg/produavx-logo-o-rec-claro.svg",
+  "png": "png/produavx-logo-o-rec-claro.png",
+  "width": 3200,
+  "desc": "La «o» REC para fondos claros."
+ },
+ {
+  "name": "favicon",
+  "svg": "favicon/produavx-favicon.svg",
+  "png": "favicon/produavx-favicon.png",
+  "width": 512,
+  "desc": "Favicon / ícono de app (SVG escalable)."
+ },
+ {
+  "name": "post-1080",
+  "svg": "svg/produavx-post-1080.svg",
+  "png": "instagram/produavx-post-1080.png",
+  "width": 1080,
+  "desc": "Plantilla de publicación cuadrada 1080×1080 con logo centrado."
+ },
+ {
+  "name": "historia-1080x1920",
+  "svg": "svg/produavx-historia-1080x1920.svg",
+  "png": "instagram/produavx-historia-1080x1920.png",
+  "width": 1080,
+  "desc": "Plantilla de historia 1080×1920 con logo centrado."
+ }
+]
