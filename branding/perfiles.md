@@ -33,6 +33,8 @@
 
 ## ConstruAVX
 
+> **Símbolo propio: monograma CX.** La C está hecha de puntos que se achican y se desvanecen hacia la X; la X se difumina por su lado izquierdo para fundirse con la C. ProduAVX conserva la X sola, con su degradado azul→verde.
+
 - **Nombre:** ConstruAVX
 - **Usuario sugerido:** `@construavx`
 - **Categoría:** Constructora / Servicios de construcción
