@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="ProduAVX"><title>ProduAVX</title><defs><linearGradient id="gf" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#46e0ff"/><stop offset="1" stop-color="#9a6bff"/></linearGradient></defs><rect width="200" height="200" rx="40" fill="#07070d"/><g transform="translate(24 24) scale(.88)"><mask id="mf" maskUnits="userSpaceOnUse" x="0" y="0" width="200" height="200">
+      <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M44 156V46H76C108 46 108 100 76 100H44" stroke="#fff" stroke-width="26"/>
+        
+        <path d="M92 70L168 158" stroke="#fff" stroke-width="26"/>
+        
+        <path d="M170 62L90 158" stroke="#000" stroke-width="33"/>
+        <path d="M170 62L90 158" stroke="#fff" stroke-width="26"/>
+        
+      </g></mask>
+    <circle cx="100" cy="100" r="93" fill="none" stroke="url(#gf)" stroke-width="5" stroke-linecap="round" stroke-dasharray="500 80" transform="rotate(-62 100 100)"/>
+    <rect width="200" height="200" fill="url(#gf)" mask="url(#mf)"/></g></svg>

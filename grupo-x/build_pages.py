@@ -16,7 +16,7 @@ def head(page):
     items = "".join(
         f'<li><a href="{h}"{" aria-current=\"page\"" if h == page else ""} data-i18n="{k}">{d}</a></li>' for h, k, d in NAV)
     markhtml = '<img class="logo-img" src="assets/img/produavx-mark.svg" alt="" width="38" height="38">'
-    icon = "produavx-mark.svg"
+    icon = "produavx-favicon.svg"
     dattr = "" if brand == "gx" else f' data-brand="{brand}"'
     return f'''<!doctype html>
 <html lang="es"{dattr}>
