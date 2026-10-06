@@ -1,0 +1,18 @@
+{
+ "1": [
+  "Semáforo AVX",
+  "Tres luces apiladas, cada una con una letra: A roja, V ámbar, X verde. Se lee AVX."
+ ],
+ "2": [
+  "Semáforo horizontal",
+  "Misma idea en horizontal: A · V · X como tres luces; funciona como banner y avatar ancho."
+ ],
+ "3": [
+  "AX + mini semáforo",
+  "Monograma AX plano crema; un semáforo diminuto como detalle (sustituye al punto rojo/verde)."
+ ],
+ "4": [
+  "Letras con tonos",
+  "AX plano con un solo degradado rojo → ámbar → verde: el semáforo está en el color."
+ ]
+}
