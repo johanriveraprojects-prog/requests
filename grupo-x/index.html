@@ -1,14 +1,14 @@
 <!doctype html>
-<html lang="es">
+<html lang="es" data-brand="produavx">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Grupo X Team X — ConstruX & ProduAVX</title>
-<meta name="description" content="Grupo X Team X: construcción (ConstruX) y producción de audio y video (ProduAVX) en un ecosistema organizado y compartido.">
-<meta property="og:title" content="Grupo X Team X — ConstruX & ProduAVX">
-<meta property="og:description" content="Grupo X Team X: construcción (ConstruX) y producción de audio y video (ProduAVX) en un ecosistema organizado y compartido.">
+<title>ProduAVX — Producción de audio y video</title>
+<meta name="description" content="ProduAVX: producción de video y audio de escenas únicas con calidad de producción y postproducción.">
+<meta property="og:title" content="ProduAVX — Producción de audio y video">
+<meta property="og:description" content="ProduAVX: producción de video y audio de escenas únicas con calidad de producción y postproducción.">
 <meta name="theme-color" content="#0b0b0d">
-<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/img/produavx-mark.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;700&amp;display=swap" rel="stylesheet">
@@ -18,11 +18,11 @@
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-header">
   <div class="wrap nav">
-    <a class="logo" href="index.html" aria-label="Grupo X Team X">
-      <span class="logo-mark">X</span>
-      <span>Grupo X<small>Team X</small></span>
+    <a class="logo" href="index.html" aria-label="ProduAVX">
+      <img class="logo-img" src="assets/img/produavx-mark.svg" alt="" width="38" height="38">
+      <span>ProduAVX<small>Grupo X Team X</small></span>
     </a>
-    <ul class="menu" id="menu"><li><a href="index.html" aria-current="page" data-i18n="nav.home">Inicio</a></li><li><a href="construx.html" data-i18n="nav.construx">ConstruX</a></li><li><a href="produavx.html" data-i18n="nav.produavx">ProduAVX</a></li><li><a href="network.html" data-i18n="nav.network">.Network</a></li><li><a href="contacto.html" data-i18n="nav.contact">Contacto</a></li></ul>
+    <ul class="menu" id="menu"><li><a href="index.html" aria-current="page" data-i18n="nav.home">Inicio</a></li><li><a href="index.html#servicios" data-i18n="nav.services">Servicios</a></li><li><a href="index.html#proyectos" data-i18n="nav.work">Proyectos</a></li><li><a href="panel.html" data-i18n="nav.network">Panel</a></li><li><a href="contacto.html" data-i18n="nav.contact">Contacto</a></li></ul>
     <div class="tools">
       <div class="lang" role="group" aria-label="Language"><button data-lang="es" aria-pressed="true">ES</button><button data-lang="en" aria-pressed="false">EN</button></div>
       <button class="burger" aria-label="Menu" aria-expanded="false" aria-controls="menu">☰</button>
@@ -32,72 +32,28 @@
 <main id="main">
 
 <section class="hero"><div class="bigx" aria-hidden="true">X</div><div class="wrap" style="position:relative">
-  <p class="eyebrow" data-i18n="brand.tag">Calidad · Organización · Equipo</p>
-  <h1 data-i18n="home.title">Equipos que construyen <em>con propósito</em>.</h1>
-  <p class="lead" style="margin-top:22px" data-i18n="home.lead"></p>
-  <div class="actions"><a class="btn btn-primary" href="#marcas" data-i18n="home.cta1"></a><a class="btn btn-ghost" href="contacto.html" data-i18n="home.cta2"></a></div>
+  <img class="hero-mark" src="assets/img/produavx-mark.svg" alt="ProduAVX (PX)" width="240" height="240">
+  <p class="eyebrow" data-i18n="av.rubro"></p>
+  <h1 data-i18n="av.title"></h1>
+  <p class="lead" style="margin-top:22px" data-i18n="av.lead"></p>
+  <div class="actions"><a class="btn btn-primary" href="contacto.html" data-i18n="home.cta2"></a><a class="btn btn-ghost" href="#proyectos" data-i18n="home.cta1"></a></div>
 </div></section>
-
-<section class="alt"><div class="wrap">
-  <p class="eyebrow" data-i18n="home.what.eyebrow"></p>
-  <h2 data-i18n="home.what.title" style="max-width:20ch"></h2>
-  <p class="lead" data-i18n="home.what.lead"></p>
-  <div class="stats" style="margin-top:44px">
-    <div class="stat"><b>2</b><span data-i18n="stat.1"></span></div>
-    <div class="stat"><b>ES·EN</b><span data-i18n="stat.2"></span></div>
-    <div class="stat"><b>1</b><span data-i18n="stat.3"></span></div>
-    <div class="stat"><b id="count-projects">8</b><span data-i18n="stat.4"></span></div>
-  </div>
-</div></section>
-
-<section id="marcas"><div class="wrap">
-  <h2 data-i18n="home.brands.title"></h2>
-  <div class="grid g2" style="margin-top:28px">
-    <a class="card brand-card cx reveal" href="construx.html">
-      <div><span class="tag" data-i18n="cx.rubro"></span><h3 data-i18n="cx.name"></h3><p data-i18n="cx.short" style="margin-top:10px"></p></div>
-      <span class="arrow" data-i18n="cta.visit"></span>
-    </a>
-    <a class="card brand-card av reveal" href="produavx.html">
-      <div><span class="tag" data-i18n="av.rubro"></span><h3 data-i18n="av.name"></h3><p data-i18n="av.short" style="margin-top:10px"></p></div>
-      <span class="arrow" data-i18n="cta.visit"></span>
-    </a>
-  </div>
-</div></section>
-
-<section class="alt"><div class="wrap">
-  <p class="eyebrow" data-i18n="home.eco.eyebrow"></p>
-  <h2 data-i18n="home.eco.title"></h2>
-  <p class="lead" data-i18n="home.eco.lead"></p>
-  <div style="margin-top:34px"><div class="grid g3"><div class="card reveal"><div class="icon" aria-hidden="true">🗄️</div><h3 data-i18n="eco.1.t"></h3><p data-i18n="eco.1.p"></p></div><div class="card reveal"><div class="icon" aria-hidden="true">📊</div><h3 data-i18n="eco.2.t"></h3><p data-i18n="eco.2.p"></p></div><div class="card reveal"><div class="icon" aria-hidden="true">🤝</div><h3 data-i18n="eco.3.t"></h3><p data-i18n="eco.3.p"></p></div></div></div>
-  <p style="margin-top:26px"><a class="btn btn-ghost" href="network.html"><span data-i18n="nav.network"></span> →</a></p>
-</div></section>
-
-<section><div class="wrap">
-  <p class="eyebrow" data-i18n="home.why.eyebrow"></p>
-  <h2 data-i18n="home.why.title"></h2>
-  <p class="lead" data-i18n="home.why.lead"></p>
-  <div class="grid g2" style="margin-top:34px">
-    <div class="card reveal"><div class="icon" aria-hidden="true">🌐</div><h3 data-i18n="why.team"></h3><p data-i18n="why.team.p"></p></div>
-    <div class="card reveal"><div class="icon" aria-hidden="true">📍</div><h3 data-i18n="why.group"></h3><p data-i18n="why.group.p"></p></div>
-  </div>
-</div></section>
-
-<section class="alt"><div class="wrap center">
-  <h2 data-i18n="home.same.title"></h2>
-  <p class="lead" data-i18n="home.same.p"></p>
-</div></section>
+<section class="alt" id="servicios"><div class="wrap"><h2 data-i18n="av.s.title"></h2><div style="margin-top:26px"><div class="grid g4"><div class="card reveal"><div class="icon" aria-hidden="true">🎬</div><h3 data-i18n="av.s1.t"></h3><p data-i18n="av.s1.p"></p></div><div class="card reveal"><div class="icon" aria-hidden="true">🎙️</div><h3 data-i18n="av.s2.t"></h3><p data-i18n="av.s2.p"></p></div><div class="card reveal"><div class="icon" aria-hidden="true">🎞️</div><h3 data-i18n="av.s3.t"></h3><p data-i18n="av.s3.p"></p></div><div class="card reveal"><div class="icon" aria-hidden="true">📱</div><h3 data-i18n="av.s4.t"></h3><p data-i18n="av.s4.p"></p></div></div></div></div></section>
+<section><div class="wrap"><h2 data-i18n="av.p.title"></h2><div style="margin-top:26px"><div class="steps"><div class="step reveal"><div><h3 data-i18n="av.p1.t"></h3><p data-i18n="av.p1.p"></p></div></div><div class="step reveal"><div><h3 data-i18n="av.p2.t"></h3><p data-i18n="av.p2.p"></p></div></div><div class="step reveal"><div><h3 data-i18n="av.p3.t"></h3><p data-i18n="av.p3.p"></p></div></div><div class="step reveal"><div><h3 data-i18n="av.p4.t"></h3><p data-i18n="av.p4.p"></p></div></div></div></div></div></section>
+<section class="alt" id="proyectos"><div class="wrap"><h2 data-i18n="av.work"></h2><div class="grid g4" data-projects="produavx" style="margin-top:26px"></div></div></section>
+<section><div class="wrap center"><p class="eyebrow">Grupo X Team X</p><h2 data-i18n="home.parent.t"></h2><p class="lead" data-i18n="home.parent.p"></p></div></section>
 </main>
 <footer class="site-footer">
   <div class="wrap">
     <div class="foot">
       <div>
-        <a class="logo" href="index.html"><span class="logo-mark">X</span><span>Grupo X<small>Team X</small></span></a>
-        <p style="color:var(--muted);margin-top:14px;max-width:34ch" data-i18n="foot.about">Un equipo trabajando con calidad y organización.</p>
+        <a class="logo" href="index.html"><img class="logo-img" src="assets/img/produavx-mark.svg" alt="" width="38" height="38"><span>ProduAVX<small>Grupo X Team X</small></span></a>
+        <p style="color:var(--muted);margin-top:14px;max-width:38ch" data-i18n="foot.parent"></p>
       </div>
-      <div><h4 data-i18n="foot.brands">Marcas</h4><ul><li><a href="construx.html">ConstruX</a></li><li><a href="produavx.html">ProduAVX</a></li></ul></div>
-      <div><h4 data-i18n="foot.explore">Explorar</h4><ul><li><a href="network.html" data-i18n="nav.network">.Network</a></li><li><a href="contacto.html" data-i18n="nav.contact">Contacto</a></li></ul></div>
+      <div><h4 data-i18n="foot.explore">Explorar</h4><ul><li><a href="index.html#servicios" data-i18n="nav.services"></a></li><li><a href="index.html#proyectos" data-i18n="nav.work"></a></li><li><a href="panel.html" data-i18n="nav.network"></a></li></ul></div>
+      <div><h4 data-i18n="nav.contact">Contacto</h4><ul><li><a href="contacto.html" data-i18n="home.cta2"></a></li></ul></div>
     </div>
-    <div class="copy"><span>© 2026 Grupo X Team X. <span data-i18n="foot.rights">Todos los derechos reservados.</span></span><span data-i18n="foot.note">Grupo X Team X · ConstruX · ProduAVX</span></div>
+    <div class="copy"><span>© 2026 ProduAVX. <span data-i18n="foot.rights"></span></span><span data-i18n="foot.note"></span></div>
   </div>
 </footer>
 <script src="assets/js/data.js"></script>

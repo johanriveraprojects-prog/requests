@@ -14,17 +14,6 @@
   --font: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --display: "Space Grotesk", "Inter", system-ui, sans-serif;
 }
-[data-brand="construx"] {
-  --bg: #faf7f2;
-  --bg-2: #f0ebe2;
-  --surface: #ffffff;
-  --line: #ddd5c6;
-  --text: #1d1a16;
-  --muted: #6d655a;
-  --accent: #e8730c;
-  --accent-ink: #ffffff;
-  --accent-2: #3b352d;
-}
 [data-brand="produavx"] {
   --bg: #07070d;
   --bg-2: #0e0e18;
@@ -102,16 +91,6 @@ h3 { font-size: 1.3rem; margin-bottom: 8px; }
 .card:hover { border-color: var(--accent); transform: translateY(-3px); }
 .card p { color: var(--muted); font-size: .96rem; }
 .icon { width: 44px; height: 44px; border-radius: 12px; background: color-mix(in srgb, var(--accent) 16%, transparent); color: var(--accent); display: grid; place-items: center; font-size: 1.25rem; margin-bottom: 16px; }
-.brand-card { padding: 38px; min-height: 340px; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden; }
-.brand-card .tag { font-size: .75rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 700; }
-.brand-card h3 { font-size: 2.2rem; margin-top: 10px; }
-.brand-card.cx { background: linear-gradient(160deg, #faf7f2, #eadfcb); color: #1d1a16; border-color: #ddd5c6; }
-.brand-card.cx .tag, .brand-card.cx .arrow { color: #e8730c; }
-.brand-card.cx p { color: #5b5347; }
-.brand-card.av { background: linear-gradient(160deg, #0e0e18, #1a1033); color: #eeeefa; border-color: #25253a; }
-.brand-card.av .tag, .brand-card.av .arrow { color: #46e0ff; }
-.brand-card.av p { color: #a8a8c8; }
-.arrow { font-weight: 700; margin-top: 18px; }
 
 .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
 .stat b { display: block; font-family: var(--display); font-size: 2.8rem; letter-spacing: -.04em; color: var(--accent); line-height: 1; }
@@ -133,7 +112,6 @@ h3 { font-size: 1.3rem; margin-bottom: 8px; }
 .proj .thumb { height: 170px; display: grid; place-items: center; font-family: var(--display); font-size: 2.6rem; font-weight: 800; color: rgba(255,255,255,.9); }
 .proj .body { padding: 20px 22px 24px; }
 .proj .meta { display: flex; justify-content: space-between; font-size: .78rem; color: var(--muted); margin-bottom: 8px; text-transform: uppercase; letter-spacing: .08em; }
-.th-cx { background: linear-gradient(135deg, #e8730c, #7a3a06); }
 .th-av { background: linear-gradient(135deg, #46e0ff, #9a6bff); color: #04141a; }
 
 /* Network dashboard */

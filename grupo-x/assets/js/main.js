@@ -44,10 +44,10 @@
   function renderTable() {
     var tb = $("#proj-body"); if (!tb) return;
     var lang = I.get(); tb.textContent = "";
-    D.projects.filter(function (p) { return filter === "all" || p.brand === filter; }).forEach(function (p) {
+    D.projects.forEach(function (p) {
       var tr = el("tr");
       tr.appendChild(el("td", null, p.id));
-      tr.appendChild(el("td", null, p[lang] + (p.shared ? " ⇄" : "")));
+      tr.appendChild(el("td", null, p[lang]));
       tr.appendChild(el("td", null, brandName[p.brand]));
       tr.appendChild(el("td", null, p.city));
       var td = el("td"); td.appendChild(el("span", "status", I.t("status." + p.status))); tr.appendChild(td);
@@ -69,10 +69,10 @@
     }
     var mix = $("#mix-bars"); if (mix) {
       mix.textContent = "";
-      ["construx", "produavx"].forEach(function (b, i) {
-        var n = D.projects.filter(function (p) { return p.brand === b; }).length;
+      ["done", "active", "planning"].forEach(function (b, i) {
+        var n = D.projects.filter(function (p) { return p.status === b; }).length;
         var r = el("div", "bar");
-        r.appendChild(el("span", null, brandName[b]));
+        r.appendChild(el("span", null, I.t("status." + b)));
         var tr = el("div", "track"), f = el("div", "fill" + (i ? " b2" : ""));
         tr.appendChild(f); r.appendChild(tr); r.appendChild(el("b", null, String(n)));
         mix.appendChild(r);
@@ -86,7 +86,7 @@
     D.documents.forEach(function (d) {
       var li = el("li");
       li.appendChild(el("span", null, "📄 " + d.name));
-      li.appendChild(el("span", "pill", d[lang] + " · " + (d.brand === "gx" ? "Grupo X" : brandName[d.brand])));
+      li.appendChild(el("span", "pill", d[lang] + " · " + brandName[d.brand]));
       li.style.cssText = "display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;padding:10px 0;border-bottom:1px solid var(--line)";
       ul.appendChild(li);
     });
