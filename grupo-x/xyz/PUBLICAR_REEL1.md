@@ -78,3 +78,10 @@ El tema del momento es el disco *La Amenaza* (Fanta Rosario, 24-sep-2026). Etiqu
 - Firma final: "XYZ Social Club" en Playfair Display Italic, rojo con degradado, fondo negro con líneas onduladas (según tu imagen de referencia).
 - Regenerar: `reel/make_bg.sh clip.mp4 bg.mp4` y luego `reel/compose.sh bg.mp4 salida.mp4 [cancion.mp3 75.37]`.
 - Si el clip de fondo es de otra persona (por ejemplo un fragmento de un videoclip), también necesita su permiso para publicarse.
+
+## Reel v2 "limpio" (2026-10-07): solo el video + la canción + firma
+- Archivos: `reel/XYZ_reel_v2_con_cancion.mp4` y `reel/XYZ_reel_v2_SIN_AUDIO.mp4` (locales, no se suben al repo por tamaño y por el clip de terceros).
+- 1080×1920, 30 fps, H.264 High, ~9 Mbps, AAC 48 kHz, 23,8 s.
+- Sin visualizer, sin textos ni colores anteriores. Solo: video limpio (bordes negros recortados, menos ruido, nitidez), cortes sobre los tiempos de BUKELE (1:15), y al final **"XYZ Social Club"** pequeño y centrado en Playfair Display Italic rojo.
+- Se quitó del clip original la placa final de créditos (a los 25,2 s).
+- Regenerar: `reel/make_clean.sh clip.mp4 salida.mp4 [cancion.mp3 75.37]`.
