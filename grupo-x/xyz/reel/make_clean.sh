@@ -24,7 +24,7 @@ done
 ffmpeg -v error -y -f concat -safe 0 -i "$T/l.txt" -c copy "$T/cut.mp4"
 D=$TOTAL; FO=$(awk "BEGIN{print $D-1.2}"); SS=$(awk "BEGIN{print $D-3.9}")
 V="-c:v libx264 -preset veryslow -crf 12 -maxrate 30M -bufsize 60M -profile:v high -level 4.2 -pix_fmt yuv420p -colorspace bt709 -color_primaries bt709 -color_trc bt709 -r 30 -t $D -movflags +faststart"
-FC="[0:v]split[a][b];[a]scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,gblur=sigma=42,eq=brightness=-0.30:saturation=1.1[bg];[b]unsharp=5:5:0.7:5:5:0.0,eq=contrast=1.05:saturation=1.06[fg];[bg][fg]overlay=(W-w)/2:(H-h)/2,fade=out:st=$FO:d=1.2[m];[1:v]format=rgba,fade=in:st=$SS:d=0.9:alpha=1[sg];[m][sg]overlay=0:0:format=auto,format=yuv420p,scale=in_range=full:out_range=tv:out_color_matrix=bt709[v]"
+FC="[0:v]split[a][b];[a]scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,gblur=sigma=42,eq=brightness=-0.30:saturation=1.1[bg];[b]unsharp=5:5:0.7:5:5:0.0,eq=contrast=1.05:saturation=1.06[fg];[bg][fg]overlay=(W-w)/2:(H-h)/2,fade=out:st=$FO:d=1.2[m];[1:v]format=rgba,fade=in:st=$SS:d=0.9:alpha=1[sg];[m][sg]overlay=0:0:format=auto,format=yuv420p[v]"
 if [ -n "$3" ]; then
   ffmpeg -v error -y -i "$T/cut.mp4" -loop 1 -i sig.png -ss "$4" -t "$D" -i "$3" -filter_complex "$FC" \
     -map "[v]" -map 2:a -af "afade=t=in:d=0.03,afade=t=out:st=$FO:d=1.2" -c:a aac -b:a 256k -ar 48000 $V "$2"

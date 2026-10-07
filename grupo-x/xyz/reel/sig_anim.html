@@ -1,0 +1,30 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+html,body{margin:0;width:1080px;height:1920px;background:transparent;overflow:hidden}
+#w{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+#scrim{position:absolute;inset:0}
+#s{position:relative;font-family:"Playfair Display",serif;font-style:italic;font-weight:500;font-size:80px;line-height:1.1;white-space:nowrap}
+#s span{display:inline-block;padding:10px 0 18px;background:linear-gradient(180deg,#ff1010 0%,#ee0000 45%,#b00000 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+</style></head><body><div id="w"><div id="scrim"></div><div id="s"></div></div>
+<script>
+// Slow-motion reveal of the signature: each letter rises out of a blur, one after another, while the spacing
+// closes very slowly and the whole line drifts in. T in ms; total 4500.
+window.__total=4500;
+const txt="XYZ Social Club", box=document.getElementById('s'), scrim=document.getElementById('scrim');
+const sp=[...txt].map(ch=>{const e=document.createElement('span');e.innerHTML=ch===' '?'&nbsp;':ch;box.appendChild(e);return e});
+const ease=x=>1-Math.pow(1-Math.min(1,Math.max(0,x)),3), ease2=x=>{x=Math.min(1,Math.max(0,x));return x*x*(3-2*x)};
+window.__seek=function(T){
+  const STAG=170, DUR=1500;
+  sp.forEach((e,i)=>{
+    const k=ease((T-300-i*STAG)/DUR);
+    e.style.opacity=k;
+    e.style.filter=`blur(${(1-k)*16}px)`;
+    e.style.transform=`translateY(${(1-k)*22}px)`;
+    e.style.letterSpacing=(0.10*(1-ease2(T/4500)))+'em';
+  });
+  const g=ease2(T/4500);
+  box.style.transform=`scale(${0.97+0.05*g})`;
+  const a=ease2((T-100)/1800);
+  scrim.style.background=`radial-gradient(ellipse 470px 190px at 50% 50%,rgba(0,0,0,${.62*a}) 0,rgba(0,0,0,${.35*a}) 55%,rgba(0,0,0,0) 100%)`;
+};
+window.__seek(0);
+</script></body></html>
