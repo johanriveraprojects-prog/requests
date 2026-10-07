@@ -89,7 +89,7 @@ El tema del momento es el disco *La Amenaza* (Fanta Rosario, 24-sep-2026). Etiqu
 ## Reel v3 (2026-10-07): fondo negro OLED, 2160×3840, firma en cámara lenta
 - `reel/XYZ_reel_v3_4K_con_cancion.mp4` y `reel/XYZ_reel_v3_4K_SIN_AUDIO.mp4` (locales; ~130 MB cada uno).
 - Fondo negro puro (sin desenfoque), el video centrado a ancho completo. Firma "XYZ Social Club" que aparece letra por letra, saliendo de un desenfoque, con el espaciado cerrándose muy despacio (4,5 s).
-- 2160×3840, 30 fps, H.264 High nivel 5.1, ~44 Mbps, AAC 256 kbps.
+- Maestro: 2160×3840, 30 fps, H.264 High 5.1, ~44 Mbps (130 MB; no se puede enviar por el chat, límite 30 MB). Para enviar y subir: copias HEVC (`XYZ_reel_v3_4K_HEVC_*.mp4`) a ~8 Mbps, ~24 MB, mismo 2160×3840.
 - **Sobre el "4K":** el clip original es 720p. El escalado (Lanczos + nitidez + grano fino) no crea detalle nuevo; ayuda a que Instagram, que recomprime todo a 1080p, degrade menos. Según las guías que revisé, Instagram acepta 4K pero lo baja a 1080 al procesar; el máximo útil es 1440×2560.
 - Corrección: las versiones anteriores tenían los negros subidos (luma 30 en vez de 16) por un ajuste de rango que ya quité. La v3 tiene negro real.
 - Regenerar: `node reel/render_sig.js sigseq` y `reel/make_oled.sh clip.mp4 salida.mp4 [cancion.mp3 75.37]`.
