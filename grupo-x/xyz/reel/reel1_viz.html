@@ -5,15 +5,19 @@
 :root{--bg:#000;--fg:#f4f4f2;--ac:#39ff14;--dim:#6b6b68}
 *{box-sizing:border-box;margin:0}
 html,body{width:1080px;height:1920px;background:var(--bg);overflow:hidden}
-body.ov,body.ov #stage{background:transparent!important}body.ov #scan{display:none}
+html.ov,body.ov,body.ov #stage{background:transparent!important}body.ov #scan{display:none}
 #stage{position:relative;width:1080px;height:1920px;background:#000;overflow:hidden}
 canvas{position:absolute;left:0;top:0;width:1080px;height:1920px}
 #scan{position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(255,255,255,.035) 0 2px,transparent 2px 5px)}
 .tag{position:absolute;font:600 26px "JetBrains Mono",monospace;letter-spacing:.18em;color:var(--dim)}
 #top{top:92px;left:72px}#credit{top:92px;right:72px;font-size:22px}
-#txt{position:absolute;left:72px;right:72px;top:150px;height:1000px;display:flex;flex-direction:column;justify-content:center;font-family:"Bricolage Grotesque",sans-serif;font-weight:800;color:var(--fg);text-transform:uppercase;line-height:.98;letter-spacing:-.02em;white-space:pre-line}
+#txt{position:absolute;left:72px;right:72px;top:130px;height:600px;display:flex;flex-direction:column;justify-content:center;font-family:"Bricolage Grotesque",sans-serif;font-weight:800;color:var(--fg);text-transform:uppercase;line-height:.98;letter-spacing:-.02em;white-space:pre-line}
 #txt .ac{color:var(--ac);text-shadow:0 0 28px rgba(57,255,20,.55)}
 #sub{position:absolute;left:72px;right:72px;top:1000px}
+#sig{position:absolute;inset:0;display:none;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+#sigtag{font:500 30px "Instrument Sans",sans-serif;letter-spacing:.55em;color:#ececec;margin-bottom:70px;padding-left:.55em}
+#signame{font-family:"Playfair Display",serif;font-style:italic;font-weight:500;font-size:250px;line-height:.86;letter-spacing:-.01em;background:linear-gradient(180deg,#ff0a0a 0%,#ee0000 40%,#a30000 80%,#7d0000 100%);-webkit-background-clip:text;background-clip:text;color:transparent;padding:0 20px 20px}
+#siglink{font:500 28px "JetBrains Mono",monospace;letter-spacing:.3em;color:#cfcfcf;margin-top:90px}
 #bar{position:absolute;left:0;bottom:0;height:8px;background:var(--ac);width:0}
 </style></head><body>
 <div id="stage">
@@ -23,10 +27,11 @@ canvas{position:absolute;left:0;top:0;width:1080px;height:1920px}
  <div class="tag" id="credit">♪ BUKELE · FANTA ROSARIO × BIZARRAP</div>
  <div id="txt"></div>
  <div id="sub"></div>
+ <div id="sig"><div id="sigtag">LOS ÚLTIMOS SERÁN LOS PRIMEROS</div><div id="signame">XYZ<br>Social Club</div><div id="siglink">LINK EN BIO ↓</div></div>
  <div id="bar"></div>
 </div>
 <script src="viz1_data.js"></script>
-<script>const OV=location.search.includes('overlay');if(OV)document.body.classList.add('ov');</script>
+<script>const OV=location.search.includes('overlay');if(OV){document.body.classList.add('ov');document.documentElement.classList.add('ov')}</script>
 <script>
 const BAR=1.984*1000;                       // one bar = 4 beats of the track (≈121 BPM), ms
 const BEAT=BAR/4;
@@ -35,8 +40,8 @@ const S=[
  {a:2*BAR, b:3*BAR, size:170, lines:["NADIE NOS","FIRMÓ."], ac:[1]},
  {a:3*BAR, b:4*BAR, size:170, lines:["NADIE NOS","ESPERABA."], ac:[1]},
  {a:4*BAR, b:5*BAR, size:150, lines:["POR ESO LO","HACEMOS","JUNTOS."], ac:[2]},
- {a:5*BAR, b:6*BAR, size:150, roles:["ARTISTA","PRODUCTOR","VISUAL","FAN"]},
- {a:6*BAR, b:16000, size:300, lines:["XYZ."], ac:[0], sub:["Los últimos serán","los primeros."], link:"LINK EN BIO ↓"}
+ {a:5*BAR, b:6*BAR, size:118, roles:["ARTISTA","PRODUCTOR","VISUAL","FAN"]},
+ {a:6*BAR, b:16000, final:true}
 ];
 window.__total=16000;
 const V=window.VIZ, NB=V.bands[0].length;
@@ -52,9 +57,21 @@ function decode(str,t,seed,per=38){
   return out;
 }
 function fr(T){return Math.min(V.bass.length-1,Math.max(0,Math.round(T/1000*V.fps)))}
-function drawViz(T,f,pulse,idx){
+function drawViz(T,f,pulse,idx,final){
   c.clearRect(0,0,1080,1920);
-  if(!OV){c.fillStyle='#000';c.fillRect(0,0,1080,1920);
+  if(final){ // signature card: near-black with faint wavy lines (as in the reference image)
+    c.fillStyle='#070707';c.fillRect(0,0,1080,1920);
+    c.lineWidth=2;
+    for(let k=0;k<46;k++){
+      c.strokeStyle=`rgba(255,255,255,${0.09+0.04*Math.sin(k)})`;c.beginPath();
+      for(let x=0;x<=1080;x+=24){
+        const y=k*42+Math.sin(x/260+k*0.35+T/1400)*46+Math.sin(x/90+T/900)*6*pulse;
+        x===0?c.moveTo(x,y):c.lineTo(x,y);
+      }
+      c.stroke();
+    }
+  }
+  else if(!OV){c.fillStyle='#000';c.fillRect(0,0,1080,1920);
     const g=c.createRadialGradient(540,640,0,540,640,900);
     g.addColorStop(0,`rgba(20,70,10,${0.28+0.5*pulse})`);g.addColorStop(1,'rgba(0,0,0,0)');
     c.fillStyle=g;c.fillRect(0,0,1080,1920);}
@@ -69,17 +86,17 @@ function drawViz(T,f,pulse,idx){
     c.beginPath();c.arc(540,640,r,0,Math.PI*2);c.stroke();
   }
   // mirrored spectrum, bottom third: bars grow up from a centre baseline
-  const base=1680, n=NB, w=1080/ (n*2), gap=4;
+  const base=1760, n=NB, w=1080/ (n*2), gap=4;
   for(let i=0;i<n;i++){
-    const v=V.bands[f][i], h=18+v*340;
+    const v=V.bands[f][i], h=18+v*210;
     const a=0.35+0.65*v;
-    c.fillStyle=`rgba(57,255,20,${a})`;
+    c.fillStyle=final?`rgba(255,20,20,${a*0.9})`:`rgba(57,255,20,${a})`;
     // left half mirrors the right so the low end sits in the middle
     const xr=540+i*w, xl=540-(i+1)*w;
     for(const x0 of [xr,xl]){
       c.fillRect(x0+gap/2,base-h,w-gap,h);
       c.fillStyle=`rgba(244,244,242,${0.10+0.20*v})`;c.fillRect(x0+gap/2,base+14,w-gap,h*0.32);   // faint reflection
-      c.fillStyle=`rgba(57,255,20,${a})`;
+      c.fillStyle=final?`rgba(255,20,20,${a*0.9})`:`rgba(57,255,20,${a})`;
     }
     if(v>0.7){c.fillStyle='#f4f4f2';c.fillRect(xr+gap/2,base-h-12,w-gap,6);c.fillRect(xl+gap/2,base-h-12,w-gap,6)}
   }
@@ -92,21 +109,33 @@ function drawViz(T,f,pulse,idx){
 window.__seek=function(T){
   const f=fr(T), pulse=V.bass[f];
   const s=S.find(x=>T>=x.a&&T<x.b)||S[S.length-1], t=T-s.a, idx=S.indexOf(s), dur=s.b-s.a;
-  drawViz(T,f,pulse,idx);
+  drawViz(T,f,pulse,idx,!!s.final);
   const fade=Math.min(1,(dur-t)/110)*Math.min(1,t/40+0.15);
   const hit=pulse>.75?(rnd(f)-.5)*10:0;                    // glitch jitter on strong bass hits
   txt.style.transform=`translateX(${hit}px) scale(${1+0.035*pulse+0.03*t/dur})`;
   txt.style.opacity=(idx===S.length-1)?1:fade;
   txt.style.fontSize=s.size+'px';
   let html='';
-  if(s.roles){
+  if(s.final){html='';}
+  else if(s.roles){
     const per=BEAT, cur=Math.min(s.roles.length-1,Math.floor(t/per));
     html=s.roles.map((r,i)=>`<div class="${i===cur?'ac':''}" style="opacity:${i<=cur?(i===cur?1:.28):0}">${i===cur?decode(r,t-i*per,500+i*40,22):r}</div>`).join('');
   } else {
     html=s.lines.map((l,i)=>`<div class="${s.ac&&s.ac.includes(i)?'ac':''}">${decode(l,Math.max(0,t-i*170),idx*100+i*10)}</div>`).join('');
   }
   txt.innerHTML=html;
-  if(s.sub){
+  const sig=document.getElementById('sig');
+  sig.style.display=s.final?'flex':'none';
+  document.getElementById('top').style.opacity=s.final?0:1;document.getElementById('credit').style.opacity=s.final?0:1;
+  if(s.final){
+    const k=Math.min(1,t/450);
+    sig.style.opacity=k;
+    document.getElementById('signame').style.transform=`translateY(${(1-k)*24}px) scale(${1+0.012*pulse})`;
+    document.getElementById('sigtag').style.opacity=Math.min(1,Math.max(0,t-250)/300);
+    document.getElementById('siglink').style.opacity=Math.min(1,Math.max(0,t-1500)/400);
+    txt.style.opacity=0;
+  }
+  if(false){
     sub.style.opacity=Math.min(1,Math.max(0,t-700)/300);
     sub.innerHTML=`<div style="font:700 70px 'Bricolage Grotesque';color:#f4f4f2;line-height:1.05">${s.sub.join('<br>')}</div><div style="margin-top:36px;font:600 32px 'JetBrains Mono';letter-spacing:.2em;color:var(--ac)">${s.link}</div>`;
   } else sub.innerHTML='';

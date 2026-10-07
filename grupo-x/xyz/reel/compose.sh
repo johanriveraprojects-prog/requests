@@ -1,12 +1,16 @@
 #!/bin/sh
-# Usage: ./compose.sh fondo.mp4 salida.mp4 [cancion.mp3 inicio_seg]
-# fondo.mp4 = video generado en Higgsfield (cualquier duración; se repite en bucle y se recorta a 16 s, 9:16).
-# Con cancion + inicio_seg mezcla el audio (solo para ver; para publicar usa la biblioteca de Instagram).
+# Usage: ./compose.sh fondo_9x16.mp4 salida.mp4 [cancion.mp3 inicio_seg]
+# fondo_9x16.mp4 = salida de make_bg.sh (1080x1920, 16 s). Superpone el overlay (texto, barras, anillos, firma).
+# Con cancion + inicio_seg mezcla el audio (solo para ver/subir bajo tu responsabilidad; ver PUBLICAR_REEL1.md).
+# Salida lista para Reels: 1080x1920, 30 fps, H.264 High yuv420p BT.709, AAC 48 kHz, faststart.
 set -e
 cd "$(dirname "$0")"
 [ -d ov ] || node render_overlay.js reel1_viz.html ov
-AUDIO=""; MAP=""
-if [ -n "$3" ]; then AUDIO="-ss $4 -t 16 -i $3"; MAP="-map 1:v -map 2:a -af afade=t=in:d=0.03,afade=t=out:st=15.2:d=0.8 -c:a aac -b:a 192k"; fi
-ffmpeg -v error -y -stream_loop -1 -t 16 -i "$1" -framerate 30 -i ov/%05d.png $AUDIO \
- -filter_complex "[0:v]scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,fps=30,eq=brightness=-0.10:saturation=0.9[bg];[bg][1:v]overlay=format=auto,format=yuv420p[v]" \
- -map "[v]" ${MAP:+-map 2:a -af "afade=t=in:d=0.03,afade=t=out:st=15.2:d=0.8" -c:a aac -b:a 192k} -c:v libx264 -preset slow -crf 18 -r 30 -t 16 -movflags +faststart "$2"
+V="-c:v libx264 -preset veryslow -crf 12 -maxrate 30M -bufsize 60M -profile:v high -level 4.2 -pix_fmt yuv420p -colorspace bt709 -color_primaries bt709 -color_trc bt709 -r 30 -t 16 -movflags +faststart"
+FC="[0:v]format=rgba[b];[b][1:v]overlay=format=auto:shortest=1,format=yuv420p,scale=in_range=full:out_range=tv:out_color_matrix=bt709[v]"
+if [ -n "$3" ]; then
+  ffmpeg -v error -y -i "$1" -framerate 30 -i ov/%05d.png -ss "$4" -t 16 -i "$3" -filter_complex "$FC" \
+    -map "[v]" -map 2:a -af "afade=t=in:d=0.03,afade=t=out:st=15.2:d=0.8" -c:a aac -b:a 256k -ar 48000 $V "$2"
+else
+  ffmpeg -v error -y -i "$1" -framerate 30 -i ov/%05d.png -filter_complex "$FC" -map "[v]" -an $V "$2"
+fi

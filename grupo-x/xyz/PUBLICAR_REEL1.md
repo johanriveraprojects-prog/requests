@@ -70,3 +70,11 @@ El tema del momento es el disco *La Amenaza* (Fanta Rosario, 24-sep-2026). Etiqu
 2. Bio actualizada con el link.
 3. Etiquetas y @ copiadas de perfiles oficiales.
 4. Ver el video completo una vez, con sonido, en el celular.
+
+## Versión final con video de fondo (2026-10-07)
+- `reel/XYZ_reel1_FINAL_SIN_AUDIO.mp4` y `reel/XYZ_reel1_FINAL_con_cancion.mp4` (esta última queda solo local).
+- Formato de Reels: 1080×1920, 30 fps, H.264 High, AAC 48 kHz, ~5,5 Mbps, 16 s.
+- Cortes del video re-editados sobre los tiempos de la canción (1 tiempo = 0,496 s; 6 compases de video + 2 de firma).
+- Firma final: "XYZ Social Club" en Playfair Display Italic, rojo con degradado, fondo negro con líneas onduladas (según tu imagen de referencia).
+- Regenerar: `reel/make_bg.sh clip.mp4 bg.mp4` y luego `reel/compose.sh bg.mp4 salida.mp4 [cancion.mp3 75.37]`.
+- Si el clip de fondo es de otra persona (por ejemplo un fragmento de un videoclip), también necesita su permiso para publicarse.
