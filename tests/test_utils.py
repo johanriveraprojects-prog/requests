@@ -730,6 +730,11 @@ def test_parse_header_links(value, expected):
             "http://user:pass@example.com/path?query",
         ),
         ("http://user@example.com/path?query", "http://user@example.com/path?query"),
+        # A leading "word:" without "://" is a host or a user, not a scheme.
+        ("localhost:3128", "http://localhost:3128"),
+        ("user:pass@example.com:3128", "http://user:pass@example.com:3128"),
+        ("user:pass@localhost:3128/", "http://user:pass@localhost:3128/"),
+        ("socks5h://localhost:1080", "socks5h://localhost:1080"),
     ),
 )
 def test_prepend_scheme_if_needed(value, expected):

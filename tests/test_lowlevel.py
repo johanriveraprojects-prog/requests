@@ -305,6 +305,29 @@ def test_use_proxy_from_environment(httpbin, var, scheme):
         assert len(fake_proxy.handler_results[0]) > 0
 
 
+@pytest.mark.parametrize(
+    "proxy_template, expected_auth",
+    (
+        ("localhost:{port}", None),
+        ("user:pass@{host}:{port}", b"Proxy-Authorization: Basic dXNlcjpwYXNz"),
+    ),
+)
+def test_proxy_url_without_scheme(proxy_template, expected_auth):
+    """A proxy URL without a scheme is sent through as an http:// proxy."""
+    server = Server.basic_response_server()
+    with server as (host, port):
+        s = requests.Session()
+        s.trust_env = False
+        proxy = proxy_template.format(host=host, port=port)
+        r = s.get("http://example.test/path", proxies={"http": proxy})
+
+    assert r.status_code == 200
+    request = server.handler_results[0]
+    assert request.startswith(b"GET http://example.test/path HTTP/1.1")
+    if expected_auth:
+        assert expected_auth in request
+
+
 def test_redirect_rfc1808_to_non_ascii_location():
     path = 'š'
     expected_path = b'%C5%A1'
