@@ -19,6 +19,9 @@ dev
 - `Response.links` (`parse_header_links`) no longer splits a link on a `;` or
   `,` inside the `<...>` URL or inside a quoted parameter, and no longer drops
   parameters after one whose value contains `=` or that has no value.
+- Proxy URLs without a scheme now work when the host has no dot (e.g.
+  `localhost:3128`) or the URL includes credentials (e.g.
+  `user:pass@proxy:3128`). Both used to fail with `InvalidProxyURL`.
 
 
 2.34.2 (2026-05-14)

@@ -1067,12 +1067,22 @@ def guess_json_utf(data: bytes) -> str | None:
     return None
 
 
+_SCHEME_PREFIX_RE = re.compile(r"[A-Za-z][A-Za-z0-9+.-]*:/")
+
+
 def prepend_scheme_if_needed(url: str, new_scheme: str) -> str:
     """Given a URL that may or may not have a scheme, prepend the given scheme.
     Does not replace a present scheme with the one provided as an argument.
 
     :rtype: str
     """
+    # parse_url takes any leading "word:" as the scheme, so "localhost:3128"
+    # or "user:pass@host" would lose their host. Unless the URL starts with
+    # "scheme:/" (even a malformed one, which should still fail later), mark
+    # it as scheme-relative so it is parsed as credentials, host and port.
+    if not url.startswith("//") and not _SCHEME_PREFIX_RE.match(url):
+        url = "//" + url
+
     parsed = parse_url(url)
     scheme, auth, _host, _port, path, query, fragment = parsed
 
