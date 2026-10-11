@@ -3202,3 +3202,33 @@ def test_json_decode_errors_are_serializable_deserializable():
     )
     deserialized_error = pickle.loads(pickle.dumps(json_decode_error))
     assert repr(json_decode_error) == repr(deserialized_error)
+
+
+@pytest.mark.parametrize(
+    "qop",
+    ("auth", "auth,auth-int", "auth, auth-int", "auth-int, auth", "auth-int,auth"),
+)
+def test_digest_auth_qop_list_with_spaces(qop):
+    """qop is a comma-separated list that may contain whitespace (RFC 7616)."""
+    auth = HTTPDigestAuth("user", "pass")
+    auth.init_per_thread_state()
+    auth._thread_local.chal = {"realm": "r", "nonce": "n", "qop": qop}
+    header = auth.build_digest_header("GET", "http://example.com/")
+    assert header is not None
+    assert 'qop="auth"' in header
+
+
+@pytest.mark.parametrize(
+    "domains, expected",
+    (
+        ((), False),
+        (("x.com",), False),
+        (("x.com", "x.com"), False),
+        (("x.com", "y.com"), True),
+    ),
+)
+def test_cookiejar_multiple_domains(domains, expected):
+    jar = requests.cookies.RequestsCookieJar()
+    for i, domain in enumerate(domains):
+        jar.set(f"c{i}", "v", domain=domain)
+    assert jar.multiple_domains() is expected

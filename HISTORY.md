@@ -22,6 +22,11 @@ dev
 - Proxy URLs without a scheme now work when the host has no dot (e.g.
   `localhost:3128`) or the URL includes credentials (e.g.
   `user:pass@proxy:3128`). Both used to fail with `InvalidProxyURL`.
+- `HTTPDigestAuth` now accepts a `qop` list with spaces after the commas
+  (e.g. `qop="auth-int, auth"`). It used to send no `Authorization` header.
+- `RequestsCookieJar.multiple_domains()` now returns `True` when the jar holds
+  cookies for more than one domain. It used to return `True` only when one
+  domain appeared twice.
 
 
 2.34.2 (2026-05-14)
