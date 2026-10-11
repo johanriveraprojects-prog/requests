@@ -1010,7 +1010,16 @@ def parse_header_links(value: str) -> list[dict[str, str]]:
     if not value:
         return links
 
-    for val in _split_header_value(value, ","):
+    # A comma outside <...> and quotes only starts a new link when a "<"
+    # follows; otherwise it belongs to an unquoted parameter value.
+    raw_links: list[str] = []
+    for part in _split_header_value(value, ","):
+        if raw_links and not part.lstrip().startswith("<"):
+            raw_links[-1] += "," + part
+        else:
+            raw_links.append(part)
+
+    for val in raw_links:
         if not val.strip():
             continue
 
@@ -1067,7 +1076,7 @@ def guess_json_utf(data: bytes) -> str | None:
     return None
 
 
-_SCHEME_PREFIX_RE = re.compile(r"[A-Za-z][A-Za-z0-9+.-]*:/")
+_HOST_PORT_OR_USERINFO_RE = re.compile(r"[A-Za-z][A-Za-z0-9+.-]*:(?:\d|[^/]*@)")
 
 
 def prepend_scheme_if_needed(url: str, new_scheme: str) -> str:
@@ -1077,10 +1086,11 @@ def prepend_scheme_if_needed(url: str, new_scheme: str) -> str:
     :rtype: str
     """
     # parse_url takes any leading "word:" as the scheme, so "localhost:3128"
-    # or "user:pass@host" would lose their host. Unless the URL starts with
-    # "scheme:/" (even a malformed one, which should still fail later), mark
-    # it as scheme-relative so it is parsed as credentials, host and port.
-    if not url.startswith("//") and not _SCHEME_PREFIX_RE.match(url):
+    # or "user:pass@host" would lose their host. When "word:" is followed by
+    # a port or by credentials, mark the URL as scheme-relative so it is
+    # parsed as credentials, host and port. Anything else (including a
+    # malformed scheme such as "http:/host") is parsed as before.
+    if not url.startswith("//") and _HOST_PORT_OR_USERINFO_RE.match(url):
         url = "//" + url
 
     parsed = parse_url(url)

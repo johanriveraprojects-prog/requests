@@ -6,7 +6,7 @@ from urllib3.util.retry import Retry
 
 import requests
 from requests.adapters import BaseAdapter
-from requests.sessions import _SessionRetry
+from requests.sessions import _retry_from_int, _SessionRetry
 from tests.testserver.server import Server, consume_socket_content
 
 
@@ -159,6 +159,12 @@ def test_retries_not_passed_to_adapters_overriding_send():
         s.retries = 3
         r = s.get(f"http://{host}:{port}/")
     assert r.status_code == 503
+
+
+@pytest.mark.parametrize("value", (True, -1, "3", 1.5))
+def test_invalid_retries_value(value):
+    with pytest.raises(ValueError, match="Session.retries"):
+        _retry_from_int(value)
 
 
 @pytest.mark.parametrize(

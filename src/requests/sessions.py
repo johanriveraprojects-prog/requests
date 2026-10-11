@@ -138,6 +138,11 @@ class _SessionRetry(Retry):
 
 
 def _retry_from_int(retries: int) -> Retry:
+    if isinstance(retries, bool) or not isinstance(retries, int) or retries < 0:
+        raise ValueError(
+            "Session.retries must be None, a non-negative int or a urllib3 "
+            f"Retry, not {retries!r}"
+        )
     return _SessionRetry(
         total=retries,
         read=False,

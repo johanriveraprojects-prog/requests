@@ -616,6 +616,9 @@ class TestRequests:
         with pytest.raises(InvalidProxyURL):
             requests.get(httpbin(), proxies={"http": "http:///example.com:8080"})
 
+        with pytest.raises(InvalidProxyURL):
+            requests.get(httpbin(), proxies={"http": "http:badproxyurl:3128"})
+
     def test_respect_proxy_env_on_send_self_prepared_request(self, httpbin):
         with override_environ(http_proxy=INVALID_PROXY):
             with pytest.raises(ProxyError):
