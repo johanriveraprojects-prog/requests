@@ -1148,8 +1148,11 @@ session, including redirects, unless the request passes its own ``timeout``::
     s.get('https://github.com')             # uses (3.05, 27)
     s.get('https://github.com', timeout=5)  # uses 5
 
-Because ``timeout=None`` on a request means "use the session default", set
-``s.timeout = None`` to make a session wait forever.
+Because ``timeout=None`` on a request means "use the session default", pass
+``timeout=(None, None)`` to make a single request wait forever, or set
+``s.timeout = None`` to make the whole session wait forever::
+
+    s.get('https://github.com', timeout=(None, None))  # no timeout
 
 .. note:: The connect timeout applies to each connection attempt to an IP address.
           If multiple addresses exist for a domain name, the underlying ``urllib3`` will
