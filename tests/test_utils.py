@@ -708,6 +708,11 @@ def test_iter_slices(value, length):
             '<http://a/>; anchor="http://c/?q=1"; rel="next"',
             [{"url": "http://a/", "anchor": "http://c/?q=1", "rel": "next"}],
         ),
+        # A comma in an unquoted value doesn't start a new link.
+        (
+            "<http://a/>; rel=next; title=foo, bar",
+            [{"url": "http://a/", "rel": "next", "title": "foo, bar"}],
+        ),
         # A parameter without a value doesn't drop the ones after it.
         (
             '<http://a/>; crossorigin; rel="next"',
