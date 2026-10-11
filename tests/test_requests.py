@@ -2680,7 +2680,10 @@ class TestTimeout:
         with patch:
             s.get(httpbin("get"))
             s.get(httpbin("get"), timeout=(1, 2))
-        assert timeouts == [5, (1, 2)]
+            s.get(httpbin("get"), timeout=None)
+            # (None, None) opts a single request out of the session timeout.
+            s.get(httpbin("get"), timeout=(None, None))
+        assert timeouts == [5, (1, 2), 5, (None, None)]
 
     def test_session_timeout_applies_to_redirects(self, httpbin):
         s = requests.Session()

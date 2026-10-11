@@ -533,8 +533,9 @@ class Session(SessionRedirectMixin):
 
         #: Default timeout for requests sent from this session, as a float or
         #: a :ref:`(connect timeout, read timeout) <timeouts>` tuple. It is
-        #: used when a request does not pass its own ``timeout``. Defaults to
-        #: ``None``, which waits forever.
+        #: used when a request does not pass its own ``timeout``; pass
+        #: ``timeout=(None, None)`` to make a single request wait forever.
+        #: Defaults to ``None``, which waits forever.
         self.timeout = None
 
         #: Retry policy for requests sent from this session through an
