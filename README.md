@@ -50,10 +50,27 @@ Requests is ready for the demands of building robust and reliable HTTP–speakin
 - Automatic Content Decompression and Decoding
 - Multi-part File Uploads
 - SOCKS Proxy Support
-- Connection Timeouts
+- Connection Timeouts, with Session-wide Defaults
+- Automatic Retries that honor `Retry-After`
 - Streaming Downloads
 - Automatic honoring of `.netrc`
 - Chunked HTTP Requests
+
+## Resilient Sessions
+
+A `Session` can set a default timeout and retry policy for every request it sends:
+
+```python
+>>> import requests
+>>> s = requests.Session()
+>>> s.timeout = (3.05, 27)  # (connect, read) seconds, for every request
+>>> s.retries = 3           # retry connection errors and 429/5xx responses
+>>> r = s.get('https://api.example.com/items')
+>>> if r.status_code == 429:  # still rate limited after all retries
+...     print('Try again in', r.retry_after, 'seconds')
+```
+
+Retries apply only to idempotent methods, so a `POST` is never sent twice. They back off exponentially and wait for the server's `Retry-After` header, up to 60 seconds. Pass `timeout=(None, None)` to let a single request wait forever. See the [advanced usage docs](https://requests.readthedocs.io/en/latest/user/advanced/) for details.
 
 ## Cloning the repository
 
