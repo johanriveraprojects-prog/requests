@@ -321,12 +321,7 @@ class RequestsCookieJar(CookieJar, MutableMapping[str, str | None]):  # type: ig
 
         :rtype: bool
         """
-        domains: list[str] = []
-        for cookie in iter(self):
-            if cookie.domain is not None and cookie.domain in domains:  # type: ignore[reportUnnecessaryComparison]  # defensive check
-                return True
-            domains.append(cookie.domain)
-        return False  # there is only one domain in jar
+        return len({cookie.domain for cookie in iter(self)}) > 1
 
     def get_dict(
         self, domain: str | None = None, path: str | None = None
