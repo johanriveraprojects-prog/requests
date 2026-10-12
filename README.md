@@ -67,7 +67,8 @@ A `Session` can set a default timeout and retry policy for every request it send
 >>> s.retries = 3           # retry connection errors and 429/5xx responses
 >>> r = s.get('https://api.example.com/items')
 >>> if r.status_code == 429:  # still rate limited after all retries
-...     print('Try again in', r.retry_after, 'seconds')
+...     wait = min(r.retry_after or 1, 60)  # server-provided: cap it
+...     print('Try again in', wait, 'seconds')
 ```
 
 Retries apply only to idempotent methods, so a `POST` is never sent twice. They back off exponentially and wait for the server's `Retry-After` header, up to 60 seconds. Pass `timeout=(None, None)` to let a single request wait forever. See the [advanced usage docs](https://requests.readthedocs.io/en/latest/user/advanced/) for details.
