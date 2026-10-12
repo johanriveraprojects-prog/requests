@@ -2199,6 +2199,10 @@ class TestRequests:
             ("²", None),
             ("soon", None),
             ("", None),
+            # Too large for a float: rejected rather than returned as inf.
+            ("9" * 400, None),
+            # Large but finite values are reported as sent; callers cap them.
+            ("99999999999999999999", 1e20),
         ),
     )
     def test_response_retry_after(self, value, expected):

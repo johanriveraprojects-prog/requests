@@ -13,6 +13,7 @@ import datetime
 # Implicit import within threads may cause LookupError when standard library is in a ZIP,
 # such as in Embedded Python. See https://github.com/psf/requests/issues/3578.
 import encodings.idna  # noqa: F401
+import math
 from collections.abc import Callable, Generator, Iterable, Iterator, Mapping
 from email.utils import parsedate_to_datetime
 from io import UnsupportedOperation
@@ -896,14 +897,18 @@ class Response:
 
         The header may hold a number of seconds or an HTTP date. A date in
         the past gives ``0.0``. Returns ``None`` if the header is missing or
-        cannot be parsed.
+        cannot be parsed, including a number too large to represent.
+
+        The value comes from the server and is not capped, so cap it before
+        waiting on it, e.g. ``time.sleep(min(r.retry_after, 60))``.
         """
         value = self.headers.get("retry-after")
         if value is None:
             return None
         value = value.strip()
         if value.isascii() and value.isdigit():
-            return float(value)
+            seconds = float(value)
+            return seconds if math.isfinite(seconds) else None
         try:
             when = parsedate_to_datetime(value)
         except (TypeError, ValueError, IndexError):
