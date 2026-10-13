@@ -28,6 +28,9 @@ dev
 - `RequestsCookieJar.multiple_domains()` now returns `True` when the jar holds
   cookies for more than one domain. It used to return `True` only when one
   domain appeared twice.
+- A `no_proxy` entry with an IP address and a port (e.g. `10.0.0.1:8080`) now
+  bypasses the proxy for that address and port, as `host:port` entries already
+  did for hostnames. It used to be ignored.
 
 
 2.34.2 (2026-05-14)
