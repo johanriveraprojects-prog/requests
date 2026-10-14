@@ -31,6 +31,9 @@ dev
 - A `no_proxy` entry with an IP address and a port (e.g. `10.0.0.1:8080`) now
   bypasses the proxy for that address and port, as `host:port` entries already
   did for hostnames. It used to be ignored.
+- `morsel_to_cookie` (used by `RequestsCookieJar.set()` with a `Morsel`) now
+  accepts the RFC 1123 `expires` form (e.g. `Wed, 21 Oct 2015 07:28:00 GMT`)
+  that servers and `http.cookies` emit. It used to raise `ValueError`.
 
 
 2.34.2 (2026-05-14)

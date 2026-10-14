@@ -12,6 +12,7 @@ import re
 import tempfile
 import threading
 import warnings
+from http.cookies import SimpleCookie
 from unittest import mock
 
 import pytest
@@ -2547,6 +2548,22 @@ class TestMorselToCookieExpires:
         morsel["expires"] = "Thu, 01-Jan-1970 00:00:01 GMT"
         cookie = morsel_to_cookie(morsel)
         assert cookie.expires == 1
+
+    def test_expires_valid_rfc1123_str(self):
+        """The RFC 1123 date form servers send is accepted too."""
+
+        morsel = Morsel()
+        morsel["expires"] = "Thu, 01 Jan 1970 00:00:01 GMT"
+        cookie = morsel_to_cookie(morsel)
+        assert cookie.expires == 1
+
+    def test_expires_from_simple_cookie(self):
+        """A Morsel parsed by http.cookies converts without error."""
+
+        cookie_obj = SimpleCookie()
+        cookie_obj.load("a=1; Expires=Wed, 21 Oct 2015 07:28:00 GMT")
+        cookie = morsel_to_cookie(cookie_obj["a"])
+        assert cookie.expires == 1445412480
 
     @pytest.mark.parametrize(
         "value, exception",
