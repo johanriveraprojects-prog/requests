@@ -37,6 +37,9 @@ dev
 - `HTTPDigestAuth` now supports the RFC 7616 `-sess` variants of every
   algorithm (e.g. `SHA-256-sess`), not only `MD5-sess`. It used to send no
   `Authorization` header for them.
+- A read timeout now raises `ReadTimeout` (a `Timeout`) even when read
+  retries are configured (e.g. `HTTPAdapter(max_retries=Retry(read=2))`).
+  Once the retries ran out it used to raise `ConnectionError`.
 
 
 2.34.2 (2026-05-14)
