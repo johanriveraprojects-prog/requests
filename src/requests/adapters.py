@@ -719,6 +719,11 @@ class HTTPAdapter(BaseAdapter):
                 if not isinstance(e.reason, NewConnectionError):
                     raise ConnectTimeout(e, request=request)
 
+            if isinstance(e.reason, ReadTimeoutError):
+                # Read retries exhausted: still a read timeout, not a
+                # connection error.
+                raise ReadTimeout(e, request=request)
+
             if isinstance(e.reason, ResponseError):
                 raise RetryError(e, request=request)
 

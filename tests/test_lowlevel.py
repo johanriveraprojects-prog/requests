@@ -1,8 +1,10 @@
 import threading
 
 import pytest
+from urllib3.util.retry import Retry
 
 import requests
+from requests.adapters import HTTPAdapter
 from requests.compat import JSONDecodeError
 from tests.testserver.server import Server, consume_socket_content
 
@@ -58,6 +60,24 @@ def test_chunked_encoding_error():
         with pytest.raises(requests.exceptions.ChunkedEncodingError):
             requests.get(url)
         close_server.set()  # release server block
+
+
+def test_read_timeout_after_read_retries_is_read_timeout():
+    """Exhausting read retries still raises ReadTimeout, not ConnectionError."""
+
+    def unresponsive_handler(sock):
+        # Read the request but never answer; the client times out first.
+        return consume_socket_content(sock, timeout=0.5)
+
+    server = Server(unresponsive_handler, requests_to_handle=2)
+
+    with server as (host, port):
+        session = requests.Session()
+        retry = Retry(total=1, read=1, backoff_factor=0)
+        session.mount("http://", HTTPAdapter(max_retries=retry))
+        with pytest.raises(requests.exceptions.ReadTimeout):
+            session.get(f"http://{host}:{port}/", timeout=(5, 0.1))
+        assert len(server.handler_results) >= 1
 
 
 def test_chunked_upload_uses_only_specified_host_header():
