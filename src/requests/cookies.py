@@ -533,8 +533,14 @@ def morsel_to_cookie(morsel: Morsel[Any]) -> Cookie:
         except ValueError:
             raise TypeError(f"max-age: {morsel['max-age']} must be integer")
     elif morsel["expires"]:
-        time_template = "%a, %d-%b-%Y %H:%M:%S GMT"
-        expires = calendar.timegm(time.strptime(morsel["expires"], time_template))
+        # Accept both the Netscape form ("Thu, 01-Jan-1970 ...") and the
+        # RFC 1123 form ("Thu, 01 Jan 1970 ...") that servers and
+        # http.cookies itself emit.
+        try:
+            parsed = time.strptime(morsel["expires"], "%a, %d-%b-%Y %H:%M:%S GMT")
+        except ValueError:
+            parsed = time.strptime(morsel["expires"], "%a, %d %b %Y %H:%M:%S GMT")
+        expires = calendar.timegm(parsed)
     return create_cookie(
         comment=morsel["comment"],
         comment_url=bool(morsel["comment"]),
