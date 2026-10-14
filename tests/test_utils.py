@@ -857,6 +857,26 @@ def test_unicode_is_ascii(value, expected):
 @pytest.mark.parametrize(
     "url, expected",
     (
+        ("http://10.0.0.1:8080/", True),
+        ("http://10.0.0.1:9090/", False),
+        ("http://10.0.0.1/", False),
+        ("http://example.com:8080/", True),
+        ("http://example.com:9090/", False),
+    ),
+)
+def test_should_bypass_proxies_no_proxy_with_port(url, expected, monkeypatch):
+    """A no_proxy entry with a port matches only that port, for IP
+    addresses as well as hostnames.
+    """
+    monkeypatch.delenv("no_proxy", raising=False)
+    monkeypatch.delenv("NO_PROXY", raising=False)
+    no_proxy = "10.0.0.1:8080,example.com:8080"
+    assert should_bypass_proxies(url, no_proxy=no_proxy) == expected
+
+
+@pytest.mark.parametrize(
+    "url, expected",
+    (
         ("http://192.168.0.1:5000/", True),
         ("http://192.168.0.1/", True),
         ("http://172.16.1.1/", True),
