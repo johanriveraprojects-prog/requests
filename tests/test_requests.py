@@ -4,6 +4,7 @@ import collections
 import contextlib
 import datetime
 import email.utils
+import hashlib
 import io
 import json
 import os
@@ -56,6 +57,7 @@ from requests.hooks import default_hooks
 from requests.models import PreparedRequest, urlencode
 from requests.sessions import SessionRedirectMixin
 from requests.structures import CaseInsensitiveDict
+from requests.utils import parse_dict_header
 
 from . import SNIMissingWarning
 from .compat import StringIO
@@ -3237,6 +3239,39 @@ def test_digest_auth_qop_list_with_spaces(qop):
     header = auth.build_digest_header("GET", "http://example.com/")
     assert header is not None
     assert 'qop="auth"' in header
+
+
+@pytest.mark.parametrize(
+    "algorithm, hashfunc",
+    (
+        ("MD5-sess", hashlib.md5),
+        ("SHA-sess", hashlib.sha1),
+        ("SHA-256-sess", hashlib.sha256),
+        ("SHA-512-sess", hashlib.sha512),
+    ),
+)
+def test_digest_auth_sess_algorithms(algorithm, hashfunc):
+    """Every "-sess" algorithm folds nonce and cnonce into HA1 (RFC 7616)."""
+    auth = HTTPDigestAuth("user", "pass")
+    auth.init_per_thread_state()
+    auth._thread_local.chal = {
+        "realm": "r",
+        "nonce": "n",
+        "qop": "auth",
+        "algorithm": algorithm,
+    }
+    header = auth.build_digest_header("GET", "http://example.com/p")
+    assert header is not None
+    fields = parse_dict_header(header.removeprefix("Digest "))
+
+    def h(value):
+        return hashfunc(value.encode("utf-8")).hexdigest()
+
+    ha1 = h(f"{h('user:r:pass')}:n:{fields['cnonce']}")
+    ha2 = h("GET:/p")
+    expected = h(f"{ha1}:n:{fields['nc']}:{fields['cnonce']}:auth:{ha2}")
+    assert fields["response"] == expected
+    assert fields["algorithm"] == algorithm
 
 
 @pytest.mark.parametrize(

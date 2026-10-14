@@ -170,8 +170,12 @@ class HTTPDigestAuth(AuthBase):
             _algorithm = "MD5"
         else:
             _algorithm = algorithm.upper()
+        # RFC 7616: any algorithm may have a "-sess" variant that folds the
+        # nonce and cnonce into HA1.
+        is_sess = _algorithm.endswith("-SESS")
+        _algorithm = _algorithm.removesuffix("-SESS")
         # lambdas assume digest modules are imported at the top level
-        if _algorithm == "MD5" or _algorithm == "MD5-SESS":
+        if _algorithm == "MD5":
 
             def md5_utf8(x: str | bytes) -> str:
                 if isinstance(x, str):
@@ -235,7 +239,7 @@ class HTTPDigestAuth(AuthBase):
         s += os.urandom(8)
 
         cnonce = hashlib.sha1(s, usedforsecurity=False).hexdigest()[:16]
-        if _algorithm == "MD5-SESS":
+        if is_sess:
             HA1 = hash_utf8(f"{HA1}:{nonce}:{cnonce}")  # type: ignore[reportConstantRedefinition]  # RFC 2617 terminology
 
         if not qop:

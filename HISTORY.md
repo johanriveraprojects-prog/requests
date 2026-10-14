@@ -34,6 +34,9 @@ dev
 - `morsel_to_cookie` (used by `RequestsCookieJar.set()` with a `Morsel`) now
   accepts the RFC 1123 `expires` form (e.g. `Wed, 21 Oct 2015 07:28:00 GMT`)
   that servers and `http.cookies` emit. It used to raise `ValueError`.
+- `HTTPDigestAuth` now supports the RFC 7616 `-sess` variants of every
+  algorithm (e.g. `SHA-256-sess`), not only `MD5-sess`. It used to send no
+  `Authorization` header for them.
 
 
 2.34.2 (2026-05-14)
