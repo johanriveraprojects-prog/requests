@@ -44,6 +44,9 @@ dev
   now fall back to UTF-8 when the response has an empty or unknown charset
   (e.g. `Content-Type: text/plain; charset=`), as `Response.text` already did.
   They used to raise `LookupError`.
+- `.netrc` machine names are now matched case-insensitively, as curl does. A
+  `machine API.Example.com` entry used to be ignored for every URL, since the
+  host is lowercased before the lookup, and the `default` entry was sent instead.
 
 
 2.34.2 (2026-05-14)

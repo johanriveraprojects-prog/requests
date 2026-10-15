@@ -264,7 +264,18 @@ def get_netrc_auth(
             return
 
         try:
-            _netrc = netrc(netrc_path).authenticators(host)
+            netrc_obj = netrc(netrc_path)
+            # Host names are case-insensitive, but urlparse lowercases them
+            # while netrc keeps machine names as written, so compare
+            # case-insensitively before falling back to the "default" entry.
+            _netrc = next(
+                (
+                    auth
+                    for machine, auth in netrc_obj.hosts.items()
+                    if machine.lower() == host
+                ),
+                None,
+            ) or netrc_obj.authenticators(host)
             if _netrc and any(_netrc):
                 # Return with login / password
                 login_i = 0 if _netrc[0] else 1
