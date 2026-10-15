@@ -1492,6 +1492,21 @@ class TestRequests:
         chunks = r.iter_content(decode_unicode=True)
         assert all(isinstance(chunk, str) for chunk in chunks)
 
+    @pytest.mark.parametrize("encoding", ("", "not-a-charset"))
+    def test_response_decode_unicode_unknown_encoding(self, encoding):
+        """An empty or unknown charset falls back to UTF-8, like .text,
+        instead of raising LookupError while streaming.
+        """
+        r = requests.Response()
+        r.raw = io.BytesIO("café\nok\n".encode())
+        r.encoding = encoding
+        assert "".join(r.iter_content(4, decode_unicode=True)) == "café\nok\n"
+
+        r = requests.Response()
+        r.raw = io.BytesIO(b"a\nb\n")
+        r.encoding = encoding
+        assert list(r.iter_lines(decode_unicode=True)) == ["a", "b"]
+
     def test_response_reason_unicode(self):
         # check for unicode HTTP status
         r = requests.Response()

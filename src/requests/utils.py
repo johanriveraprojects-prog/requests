@@ -600,7 +600,13 @@ def stream_decode_response_unicode(
         yield from iterator
         return
 
-    decoder = codecs.getincrementaldecoder(r.encoding)(errors="replace")
+    # Match Response.text: an empty or unknown charset (e.g. a typo in the
+    # Content-Type header) falls back to UTF-8 instead of raising LookupError.
+    try:
+        decoder_cls = codecs.getincrementaldecoder(r.encoding or "utf-8")
+    except LookupError:
+        decoder_cls = codecs.getincrementaldecoder("utf-8")
+    decoder = decoder_cls(errors="replace")
     for chunk in iterator:
         rv = decoder.decode(chunk)
         if rv:

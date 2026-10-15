@@ -40,6 +40,10 @@ dev
 - A read timeout now raises `ReadTimeout` (a `Timeout`) even when read
   retries are configured (e.g. `HTTPAdapter(max_retries=Retry(read=2))`).
   Once the retries ran out it used to raise `ConnectionError`.
+- `Response.iter_content(decode_unicode=True)` and `iter_lines(decode_unicode=True)`
+  now fall back to UTF-8 when the response has an empty or unknown charset
+  (e.g. `Content-Type: text/plain; charset=`), as `Response.text` already did.
+  They used to raise `LookupError`.
 
 
 2.34.2 (2026-05-14)
