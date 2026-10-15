@@ -162,6 +162,19 @@ class TestGetNetrcAuth:
         auth = get_netrc_auth("http://example.com/thing")
         assert auth == ("aaaa", "bbbb")
 
+    @pytest.mark.parametrize(
+        "url", ("http://API.Example.com/thing", "http://api.example.com/thing")
+    )
+    def test_machine_name_is_case_insensitive(self, tmp_path, monkeypatch, url):
+        netrc_path = tmp_path / ".netrc"
+        monkeypatch.setenv("NETRC", str(netrc_path))
+        with open(netrc_path, "w") as f:
+            f.write(
+                "machine API.Example.com login aaaa password bbbb\n"
+                "default login dddd password eeee\n"
+            )
+        assert get_netrc_auth(url) == ("aaaa", "bbbb")
+
     def test_not_vulnerable_to_bad_url_parsing(self, tmp_path, monkeypatch):
         netrc_path = tmp_path / ".netrc"
         monkeypatch.setenv("NETRC", str(netrc_path))
