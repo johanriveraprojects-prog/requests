@@ -56,6 +56,10 @@ dev
   proxy such as `http://user@proxy:3128`) is now sent with an empty password,
   as curl does. It used to be dropped silently, so the request went out with
   no `Authorization` or `Proxy-Authorization` header.
+- Redirects whose `Location` header is not valid UTF-8 (Java servlets send
+  ISO-8859-1 by default) are now followed with the raw bytes
+  percent-encoded, as curl does. They used to raise `UnicodeDecodeError`,
+  even with `allow_redirects=False`.
 
 
 2.34.2 (2026-05-14)

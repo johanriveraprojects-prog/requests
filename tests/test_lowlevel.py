@@ -382,6 +382,36 @@ def test_redirect_rfc1808_to_non_ascii_location():
         close_server.set()
 
 
+def test_redirect_to_latin1_location():
+    """A Location header that isn't valid UTF-8 (Java servlets send
+    ISO-8859-1 by default) is followed with its raw bytes percent-encoded."""
+    redirect_request = []  # stores the second request to the server
+
+    def redirect_resp_handler(sock):
+        consume_socket_content(sock, timeout=0.5)
+        sock.send(
+            b'HTTP/1.1 302 Found\r\n'
+            b'Content-Length: 0\r\n'
+            b'Location: /caf\xe9?q=\xf1\r\n'
+            b'\r\n'
+        )
+        redirect_request.append(consume_socket_content(sock, timeout=0.5))
+        sock.send(b'HTTP/1.1 200 OK\r\n\r\n')
+
+    close_server = threading.Event()
+    server = Server(redirect_resp_handler, wait_to_close_event=close_server)
+
+    with server as (host, port):
+        url = f'http://{host}:{port}'
+        r = requests.get(url=url, allow_redirects=True)
+        assert r.status_code == 200
+        assert len(r.history) == 1
+        assert redirect_request[0].startswith(b'GET /caf%E9?q=%F1 HTTP/1.1')
+        assert r.url == f'{url}/caf%E9?q=%F1'
+
+        close_server.set()
+
+
 def test_fragment_not_sent_with_request():
     """Verify that the fragment portion of a URI isn't sent to the server."""
     close_server = threading.Event()
