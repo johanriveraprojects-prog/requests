@@ -480,6 +480,9 @@ ENCODED_PASSWORD = compat.quote(PASSWORD, "")
             ("user", "pass#pass"),
         ),
         ("http://complex.url.com/path?query=yes", ("", "")),
+        ("http://token@complex.url.com/path", ("token", "")),
+        ("http://user%40example.com@complex.url.com/path", ("user@example.com", "")),
+        ("http://user:@complex.url.com/path", ("user", "")),
     ),
 )
 def test_get_auth_from_url(url, auth):

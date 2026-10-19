@@ -2304,6 +2304,15 @@ class TestRequests:
         headers = adapter.proxy_headers("http://user:@httpbin.org")
         assert headers == {"Proxy-Authorization": "Basic dXNlcjo="}
 
+    def test_proxy_auth_username_only(self):
+        adapter = HTTPAdapter()
+        headers = adapter.proxy_headers("http://user@httpbin.org")
+        assert headers == {"Proxy-Authorization": "Basic dXNlcjo="}
+
+    def test_basic_auth_username_only_in_url(self):
+        p = requests.Request("GET", "http://token@example.com/").prepare()
+        assert p.headers["Authorization"] == _basic_auth_str("token", "")
+
     def test_response_json_when_content_is_None(self, httpbin):
         r = requests.get(httpbin("/status/204"))
         # Make sure r.content is None
