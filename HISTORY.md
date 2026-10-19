@@ -47,6 +47,11 @@ dev
 - `.netrc` machine names are now matched case-insensitively, as curl does. A
   `machine API.Example.com` entry used to be ignored for every URL, since the
   host is lowercased before the lookup, and the `default` entry was sent instead.
+- `Response.json()` now decodes bodies that start with a UTF-8, UTF-16 or
+  UTF-32 byte order mark using that encoding. It used to raise
+  `JSONDecodeError` for them whenever the `Content-Type` was
+  `application/json`, because the UTF-8 default for that type skipped the
+  encoding detection.
 
 
 2.34.2 (2026-05-14)

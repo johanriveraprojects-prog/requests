@@ -7,6 +7,7 @@ This module contains the primary objects that power Requests.
 
 from __future__ import annotations
 
+import codecs
 import datetime
 
 # Import encoding now, to avoid implicit import later.
@@ -105,6 +106,14 @@ REDIRECT_STATI: Final[tuple[int, ...]] = (  # type: ignore[assignment]
 DEFAULT_REDIRECT_LIMIT: int = 30
 CONTENT_CHUNK_SIZE: int = 10 * 1024
 ITER_CHUNK_SIZE: int = 512
+
+# The UTF-32-LE BOM starts with the UTF-16-LE one.
+_UNICODE_BOMS = (
+    codecs.BOM_UTF8,
+    codecs.BOM_UTF16_LE,
+    codecs.BOM_UTF16_BE,
+    codecs.BOM_UTF32_BE,
+)
 
 
 class RequestEncodingMixin:
@@ -1141,11 +1150,17 @@ class Response:
             contain valid json.
         """
 
-        if not self.encoding and self.content and len(self.content) > 3:
-            # No encoding set. JSON RFC 4627 section 3 states we should expect
-            # UTF-8, -16 or -32. Detect which one to use; If the detection or
-            # decoding fails, fall back to `self.text` (using charset_normalizer to make
-            # a best guess).
+        if (
+            self.content
+            and len(self.content) > 3
+            and (not self.encoding or self.content.startswith(_UNICODE_BOMS))
+        ):
+            # No encoding set, or the body starts with a byte order mark,
+            # which identifies the encoding better than the header (that may
+            # just be the UTF-8 default for application/json). JSON RFC 4627
+            # section 3 states we should expect UTF-8, -16 or -32. Detect
+            # which one to use; If the detection or decoding fails, fall back
+            # to `self.text` (using charset_normalizer to make a best guess).
             encoding = guess_json_utf(self.content)
             if encoding is not None:
                 try:
