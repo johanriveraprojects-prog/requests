@@ -52,6 +52,10 @@ dev
   `JSONDecodeError` for them whenever the `Content-Type` was
   `application/json`, because the UTF-8 default for that type skipped the
   encoding detection.
+- A username without a password in the URL (`https://token@host/`, or a
+  proxy such as `http://user@proxy:3128`) is now sent with an empty password,
+  as curl does. It used to be dropped silently, so the request went out with
+  no `Authorization` or `Proxy-Authorization` header.
 
 
 2.34.2 (2026-05-14)

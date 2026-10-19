@@ -1143,8 +1143,9 @@ def get_auth_from_url(url: str) -> tuple[str, str]:
     parsed = urlparse(url)
 
     try:
-        # except handles parsed.username/password being None
-        auth = (unquote(parsed.username), unquote(parsed.password))  # type: ignore[arg-type]
+        # except handles parsed.username being None. A username without a
+        # password ("token@host") gets an empty password, as curl does.
+        auth = (unquote(parsed.username), unquote(parsed.password or ""))  # type: ignore[arg-type]
     except (AttributeError, TypeError):
         auth = ("", "")
 
