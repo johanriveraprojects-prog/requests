@@ -1,5 +1,6 @@
 """Tests for Requests."""
 
+import codecs
 import collections
 import contextlib
 import datetime
@@ -3057,6 +3058,24 @@ class TestPreparingURLs:
         with pytest.raises(requests.exceptions.JSONDecodeError) as excinfo:
             r.json()
         assert excinfo.value.doc == r.text
+
+    @pytest.mark.parametrize(
+        "content_type, body",
+        (
+            ("application/json", codecs.BOM_UTF8 + b'{"a": "\xc3\xa9"}'),
+            ("application/json", '{"a": "é"}'.encode("utf-16")),
+            ("application/json", '{"a": "é"}'.encode("utf-32")),
+            ("application/json; charset=utf-8", codecs.BOM_UTF8 + b'{"a": "\xc3\xa9"}'),
+        ),
+    )
+    def test_json_with_bom_and_json_content_type(self, content_type, body):
+        r = requests.Response()
+        r.status_code = 200
+        r.headers = CaseInsensitiveDict({"Content-Type": content_type})
+        r.encoding = requests.utils.get_encoding_from_headers(r.headers)
+        r._content = body
+        r._content_consumed = True
+        assert r.json() == {"a": "é"}
 
     def test_status_code_425(self):
         r1 = requests.codes.get("TOO_EARLY")
