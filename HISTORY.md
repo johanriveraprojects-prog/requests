@@ -60,6 +60,9 @@ dev
   ISO-8859-1 by default) are now followed with the raw bytes
   percent-encoded, as curl does. They used to raise `UnicodeDecodeError`,
   even with `allow_redirects=False`.
+- `Content-Length` for an `io.StringIO` body now counts the UTF-8 bytes that
+  urllib3 2.x sends rather than characters. Non-ASCII text used to be sent
+  with a header that was too small, so servers read a truncated body.
 
 
 2.34.2 (2026-05-14)

@@ -166,6 +166,11 @@ def super_len(o: Any) -> int:
         # of latin-1 (iso-8859-1) like http.client.
         o = o.encode("utf-8")
 
+    if not is_urllib3_1 and isinstance(o, io.StringIO):
+        # Text streams are sent as utf-8 as well, so count the bytes left
+        # from the current position rather than the characters.
+        return len(o.getvalue()[o.tell() :].encode("utf-8"))
+
     if hasattr(o, "__len__"):
         total_length = len(o)
 

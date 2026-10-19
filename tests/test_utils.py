@@ -69,6 +69,15 @@ class TestSuperLen:
         s.write("foobarbogus")
         assert super_len(s) == 0
 
+    @pytest.mark.skipif(compat.is_urllib3_1, reason="urllib3 1.x sends latin-1")
+    def test_super_len_counts_utf8_bytes_of_stringio(self):
+        """urllib3 2.x encodes text streams as utf-8, so Content-Length
+        must count bytes, not characters."""
+        s = StringIO.StringIO("ñandú")
+        assert super_len(s) == len("ñandú".encode())
+        s.read(1)
+        assert super_len(s) == len("andú".encode())
+
     @pytest.mark.parametrize("error", [IOError, OSError])
     def test_super_len_handles_files_raising_weird_errors_in_tell(self, error):
         """If tell() raises errors, assume the cursor is at position zero."""
