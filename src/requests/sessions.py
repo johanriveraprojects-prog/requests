@@ -22,7 +22,7 @@ from ._internal_utils import to_native_string
 from ._types import is_prepared as _is_prepared
 from .adapters import HTTPAdapter
 from .auth import _basic_auth_str
-from .compat import cookielib, urljoin, urlparse
+from .compat import cookielib, quote, urljoin, urlparse
 from .cookies import (
     RequestsCookieJar,
     cookiejar_from_dict,
@@ -185,8 +185,13 @@ class SessionRedirectMixin:
             # It is more likely to get UTF8 header rather than latin1.
             # This causes incorrect handling of UTF8 encoded location headers.
             # To solve this, we re-encode the location in latin1.
-            location = location.encode("latin1")
-            return to_native_string(location, "utf8")
+            location_bytes = location.encode("latin1")
+            try:
+                return to_native_string(location_bytes, "utf8")
+            except UnicodeDecodeError:
+                # Not UTF-8 after all (e.g. Java servlets send ISO-8859-1
+                # by default): percent-encode the raw bytes, as curl does.
+                return quote(location_bytes, safe="!#$%&'()*+,/:;=?@[]~")
         return None
 
     def should_strip_auth(self, old_url: str, new_url: str) -> bool:
