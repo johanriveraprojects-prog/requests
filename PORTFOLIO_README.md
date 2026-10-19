@@ -2,7 +2,7 @@
 
 Arreglo bugs, construyo integraciones con APIs y automatizo tareas en Python. Cada entrega incluye una **prueba automatizada que falla antes del arreglo y pasa después**.
 
-📩 **Contacto:** johanriveraprojects@gmail.com · [LinkedIn: añade tu enlace] · [WhatsApp/Telegram: añade tu contacto]
+📩 **Contacto:** johanriveraprojects@gmail.com · [LinkedIn](https://www.linkedin.com/in/johanxavierriverabarrientos) · [WhatsApp: +503 6041 4674](https://wa.me/50360414674)
 🌎 Trabajo en español e inglés · ⏱ Respuesta en menos de 24 h · 💵 Precio fijo acordado antes de empezar
 
 ---
@@ -16,8 +16,6 @@ Arreglo bugs, construyo integraciones con APIs y automatizo tareas en Python. Ca
 | Integración con una API (autenticación, errores, reintentos) | 3-5 días | USD 100 |
 | Pruebas automatizadas para tu código existente | 2-4 días | USD 80 |
 | Sesión 1:1 de ayuda en Python (1 h) | mismo día | USD 15 |
-
-Si no logro resolver tu problema, no pagas.
 
 ---
 
