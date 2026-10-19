@@ -148,6 +148,12 @@ class TestRequests:
         assert "Content-Length" in r.headers
         assert r.headers["Content-Length"] == "not zero"
 
+    @pytest.mark.skipif(urllib3.__version__.startswith("1."), reason="latin-1")
+    def test_non_ascii_stringio_body_is_sent_whole(self, httpbin):
+        r = requests.post(httpbin("post"), data=StringIO.StringIO("ñandú"))
+        assert r.request.headers["Content-Length"] == "7"
+        assert r.json()["data"] == "ñandú"
+
     def test_path_is_not_double_encoded(self):
         request = requests.Request("GET", "http://0.0.0.0/get/test case").prepare()
 
