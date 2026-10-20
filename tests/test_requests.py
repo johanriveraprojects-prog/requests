@@ -1967,6 +1967,24 @@ class TestRequests:
 
         assert h1 == h2
 
+    def test_host_header_is_dropped_on_redirect_to_other_host(self, httpbin):
+        # httpbin listens on 127.0.0.1, so "localhost" is another host name
+        # for the same server.
+        target = httpbin("get").replace("127.0.0.1", "localhost")
+        r = requests.get(
+            httpbin("redirect-to"),
+            params={"url": target},
+            headers={"Host": "myapp.test"},
+        )
+        assert r.history[0].request.headers["Host"] == "myapp.test"
+        assert "Host" not in r.request.headers
+        assert r.json()["headers"]["Host"] == urlparse(target).netloc
+
+    def test_host_header_is_retained_for_redirect_on_host(self, httpbin):
+        r = requests.get(httpbin("redirect/1"), headers={"Host": "myapp.test"})
+        assert r.request.headers["Host"] == "myapp.test"
+        assert r.json()["headers"]["Host"] == "myapp.test"
+
     def test_should_strip_auth_host_change(self):
         s = requests.Session()
         assert s.should_strip_auth(

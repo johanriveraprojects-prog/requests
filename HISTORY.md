@@ -63,6 +63,10 @@ dev
 - `Content-Length` for an `io.StringIO` body now counts the UTF-8 bytes that
   urllib3 2.x sends rather than characters. Non-ASCII text used to be sent
   with a header that was too small, so servers read a truncated body.
+- A `Host` header set by the caller is no longer sent when a redirect leads
+  to a different host, as curl does. It used to be kept, so the new server
+  got the wrong `Host` and cookies it set were stored for the original
+  host name.
 
 
 2.34.2 (2026-05-14)

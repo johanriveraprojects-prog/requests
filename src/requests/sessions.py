@@ -303,6 +303,11 @@ class SessionRedirectMixin:
             headers = prepared_request.headers
             headers.pop("Cookie", None)
 
+            # A Host header set by the caller names the original server, so
+            # don't send it to a different host (curl drops it as well).
+            if urlparse(req.url).hostname != urlparse(prepared_request.url).hostname:
+                headers.pop("Host", None)
+
             # Extract any cookies sent on the response to the cookiejar
             # in the new request. Because we've mutated our copied prepared
             # request, use the old one that we haven't yet touched.
