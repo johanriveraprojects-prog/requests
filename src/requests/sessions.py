@@ -34,6 +34,7 @@ from .exceptions import (
     ContentDecodingError,
     InvalidSchema,
     TooManyRedirects,
+    UnrewindableBodyError,
 )
 from .hooks import default_hooks, dispatch_hook
 
@@ -337,6 +338,13 @@ class SessionRedirectMixin:
             if yield_requests:
                 yield req  # type: ignore[misc]  # Internal use only, returns PreparedRequest
             else:
+                # A 307/308 keeps the body. A stream that can't be rewound
+                # (e.g. a generator) has already been consumed and would be
+                # resent empty, so fail instead of losing the data silently.
+                if not _body_is_rewindable(req):
+                    raise UnrewindableBodyError(
+                        "Unable to rewind request body for redirect."
+                    )
                 resp = self.send(
                     req,
                     stream=stream,
