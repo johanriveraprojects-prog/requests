@@ -746,6 +746,17 @@ class TestRequests:
         assert r.request.headers["Authorization"] == _basic_auth_str("user", "pass")
         assert r.status_code == 200
 
+    def test_url_credentials_beat_netrc(self, httpbin, monkeypatch):
+        monkeypatch.setattr(
+            requests.sessions, "get_netrc_auth", lambda url: ("netrc", "wrong")
+        )
+        url = httpbin("basic-auth", "user", "pass").replace(
+            "http://", "http://user:pass@"
+        )
+        r = requests.get(url)
+        assert r.request.headers["Authorization"] == _basic_auth_str("user", "pass")
+        assert r.status_code == 200
+
     def test_netrc_applies_after_redirect_without_auth(self, httpbin, monkeypatch):
         monkeypatch.setattr(
             requests.sessions, "get_netrc_auth", lambda url: ("user", "pass")
