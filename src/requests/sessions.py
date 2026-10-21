@@ -609,7 +609,12 @@ class Session(SessionRedirectMixin):
         # Set environment's basic authentication if not explicitly set.
         auth = request.auth
         if self.trust_env and not auth and not self.auth:
-            auth = get_netrc_auth(url)
+            # A username and password in the URL are as explicit as auth=,
+            # so they win over .netrc (as with curl). A bare username still
+            # lets .netrc supply the credentials.
+            url_username, url_password = get_auth_from_url(cast(str, url))
+            if not (url_username and url_password):
+                auth = get_netrc_auth(url)
 
         p = PreparedRequest()
         p.prepare(

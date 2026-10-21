@@ -83,6 +83,10 @@ dev
   as RFC 7235 requires, so `Digest Realm="…", Nonce="…"` works. It used to
   raise `KeyError: 'realm'`, which `except requests.RequestException` does
   not catch.
+- A username and password embedded in the URL (`https://user:pass@host/`)
+  now take precedence over a `.netrc` entry for the same host, as curl does.
+  The `.netrc` credentials used to be sent instead. A URL with only a
+  username still falls back to `.netrc`.
 
 
 2.34.2 (2026-05-14)
