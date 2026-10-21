@@ -71,6 +71,10 @@ dev
   urllib3 actually uses pyOpenSSL. It used to say `true` whenever pyOpenSSL
   was installed, although requests only injects it when the `ssl` module
   lacks SNI support.
+- `HTTPDigestAuth` now signs the request-target that is actually sent when
+  the last path segment has `;params` (e.g. `/app;jsessionid=ABC?x=1`). It
+  used to drop them from the digest `uri`, so servers rejected the
+  credentials with 401.
 
 
 2.34.2 (2026-05-14)
