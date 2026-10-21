@@ -730,6 +730,32 @@ class TestRequests:
         finally:
             requests.sessions.get_netrc_auth = old_auth
 
+    def test_explicit_auth_beats_netrc_after_same_host_redirect(
+        self, httpbin, monkeypatch
+    ):
+        monkeypatch.setattr(
+            requests.sessions, "get_netrc_auth", lambda url: ("netrc", "wrong")
+        )
+        target = httpbin("basic-auth", "user", "pass")
+        r = requests.get(
+            httpbin("redirect-to"), params={"url": target}, auth=("user", "pass")
+        )
+        assert r.history[0].request.headers["Authorization"] == _basic_auth_str(
+            "user", "pass"
+        )
+        assert r.request.headers["Authorization"] == _basic_auth_str("user", "pass")
+        assert r.status_code == 200
+
+    def test_netrc_applies_after_redirect_without_auth(self, httpbin, monkeypatch):
+        monkeypatch.setattr(
+            requests.sessions, "get_netrc_auth", lambda url: ("user", "pass")
+        )
+        r = requests.get(
+            httpbin("redirect-to"),
+            params={"url": httpbin("basic-auth", "user", "pass")},
+        )
+        assert r.status_code == 200
+
     def test_basicauth_with_netrc_leak(self, httpbin):
         url1 = httpbin("basic-auth", "user", "pass")
         url = url1[len("http://") :]

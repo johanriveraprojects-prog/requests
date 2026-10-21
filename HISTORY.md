@@ -75,6 +75,10 @@ dev
   the last path segment has `;params` (e.g. `/app;jsessionid=ABC?x=1`). It
   used to drop them from the digest `uri`, so servers rejected the
   credentials with 401.
+- Credentials passed with `auth=` are kept on a redirect to the same host
+  even when `.netrc` has an entry for it, as curl does. The `.netrc`
+  credentials used to replace them on the redirected request, although
+  `auth=` takes precedence on the first one.
 
 
 2.34.2 (2026-05-14)
