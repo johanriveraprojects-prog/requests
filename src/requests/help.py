@@ -8,6 +8,7 @@ from typing import Any
 
 import idna
 import urllib3
+from urllib3.util import ssl_ as urllib3_ssl
 
 from . import __version__ as requests_version
 
@@ -109,7 +110,9 @@ def info() -> dict[str, Any]:
         "platform": platform_info,
         "implementation": implementation_info,
         "system_ssl": system_ssl_info,
-        "using_pyopenssl": pyopenssl is not None,
+        # pyOpenSSL being importable doesn't mean urllib3 uses it: requests
+        # only injects it when the ssl module lacks SNI support.
+        "using_pyopenssl": urllib3_ssl.IS_PYOPENSSL,
         "using_charset_normalizer": chardet is None,
         "pyOpenSSL": pyopenssl_info,
         "urllib3": urllib3_info,
