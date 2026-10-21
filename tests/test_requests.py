@@ -3342,6 +3342,35 @@ def test_digest_auth_sess_algorithms(algorithm, hashfunc):
 
 
 @pytest.mark.parametrize(
+    "url",
+    (
+        "http://example.com/app;jsessionid=ABC?x=1",
+        "http://example.com/files/a;b.txt",
+        "http://example.com/plain?q=1",
+    ),
+)
+def test_digest_auth_uri_matches_request_target(url):
+    """The digest uri (and the hash over it) must be the request-target that
+    is actually sent, including ";params" in the last path segment."""
+    auth = HTTPDigestAuth("user", "pass")
+    auth.init_per_thread_state()
+    auth._thread_local.chal = {"realm": "r", "nonce": "n", "qop": "auth"}
+    header = auth.build_digest_header("GET", url)
+    assert header is not None
+    fields = parse_dict_header(header.removeprefix("Digest "))
+
+    target = requests.Request("GET", url).prepare().path_url
+    assert fields["uri"] == target
+
+    def h(value):
+        return hashlib.md5(value.encode("utf-8")).hexdigest()
+
+    ha2 = h(f"GET:{target}")
+    expected = h(f"{h('user:r:pass')}:n:{fields['nc']}:{fields['cnonce']}:auth:{ha2}")
+    assert fields["response"] == expected
+
+
+@pytest.mark.parametrize(
     "domains, expected",
     (
         ((), False),
