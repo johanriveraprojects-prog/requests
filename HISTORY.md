@@ -67,6 +67,10 @@ dev
   to a different host, as curl does. It used to be kept, so the new server
   got the wrong `Host` and cookies it set were stored for the original
   host name.
+- `python -m requests.help` now reports `"using_pyopenssl": true` only when
+  urllib3 actually uses pyOpenSSL. It used to say `true` whenever pyOpenSSL
+  was installed, although requests only injects it when the `ssl` module
+  lacks SNI support.
 
 
 2.34.2 (2026-05-14)

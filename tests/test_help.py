@@ -25,3 +25,11 @@ def test_idna_with_version_attribute():
     """Verify we're actually setting idna version when it should be available."""
     with mock.patch("requests.help.idna", new=VersionedPackage("2.6")):
         assert info()["idna"] == {"version": "2.6"}
+
+
+def test_using_pyopenssl_reflects_injection():
+    """pyOpenSSL being installed isn't the same as urllib3 using it."""
+    with mock.patch("urllib3.util.ssl_.IS_PYOPENSSL", new=False):
+        assert info()["using_pyopenssl"] is False
+    with mock.patch("urllib3.util.ssl_.IS_PYOPENSSL", new=True):
+        assert info()["using_pyopenssl"] is True
