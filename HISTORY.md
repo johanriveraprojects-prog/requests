@@ -79,6 +79,10 @@ dev
   even when `.netrc` has an entry for it, as curl does. The `.netrc`
   credentials used to replace them on the redirected request, although
   `auth=` takes precedence on the first one.
+- `HTTPDigestAuth` now matches challenge parameter names case-insensitively,
+  as RFC 7235 requires, so `Digest Realm="…", Nonce="…"` works. It used to
+  raise `KeyError: 'realm'`, which `except requests.RequestException` does
+  not catch.
 
 
 2.34.2 (2026-05-14)
