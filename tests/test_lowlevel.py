@@ -255,6 +255,47 @@ def test_digestauth_401_only_sent_once():
         close_server.set()
 
 
+def test_digestauth_case_insensitive_challenge_params():
+    """Auth-param names in the challenge are case-insensitive (RFC 7235)."""
+    text_401 = (b'HTTP/1.1 401 UNAUTHORIZED\r\n'
+                b'Content-Length: 0\r\n'
+                b'WWW-Authenticate: Digest Nonce="6bf5d6e4da1ce66918800195d6b9130d"'
+                b', Opaque="372825293d1c26955496c80ed6426e9e", '
+                b'Realm="me@kennethreitz.com", QOP=auth\r\n\r\n')
+    text_200 = (b'HTTP/1.1 200 OK\r\n'
+                b'Content-Length: 0\r\n\r\n')
+
+    expected_digest = (b'Authorization: Digest username="user", '
+                       b'realm="me@kennethreitz.com", '
+                       b'nonce="6bf5d6e4da1ce66918800195d6b9130d", uri="/"')
+
+    auth = requests.auth.HTTPDigestAuth('user', 'pass')
+
+    def digest_response_handler(sock):
+        # Respond to initial GET with a challenge.
+        request_content = consume_socket_content(sock, timeout=0.5)
+        assert request_content.startswith(b"GET / HTTP/1.1")
+        sock.send(text_401)
+
+        # Verify we receive an Authorization header in response.
+        request_content = consume_socket_content(sock, timeout=0.5)
+        assert expected_digest in request_content
+        assert b'opaque="372825293d1c26955496c80ed6426e9e"' in request_content
+        sock.send(text_200)
+
+        return request_content
+
+    close_server = threading.Event()
+    server = Server(digest_response_handler, wait_to_close_event=close_server)
+
+    with server as (host, port):
+        url = f'http://{host}:{port}/'
+        r = requests.get(url, auth=auth)
+        assert r.status_code == 200
+        assert r.history[0].status_code == 401
+        close_server.set()
+
+
 def test_digestauth_only_on_4xx():
     """Ensure we only send digestauth on 4xx challenges.
 

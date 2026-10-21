@@ -299,7 +299,11 @@ class HTTPDigestAuth(AuthBase):
         if "digest" in s_auth.lower() and self._thread_local.num_401_calls < 2:
             self._thread_local.num_401_calls += 1
             pat = re.compile(r"digest ", flags=re.IGNORECASE)
-            self._thread_local.chal = parse_dict_header(pat.sub("", s_auth, count=1))
+            # Auth-param names are case-insensitive (RFC 7235, section 2.1).
+            self._thread_local.chal = {
+                k.lower(): v
+                for k, v in parse_dict_header(pat.sub("", s_auth, count=1)).items()
+            }
 
             # Consume content and release the original connection
             # to allow our new request to reuse the same one.
