@@ -91,6 +91,10 @@ dev
   a generator, now raises `UnrewindableBodyError`. The consumed stream used
   to be resent empty, so the upload silently lost its data while the server
   answered with a success status.
+- `HTTPDigestAuth` now raises `UnrewindableBodyError` when it would have to
+  resend a body that can't be rewound, such as a generator, to answer the
+  challenge. The authenticated retry used to go out with an empty body, so
+  the upload was silently lost.
 
 
 2.34.2 (2026-05-14)

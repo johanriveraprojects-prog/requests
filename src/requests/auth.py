@@ -19,6 +19,7 @@ from typing import TYPE_CHECKING, Any, Final, cast, overload
 from ._internal_utils import to_native_string
 from .compat import basestring, str, urlsplit
 from .cookies import extract_cookies_to_jar
+from .exceptions import UnrewindableBodyError
 from .utils import parse_dict_header
 
 if TYPE_CHECKING:
@@ -297,6 +298,23 @@ class HTTPDigestAuth(AuthBase):
         s_auth = r.headers.get("www-authenticate", "")
 
         if "digest" in s_auth.lower() and self._thread_local.num_401_calls < 2:
+            # The challenge is answered by resending the request. A stream
+            # that can't be rewound (e.g. a generator) was consumed by the
+            # first attempt and would go out empty, so fail instead.
+            body = r.request.body
+            if (
+                body is not None
+                and not isinstance(body, (bytes, str))
+                and (
+                    self._thread_local.pos is None
+                    or getattr(body, "seek", None) is None
+                )
+            ):
+                r.close()
+                raise UnrewindableBodyError(
+                    "Unable to rewind request body to resend it with Digest auth."
+                )
+
             self._thread_local.num_401_calls += 1
             pat = re.compile(r"digest ", flags=re.IGNORECASE)
             # Auth-param names are case-insensitive (RFC 7235, section 2.1).
