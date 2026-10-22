@@ -453,6 +453,46 @@ def test_redirect_to_latin1_location():
         close_server.set()
 
 
+@pytest.mark.parametrize('allow_redirects', (True, False))
+def test_generator_body_is_not_resent_empty_on_307(allow_redirects):
+    """A 307 keeps the request body. A consumed generator can't be sent
+    again, so following the redirect must fail rather than post an empty
+    body; without following it, nothing needs to be resent."""
+    redirect_request = []  # stores a second request, if any
+
+    def redirect_resp_handler(sock):
+        request_content = consume_socket_content(sock, timeout=0.5)
+        # Sent chunked, so the two pieces arrive in separate chunks.
+        assert b'important ' in request_content
+        assert b'data' in request_content
+        sock.send(
+            b'HTTP/1.1 307 Temporary Redirect\r\n'
+            b'Content-Length: 0\r\n'
+            b'Location: /new\r\n'
+            b'\r\n'
+        )
+        redirect_request.append(consume_socket_content(sock, timeout=0.5))
+
+    def gen():
+        yield b'important '
+        yield b'data'
+
+    close_server = threading.Event()
+    server = Server(redirect_resp_handler, wait_to_close_event=close_server)
+
+    with server as (host, port):
+        url = f'http://{host}:{port}/old'
+        if allow_redirects:
+            with pytest.raises(requests.exceptions.UnrewindableBodyError):
+                requests.post(url, data=gen(), timeout=2)
+        else:
+            r = requests.post(url, data=gen(), allow_redirects=False, timeout=2)
+            assert r.status_code == 307
+        close_server.set()
+
+    assert redirect_request == [b'']
+
+
 def test_fragment_not_sent_with_request():
     """Verify that the fragment portion of a URI isn't sent to the server."""
     close_server = threading.Event()

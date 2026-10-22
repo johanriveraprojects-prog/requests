@@ -87,6 +87,10 @@ dev
   now take precedence over a `.netrc` entry for the same host, as curl does.
   The `.netrc` credentials used to be sent instead. A URL with only a
   username still falls back to `.netrc`.
+- Following a 307 or 308 redirect with a body that can't be rewound, such as
+  a generator, now raises `UnrewindableBodyError`. The consumed stream used
+  to be resent empty, so the upload silently lost its data while the server
+  answered with a success status.
 
 
 2.34.2 (2026-05-14)
