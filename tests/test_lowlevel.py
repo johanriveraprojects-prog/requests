@@ -296,6 +296,40 @@ def test_digestauth_case_insensitive_challenge_params():
         close_server.set()
 
 
+def test_digestauth_does_not_resend_consumed_generator_body():
+    """Answering a Digest challenge resends the request. A generator body
+    was consumed by the first attempt, so fail instead of sending it empty."""
+    text_401 = (b'HTTP/1.1 401 UNAUTHORIZED\r\n'
+                b'Content-Length: 0\r\n'
+                b'WWW-Authenticate: Digest nonce="6bf5d6e4da1ce66918800195d6b9130d"'
+                b', realm="me@kennethreitz.com", qop=auth\r\n\r\n')
+    second_request = []  # stores a second request, if any
+
+    def digest_response_handler(sock):
+        request_content = consume_socket_content(sock, timeout=0.5)
+        # Sent chunked, so the two pieces arrive in separate chunks.
+        assert b'important ' in request_content
+        assert b'data' in request_content
+        sock.send(text_401)
+        second_request.append(consume_socket_content(sock, timeout=0.5))
+
+    def gen():
+        yield b'important '
+        yield b'data'
+
+    auth = requests.auth.HTTPDigestAuth('user', 'pass')
+    close_server = threading.Event()
+    server = Server(digest_response_handler, wait_to_close_event=close_server)
+
+    with server as (host, port):
+        url = f'http://{host}:{port}/'
+        with pytest.raises(requests.exceptions.UnrewindableBodyError):
+            requests.post(url, data=gen(), auth=auth, timeout=2)
+        close_server.set()
+
+    assert second_request == [b'']
+
+
 def test_digestauth_only_on_4xx():
     """Ensure we only send digestauth on 4xx challenges.
 
