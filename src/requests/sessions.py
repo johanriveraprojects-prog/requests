@@ -179,7 +179,9 @@ class SessionRedirectMixin:
         # to cache the redirect location onto the response object as a private
         # attribute.
         if resp.is_redirect:
-            location = resp.headers["location"]
+            # Whitespace around a field value isn't part of it (RFC 9110,
+            # section 5.5), but http.client keeps trailing whitespace.
+            location = resp.headers["location"].strip(" \t")
             # Currently the underlying http module on py3 decode headers
             # in latin1, but empirical evidence suggests that latin1 is very
             # rarely used with non-ASCII characters in HTTP headers.

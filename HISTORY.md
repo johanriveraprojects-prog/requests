@@ -95,6 +95,9 @@ dev
   resend a body that can't be rewound, such as a generator, to answer the
   challenge. The authenticated retry used to go out with an empty body, so
   the upload was silently lost.
+- Redirects now ignore whitespace after the `Location` value, as curl and
+  browsers do. It used to be percent-encoded into the URL, so
+  `Location: /next ` was followed to `/next%20`, a different resource.
 
 
 2.34.2 (2026-05-14)
