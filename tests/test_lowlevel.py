@@ -487,6 +487,36 @@ def test_redirect_to_latin1_location():
         close_server.set()
 
 
+def test_redirect_location_with_trailing_whitespace():
+    """Whitespace after a Location value isn't part of the URL; following
+    it must not request a different, percent-encoded path."""
+    redirect_request = []  # stores the second request to the server
+
+    def redirect_resp_handler(sock):
+        consume_socket_content(sock, timeout=0.5)
+        sock.send(
+            b'HTTP/1.1 302 Found\r\n'
+            b'Content-Length: 0\r\n'
+            b'Location: /next \t\r\n'
+            b'\r\n'
+        )
+        redirect_request.append(consume_socket_content(sock, timeout=0.5))
+        sock.send(b'HTTP/1.1 200 OK\r\n\r\n')
+
+    close_server = threading.Event()
+    server = Server(redirect_resp_handler, wait_to_close_event=close_server)
+
+    with server as (host, port):
+        url = f'http://{host}:{port}'
+        r = requests.get(url=url, allow_redirects=True)
+        assert r.status_code == 200
+        assert len(r.history) == 1
+        assert redirect_request[0].startswith(b'GET /next HTTP/1.1')
+        assert r.url == f'{url}/next'
+
+        close_server.set()
+
+
 @pytest.mark.parametrize('allow_redirects', (True, False))
 def test_generator_body_is_not_resent_empty_on_307(allow_redirects):
     """A 307 keeps the request body. A consumed generator can't be sent
