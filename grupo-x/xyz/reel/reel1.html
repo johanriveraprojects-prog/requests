@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>XYZ · Reel 1 · Manifiesto</title>
+<meta name="viewport" content="width=1080">
+<style>
+:root{--bg:#000;--fg:#f4f4f2;--ac:#39ff14;--dim:#6b6b68}
+*{box-sizing:border-box;margin:0}
+html,body{width:1080px;height:1920px;background:var(--bg);overflow:hidden}
+#stage{position:relative;width:1080px;height:1920px;background:radial-gradient(ellipse at 50% 45%,#0b140a 0%,#000 62%)}
+#grain{position:absolute;inset:0;opacity:.07;mix-blend-mode:screen}
+#scan{position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(255,255,255,.035) 0 2px,transparent 2px 5px)}
+.tag{position:absolute;left:72px;font:600 26px "JetBrains Mono",monospace;letter-spacing:.18em;color:var(--dim)}
+#top{top:92px}#bot{bottom:92px;right:72px;left:auto}
+#txt{position:absolute;left:72px;right:72px;top:0;bottom:0;display:flex;flex-direction:column;justify-content:center;font-family:"Bricolage Grotesque",sans-serif;font-weight:800;color:var(--fg);text-transform:uppercase;line-height:.98;letter-spacing:-.02em;white-space:pre-line}
+#txt .ac{color:var(--ac);text-shadow:0 0 28px rgba(57,255,20,.55)}
+#sub{position:absolute;left:72px;right:72px;bottom:300px;font:500 40px "Instrument Sans",sans-serif;color:var(--dim)}
+#bar{position:absolute;left:0;bottom:0;height:8px;background:var(--ac);width:0}
+</style></head><body>
+<div id="stage">
+ <canvas id="grain" width="270" height="480" style="width:1080px;height:1920px"></canvas>
+ <div id="scan"></div>
+ <div class="tag" id="top">XYZ SOCIAL CLUB</div>
+ <div class="tag" id="bot">01 / MANIFIESTO</div>
+ <div id="txt"></div>
+ <div id="sub"></div>
+ <div id="bar"></div>
+</div>
+<script>
+// Timeline in ms. size = font px. ac = indices of lines painted neon.
+const S=[
+ {a:0,   b:2700, size:150, lines:["SOMOS LAS","ÚLTIMAS","LETRAS."], ac:[2]},
+ {a:2700,b:4900, size:170, lines:["NADIE NOS","FIRMÓ."], ac:[1]},
+ {a:4900,b:7100, size:170, lines:["NADIE NOS","ESPERABA."], ac:[1]},
+ {a:7100,b:9500, size:150, lines:["POR ESO LO","HACEMOS","JUNTOS."], ac:[2]},
+ {a:9500,b:12100,size:140, roles:["ARTISTA","PRODUCTOR","VISUAL","DJ","FAN"]},
+ {a:12100,b:16000,size:300, lines:["XYZ."], ac:[0], sub:["Los últimos serán","los primeros."], link:"LINK EN BIO ↓"}
+];
+window.__total=16000;
+const G="▓▒░█#@%&XYZ/\\<>01";
+function rnd(n){n=Math.sin(n*127.1+311.7)*43758.5453;return n-Math.floor(n)}
+const txt=document.getElementById('txt'),sub=document.getElementById('sub'),bar=document.getElementById('bar'),grain=document.getElementById('grain').getContext('2d');
+function decode(str,t,seedBase,per=38){ // t ms since scene start
+  let out='';
+  for(let i=0;i<str.length;i++){
+    const c=str[i];
+    if(c===' '){out+=c;continue}
+    const reveal=i*per+120;
+    if(t>=reveal+160) out+=c;
+    else if(t>=reveal-120) out+=G[Math.floor(rnd(seedBase+i+Math.floor(t/45))*G.length)];
+    else out+=' ';
+  }
+  return out;
+}
+window.__seek=function(T){
+  const s=S.find(x=>T>=x.a&&T<x.b)||S[S.length-1];
+  const t=T-s.a, dur=s.b-s.a, idx=S.indexOf(s);
+  // grain
+  grain.clearRect(0,0,270,480);
+  for(let k=0;k<420;k++){const v=rnd(k+Math.floor(T/66)*7.3)*255;grain.fillStyle=`rgb(${v},${v},${v})`;grain.fillRect(rnd(k*3.1+Math.floor(T/66))*270,rnd(k*5.7+Math.floor(T/66)*2)*480,2,2)}
+  // scene transform: slow push + exit fade
+  const k=t/dur, scale=1+0.045*k, fade=Math.min(1,(dur-t)/140)*Math.min(1,t/40+0.15);
+  const jitter=(t<180)?(rnd(Math.floor(t/30)+idx*9)-.5)*14:0;
+  txt.style.transform=`translateX(${jitter}px) scale(${scale})`;
+  txt.style.opacity=(idx===S.length-1)?1:fade;
+  txt.style.fontSize=s.size+'px';
+  let html='';
+  if(s.roles){
+    const step=s.b-s.a, per=step/s.roles.length;
+    const cur=Math.min(s.roles.length-1,Math.floor(t/per));
+    html=s.roles.map((r,i)=>{
+      const on=i<=cur;
+      const col=i===cur?'ac':'';
+      return `<div class="${col}" style="opacity:${on?(i===cur?1:.28):.0}">${i===cur?decode(r,t-i*per,500+i*40,24):r}</div>`;
+    }).join('');
+  } else {
+    html=s.lines.map((l,i)=>{
+      const off=i*220;
+      return `<div class="${s.ac&&s.ac.includes(i)?'ac':''}">${decode(l,Math.max(0,t-off),idx*100+i*10)}</div>`;
+    }).join('');
+  }
+  txt.innerHTML=html;
+  // sub + link on last scene
+  if(s.sub){
+    const st=Math.max(0,t-900);
+    sub.style.opacity=Math.min(1,st/300);
+    sub.innerHTML=`<div style="font:700 74px 'Bricolage Grotesque';color:#f4f4f2;line-height:1.05">${s.sub.join('<br>')}</div><div style="margin-top:56px;font:600 34px 'JetBrains Mono';letter-spacing:.2em;color:var(--ac)">${s.link}</div>`;
+    sub.style.bottom='230px';
+  } else sub.innerHTML='';
+  bar.style.width=(T/window.__total*100)+'%';
+};
+window.__seek(0);
+</script></body></html>

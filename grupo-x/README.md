@@ -9,3 +9,5 @@ Código y documentos del ecosistema. La memoria completa está en `MAESTRO.md`.
 Los MP4, portadas y los fotogramas 3D pesan demasiado: no se versionan. Se regeneran con el código (`construx/3d/render3d.js`).
 
 Nota: esta carpeta vive dentro del repo `requests`, aparte de su código.
+
+- `xyz/`: proyecto aparte, XYZ Social Club (club de la cadena creativa del trap). Base de marca y mapa de plataformas en `xyz/BASE_DE_MARCA.md`.
