@@ -405,6 +405,22 @@ class TestRequests:
         r = s.get(httpbin("redirect/1"))  # redirects to httpbin('get')
         assert "Cookie" in r.json()["headers"]
 
+    def test_cookie_domain_ignores_url_credentials(self, httpbin):
+        with_credentials = httpbin("cookies/set?foo=bar").replace(
+            "://", "://user:pass@", 1
+        )
+        s = requests.session()
+        s.get(with_credentials)
+        assert [c.domain for c in s.cookies] == [urlparse(httpbin()).hostname]
+        r = s.get(httpbin("cookies"))
+        assert r.json()["cookies"] == {"foo": "bar"}
+
+    def test_cookie_sent_to_url_with_credentials(self, httpbin):
+        s = requests.session()
+        s.get(httpbin("cookies/set?foo=bar"))
+        r = s.get(httpbin("cookies").replace("://", "://user:pass@", 1))
+        assert r.json()["cookies"] == {"foo": "bar"}
+
     def test_cookie_removed_on_expire(self, httpbin):
         s = requests.session()
         s.get(httpbin("cookies/set?foo=bar"))

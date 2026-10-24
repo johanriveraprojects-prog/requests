@@ -98,6 +98,11 @@ dev
 - Redirects now ignore whitespace after the `Location` value, as curl and
   browsers do. It used to be percent-encoded into the URL, so
   `Location: /next ` was followed to `/next%20`, a different resource.
+- Cookies now ignore credentials in the URL (`http://user:pass@host/`) when
+  matching the request's host. A cookie set by such a URL used to be stored
+  with `user:pass@host` as its domain, exposing the password and not being
+  sent to the same host without credentials. Cookies set by the host weren't
+  sent to its URLs with credentials either.
 
 
 2.34.2 (2026-05-14)
