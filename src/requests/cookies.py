@@ -52,19 +52,24 @@ class MockRequest:
         return self.type
 
     def get_host(self) -> str:
-        return urlparse(self._r.url).netloc
+        # Credentials in the URL ("user:pass@") aren't part of the host the
+        # cookies belong to.
+        return urlparse(self._r.url).netloc.rpartition("@")[2]
 
     def get_origin_req_host(self) -> str:
         return self.get_host()
 
     def get_full_url(self) -> str:
+        parsed = urlparse(self._r.url)
         # Only return the response's URL if the user hadn't set the Host
         # header
         if not self._r.headers.get("Host"):
-            return self._r.url
-        # If they did set it, retrieve it and reconstruct the expected domain
-        host = to_native_string(self._r.headers["Host"], encoding="utf-8")
-        parsed = urlparse(self._r.url)
+            if "@" not in parsed.netloc:
+                return self._r.url
+            host = self.get_host()
+        else:
+            # If they did set it, retrieve it and reconstruct the expected domain
+            host = to_native_string(self._r.headers["Host"], encoding="utf-8")
         # Reconstruct the URL as we expect it
         return urlunparse(
             [
